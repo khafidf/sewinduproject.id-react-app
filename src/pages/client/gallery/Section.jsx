@@ -22,8 +22,8 @@ export const Section = () => {
 	}, [category]);
 
 	return (
-		<div className="flex flex-col gap-6 p-4 w-full min-h-[calc(100vh-106px)] mx-auto xl:max-w-7xl">
-			<div className="flex flex-col gap-2">
+		<div className="flex flex-col w-full gap-6 p-4 mx-auto xl:max-w-7xl">
+			<div className="flex flex-col gap-4">
 				<div className="py-2 border-b-2 border-gray-900">
 					<Select
 						label="Select Category"

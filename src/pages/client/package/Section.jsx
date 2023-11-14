@@ -32,8 +32,8 @@ export const Section = () => {
 	];
 
 	return (
-		<div className="flex flex-col gap-6 p-4 w-full min-h-[calc(100vh-106px)] mx-auto lg:max-w-7xl">
-			<div className="flex flex-col min-h-[calc(100vh-138px)] gap-4">
+		<div className="flex flex-col w-full gap-6 p-4 mx-auto lg:max-w-7xl">
+			<div className="flex flex-col gap-4">
 				<div className="py-2 border-b-2 border-gray-900">
 					<Select
 						label="Select Category"
@@ -45,9 +45,7 @@ export const Section = () => {
 						<Option value="couple">Couple</Option>
 					</Select>
 				</div>
-				<div className="my-auto">
-					<Carousel content={cardPackages} />
-				</div>
+				<Carousel content={cardPackages} />
 			</div>
 		</div>
 	);
