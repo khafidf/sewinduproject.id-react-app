@@ -42,7 +42,11 @@ export const Carousel = ({ content }) => {
 	return (
 		<Slider {...setting}>
 			{content.map((item, index) => {
-				return <div key={index}>{item}</div>;
+				return (
+					<div className="px-4" key={index}>
+						{item}
+					</div>
+				);
 			})}
 		</Slider>
 	);
