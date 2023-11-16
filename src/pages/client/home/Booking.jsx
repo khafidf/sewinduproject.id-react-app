@@ -20,7 +20,7 @@ export const Booking = () => {
 		16,
 	];
 	return (
-		<div className="flex w-full p-4 h-[480px] xl:h-[640px] max-h-[640px]">
+		<div className="flex w-full py-4 px-2 h-[480px] xl:h-[528px] max-h-[624px]">
 			<div className="flex flex-col w-full gap-6 mt-8 mb-auto overflow-hidden sm:flex-row sm:max-w-lg lg:max-w-3xl xl:max-w-7xl sm:m-auto">
 				<div className="flex flex-col items-center w-full p-2 my-auto">
 					<h2 className="text-2xl font-bold lg:text-3xl">Booking</h2>

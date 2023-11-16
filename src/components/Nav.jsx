@@ -17,8 +17,6 @@ export const Nav = () => {
 	const user = useSelector(selectCurrentUser);
 	const token = useSelector(selectCurrentToken);
 
-	console.log(user, token);
-
 	const [openNav, setOpenNav] = useState(false);
 
 	useEffect(() => {

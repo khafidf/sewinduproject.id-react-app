@@ -12,7 +12,7 @@ export const Package = () => {
 	];
 
 	return (
-		<div className="flex flex-col justify-center w-full h-screen max-h-[678px] lg:max-w-7xl mx-auto gap-6 p-4">
+		<div className="flex flex-col justify-center w-full max-h-[768px] lg:max-w-7xl mx-auto gap-6 py-4 px-2">
 			<div className="flex flex-col">
 				<h2 className="text-2xl font-bold lg:text-3xl">Package</h2>
 				<p>Select your package</p>

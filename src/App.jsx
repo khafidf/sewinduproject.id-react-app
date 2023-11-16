@@ -16,7 +16,7 @@ export default function App() {
 				<Route path="booking" />
 
 				{/* Protect   Routes */}
-				{/* <Route>
+				{/* <Route element={<RequireAuth />}>
 					<Route />
 				</Route> */}
 

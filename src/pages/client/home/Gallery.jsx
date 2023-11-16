@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 export const Gallery = () => {
 	return (
-		<div className="flex flex-col sm:flex-row gap-6 p-4 sm:p-6 lg:justify-evenly items-center justify-center w-full h-[calc(100vh-20vh)] max-h-[678px] lg:max-w-7xl lg:mx-auto">
+		<div className="flex flex-col sm:flex-row gap-10 py-4 px-2 sm:py-6 sm:px-4 lg:justify-evenly items-center justify-center w-full md:h-[calc(100vh-40vh)] lg:h-[calc(100vh-20vh)] h-[calc(100vh-20vh)] max-h-[678px] lg:max-w-7xl lg:mx-auto">
 			<div className="group relative w-[260px] h-[260px] sm:w-screen md:w-[500px] sm:h-[400px] lg:w-[400px]">
 				<img
 					className="absolute z-10 duration-700 sm:top-16 sm:group-hover:-rotate-3 lg:top-8 group-hover:origin-bottom group-hover:-rotate-6 lg:group-hover:-rotate-6 xl:top-0"
