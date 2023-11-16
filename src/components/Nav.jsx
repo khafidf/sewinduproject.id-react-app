@@ -73,9 +73,12 @@ export const Nav = () => {
 						alt="sewinduproject.id"
 					/>
 				</a>
-				<div className="hidden lg:block">{navList}</div>
-				<div className="flex items-center gap-x-1">
-					{token ? <p>{user}</p> : <LoginModal openNav={openNav} />}
+				<div className="hidden lg:block">
+					{navList}
+
+					<div className="flex items-center gap-x-1">
+						{token ? <p>{user}</p> : <LoginModal openNav={openNav} />}
+					</div>
 				</div>
 				<IconButton
 					variant="text"
