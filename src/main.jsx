@@ -7,16 +7,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { Provider } from "react-redux";
+import { store } from "./redux/store.js";
+
 import { ThemeProvider } from "@material-tailwind/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
-		<ThemeProvider>
-			<Router>
-				<Routes>
-					<Route path="/*" element={<App />} />
-				</Routes>
-			</Router>
-		</ThemeProvider>
+		<Provider store={store}>
+			<ThemeProvider>
+				<Router>
+					<Routes>
+						<Route path="/*" element={<App />} />
+					</Routes>
+				</Router>
+			</ThemeProvider>
+		</Provider>
 	</React.StrictMode>
 );

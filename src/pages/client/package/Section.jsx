@@ -45,7 +45,9 @@ export const Section = () => {
 						<Option value="couple">Couple</Option>
 					</Select>
 				</div>
-				<Carousel content={cardPackages} />
+				<div>
+					<Carousel content={cardPackages} />
+				</div>
 			</div>
 		</div>
 	);

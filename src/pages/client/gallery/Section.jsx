@@ -21,6 +21,8 @@ export const Section = () => {
 		}
 	}, [category]);
 
+	console.log(photo);
+
 	return (
 		<div className="flex flex-col w-full gap-6 p-4 mx-auto xl:max-w-7xl">
 			<div className="flex flex-col gap-4">
@@ -36,11 +38,11 @@ export const Section = () => {
 					</Select>
 				</div>
 				{category !== "" ? (
-					<div className="flex p-2 mx-auto md:p-4">
-						<div className="columns-1 sm:columns-2 gap-5 lg:columns-3 xl:columns-4 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-8">
+					<div className="flex py-2 mx-auto md:py-4">
+						<div className="columns-1 sm:columns-2 gap-5 lg:columns-3 xl:columns-4 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-5">
 							{photo.map((item, index) => {
 								return (
-									<div className="relative flex w-[240px] group" key={index}>
+									<div className="relative flex w-[296px] group" key={index}>
 										<img
 											className="rounded-md shadow-md shadow-gray-400"
 											src={item.photoUrl}
@@ -56,7 +58,7 @@ export const Section = () => {
 						</div>
 					</div>
 				) : (
-					<div className="w-full h-[calc(100vh-30vh)] flex">
+					<div className="w-full h-[calc(100vh-13.5rem)] flex">
 						<Spinner className="w-10 h-10 m-auto" />
 					</div>
 				)}
