@@ -1,23 +1,43 @@
 import { useEffect, useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaChevronDown, FaTimes } from "react-icons/fa";
 import { LoginModal } from "./LoginModal";
 import {
 	Navbar,
 	Typography,
 	IconButton,
 	Collapse,
+	Menu,
+	MenuHandler,
+	MenuItem,
+	MenuList,
+	Button,
 } from "@material-tailwind/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
+	logOut,
 	selectCurrentToken,
 	selectCurrentUser,
+	setCredentials,
 } from "../redux/api/auth/authSlice";
 
 export const Nav = () => {
+	const dispatch = useDispatch();
 	const user = useSelector(selectCurrentUser);
 	const token = useSelector(selectCurrentToken);
 
+	useEffect(() => {
+		if (localStorage.getItem("auth")) {
+			const { name, token } = JSON.parse(localStorage.getItem("auth"));
+			dispatch(setCredentials({ name, token }));
+		}
+	}, [dispatch]);
+
+	const handleLogout = () => {
+		dispatch(logOut());
+	};
+
 	const [openNav, setOpenNav] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	useEffect(() => {
 		window.addEventListener(
@@ -27,12 +47,12 @@ export const Nav = () => {
 	}, []);
 
 	const navList = (
-		<ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+		<ul className="flex flex-col gap-2 my-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
 			<Typography
 				as="li"
 				variant="small"
 				color="blue-gray"
-				className="flex items-center p-1 font-semibold gap-x-2"
+				className="flex items-center p-1 px-3 font-semibold gap-x-2"
 			>
 				<a href="/gallery" className="flex items-center">
 					Gallery
@@ -42,7 +62,7 @@ export const Nav = () => {
 				as="li"
 				variant="small"
 				color="blue-gray"
-				className="flex items-center p-1 font-semibold gap-x-2"
+				className="flex items-center p-1 px-3 font-semibold gap-x-2"
 			>
 				<a href="/package" className="flex items-center">
 					Packages
@@ -52,7 +72,7 @@ export const Nav = () => {
 				as="li"
 				variant="small"
 				color="blue-gray"
-				className="flex items-center p-1 font-semibold gap-x-2"
+				className="flex items-center p-1 px-3 font-semibold gap-x-2"
 			>
 				<a href="/booking" className="flex items-center">
 					Booking
@@ -72,8 +92,45 @@ export const Nav = () => {
 					/>
 				</a>
 				<div className="hidden lg:block">{navList}</div>
-				<div className="flex items-center hidden lg:block gap-x-1">
-					{token ? <p>{user}</p> : <LoginModal openNav={openNav} />}
+				<div className="items-center hidden lg:block gap-x-1">
+					{token ? (
+						<>
+							<Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
+								<MenuHandler>
+									<Typography
+										as="a"
+										href="#"
+										variant="small"
+										className="font-normal"
+									>
+										<MenuItem className="items-center hidden gap-2 font-medium text-blue-gray-900 lg:flex lg:rounded-full">
+											{user}
+											<FaChevronDown
+												strokeWidth={2}
+												className={`h-3 w-3 transition-transform ${
+													isMenuOpen ? "rotate-180" : ""
+												}`}
+											/>
+										</MenuItem>
+									</Typography>
+								</MenuHandler>
+								<MenuList className="hidden w-[2rem] overflow-visible lg:flex">
+									<ul className="w-full">
+										<Button
+											size="sm"
+											type="button"
+											onClick={handleLogout}
+											className="w-full text-white duration-100 bg-black rounded-full shadow-md hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100"
+										>
+											<span className="lg:px-4">Log Out</span>
+										</Button>
+									</ul>
+								</MenuList>
+							</Menu>
+						</>
+					) : (
+						<LoginModal openNav={openNav} />
+					)}
 				</div>
 				<IconButton
 					variant="text"
@@ -88,7 +145,39 @@ export const Nav = () => {
 				<div className="container mx-auto my-4">
 					{navList}
 
-					{token ? <p>{user}</p> : <LoginModal openNav={openNav} />}
+					{token ? (
+						<>
+							<Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
+								<MenuHandler>
+									<Typography variant="small" className="font-normal">
+										<MenuItem className="flex items-center gap-2 font-medium rounded-full text-blue-gray-900 lg:hidden">
+											{user}
+											<FaChevronDown
+												strokeWidth={2}
+												className={`h-3 w-3 transition-transform ${
+													isMenuOpen ? "rotate-180" : ""
+												}`}
+											/>
+										</MenuItem>
+									</Typography>
+								</MenuHandler>
+								<MenuList className="flex w-full overflow-visible lg:hidden">
+									<ul className="w-full">
+										<Button
+											size="sm"
+											type="button"
+											onClick={handleLogout}
+											className="w-full text-white duration-100 bg-black rounded-full shadow-md hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100"
+										>
+											<span className="lg:px-4">Log Out</span>
+										</Button>
+									</ul>
+								</MenuList>
+							</Menu>
+						</>
+					) : (
+						<LoginModal openNav={openNav} />
+					)}
 				</div>
 			</Collapse>
 		</Navbar>

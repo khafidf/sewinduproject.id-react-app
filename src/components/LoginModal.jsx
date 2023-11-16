@@ -14,6 +14,7 @@ import {
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../redux/api/auth/authSlice.js";
 import { useLoginMutation } from "../redux/api/auth/authApiSlice.js";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export const LoginModal = ({ openNav }) => {
 	const [identifier, setIdentifier] = useState("");
@@ -42,6 +43,7 @@ export const LoginModal = ({ openNav }) => {
 	};
 
 	const [openLogin, setOpenLogin] = useState(false);
+	const [show, setShow] = useState(false);
 	const [action, setAction] = useState("login");
 
 	const handleOpenModal = () => {
@@ -50,6 +52,7 @@ export const LoginModal = ({ openNav }) => {
 	};
 	const handleToRegister = () => setAction("register");
 	const handleToLogin = () => setAction("login");
+	const handleShow = () => setShow((cur) => !cur);
 
 	return (
 		<>
@@ -98,9 +101,19 @@ export const LoginModal = ({ openNav }) => {
 								<Input
 									label="Password"
 									size="lg"
-									type="password"
+									type={show ? `text` : `password`}
 									value={password}
 									onChange={handlePasswordInput}
+									icon={
+										show ? (
+											<FaEyeSlash
+												className="cursor-pointer"
+												onClick={handleShow}
+											/>
+										) : (
+											<FaEye className="cursor-pointer" onClick={handleShow} />
+										)
+									}
 									required
 								/>
 							</CardBody>
