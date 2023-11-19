@@ -1,10 +1,10 @@
 import React from "react";
 import { Section } from "./Section";
 
-export const GalleryPage = () => {
+export default function GalleryPage() {
 	return (
 		<>
 			<Section />
 		</>
 	);
-};
+}

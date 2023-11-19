@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import {
 	Button,
@@ -11,8 +11,6 @@ import {
 	Input,
 } from "@material-tailwind/react";
 
-import { useDispatch } from "react-redux";
-import { setCredentials } from "../redux/api/auth/authSlice.js";
 import { useLoginMutation } from "../redux/api/auth/authApiSlice.js";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
@@ -21,9 +19,7 @@ export const LoginModal = ({ openNav }) => {
 	const [password, setPassword] = useState("");
 
 	const [login] = useLoginMutation();
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const location = useLocation();
 
 	const handleUserInput = (e) => setIdentifier(e.target.value);
 	const handlePasswordInput = (e) => setPassword(e.target.value);
@@ -31,12 +27,11 @@ export const LoginModal = ({ openNav }) => {
 		e.preventDefault();
 
 		try {
-			const userData = await login({ identifier, password });
-			dispatch(setCredentials({ ...userData.data, identifier }));
+			await login({ identifier, password });
 			setPassword("");
 			setIdentifier("");
 			setOpenLogin((cur) => !cur);
-			navigate(location.pathname);
+			navigate(0);
 		} catch (error) {
 			console.log(error);
 		}
@@ -61,7 +56,7 @@ export const LoginModal = ({ openNav }) => {
 				onClick={handleOpenModal}
 				className={`${
 					openNav ? `w-full py-2.5` : `hidden lg:inline-block`
-				} text-white duration-100 bg-black rounded shadow-md hover:shadow-gray-400  hover:text-blue-gray-900 hover:bg-gray-100`}
+				} text-white mx-3 duration-100 rounded-full bg-black shadow-md hover:shadow-gray-400  hover:text-blue-gray-900 hover:bg-gray-100`}
 			>
 				<span className="lg:px-4">Log In</span>
 			</Button>
@@ -118,7 +113,12 @@ export const LoginModal = ({ openNav }) => {
 								/>
 							</CardBody>
 							<CardFooter className="pt-0">
-								<Button variant="gradient" type="submit" fullWidth>
+								<Button
+									variant="gradient"
+									type="submit"
+									className="rounded-full"
+									fullWidth
+								>
 									Log in
 								</Button>
 								<Typography
@@ -170,7 +170,12 @@ export const LoginModal = ({ openNav }) => {
 							<Input label="Confirm Password" size="md" />
 						</CardBody>
 						<CardFooter className="pt-0">
-							<Button variant="gradient" onClick={handleOpenModal} fullWidth>
+							<Button
+								variant="gradient"
+								onClick={handleOpenModal}
+								className="rounded-full"
+								fullWidth
+							>
 								Register
 							</Button>
 							<Typography variant="small" className="flex justify-center mt-4">

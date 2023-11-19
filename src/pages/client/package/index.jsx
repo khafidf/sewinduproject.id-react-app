@@ -1,10 +1,10 @@
 import React from "react";
 import { Section } from "./Section";
 
-export const PackagePage = () => {
+export default function PackagePage() {
 	return (
 		<>
 			<Section />
 		</>
 	);
-};
+}

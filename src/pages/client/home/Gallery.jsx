@@ -32,7 +32,7 @@ export const Gallery = () => {
 						through the art of photography.
 					</p>
 				</div>
-				<Button className="flex gap-2 px-6 py-2 text-white duration-100 bg-black rounded shadow-md w-fit hover:shadow-gray-400 hover:text-black hover:bg-gray-100">
+				<Button className="flex gap-2 px-6 py-2 text-white duration-100 bg-black rounded rounded-full shadow-md w-fit hover:shadow-gray-400 hover:text-black hover:bg-gray-100">
 					<a className="flex m-auto text-xs md:text-sm" href="/gallery">
 						Let&apos;s explore
 					</a>

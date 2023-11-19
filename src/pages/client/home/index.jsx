@@ -3,7 +3,7 @@ import { Gallery } from "./Gallery";
 import { Package } from "./Package";
 import { Booking } from "./Booking";
 
-export const HomePage = () => {
+export default function HomePage() {
 	return (
 		<>
 			<Gallery />
@@ -11,4 +11,4 @@ export const HomePage = () => {
 			<Booking />
 		</>
 	);
-};
+}

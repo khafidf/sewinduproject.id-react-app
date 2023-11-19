@@ -12,32 +12,19 @@ import {
 	MenuList,
 	Button,
 } from "@material-tailwind/react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-	logOut,
-	selectCurrentToken,
-	selectCurrentUser,
-	setCredentials,
-} from "../redux/api/auth/authSlice";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import { useLogoutMutation } from "../redux/api/auth/authApiSlice";
 
 export const Nav = () => {
-	const dispatch = useDispatch();
-	const user = useSelector(selectCurrentUser);
-	const token = useSelector(selectCurrentToken);
-
-	useEffect(() => {
-		if (localStorage.getItem("auth")) {
-			const { name, token } = JSON.parse(localStorage.getItem("auth"));
-			dispatch(setCredentials({ name, token }));
-		}
-	}, [dispatch]);
-
-	const handleLogout = () => {
-		dispatch(logOut());
-	};
+	const [user, setUser] = useState("");
+	const [token, setToken] = useState("");
 
 	const [openNav, setOpenNav] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const navigate = useNavigate();
+	const [logout] = useLogoutMutation();
 
 	useEffect(() => {
 		window.addEventListener(
@@ -45,6 +32,24 @@ export const Nav = () => {
 			() => window.innerWidth >= 960 && setOpenNav(false)
 		);
 	}, []);
+
+	useEffect(() => {
+		setUser(Cookies.get("user"));
+		setToken(Cookies.get("authToken"));
+	}, []);
+
+	const handleLogout = async (e) => {
+		e.preventDefault();
+
+		try {
+			await logout();
+			setUser("");
+			setToken("");
+			navigate("/");
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	const navList = (
 		<ul className="flex flex-col gap-2 my-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -104,7 +109,13 @@ export const Nav = () => {
 										className="font-normal"
 									>
 										<MenuItem className="items-center hidden gap-2 font-medium text-blue-gray-900 lg:flex lg:rounded-full">
-											{user}
+											<Typography
+												variant="small"
+												color="blue-gray"
+												className="font-semibold "
+											>
+												{user}
+											</Typography>
 											<FaChevronDown
 												strokeWidth={2}
 												className={`h-3 w-3 transition-transform ${
@@ -120,7 +131,7 @@ export const Nav = () => {
 											size="sm"
 											type="button"
 											onClick={handleLogout}
-											className="w-full text-white duration-100 bg-black rounded-full shadow-md hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100"
+											className="w-full text-white duration-100 bg-black rounded-full shadow-md hover:shadow-gray-400 hover:text-blue-gray-900 hover:rounded-full hover:bg-gray-100"
 										>
 											<span className="lg:px-4">Log Out</span>
 										</Button>
@@ -151,7 +162,13 @@ export const Nav = () => {
 								<MenuHandler>
 									<Typography variant="small" className="font-normal">
 										<MenuItem className="flex items-center gap-2 font-medium rounded-full text-blue-gray-900 lg:hidden">
-											{user}
+											<Typography
+												variant="small"
+												color="blue-gray"
+												className="font-semibold "
+											>
+												{user}
+											</Typography>
 											<FaChevronDown
 												strokeWidth={2}
 												className={`h-3 w-3 transition-transform ${
@@ -161,13 +178,13 @@ export const Nav = () => {
 										</MenuItem>
 									</Typography>
 								</MenuHandler>
-								<MenuList className="flex w-full overflow-visible lg:hidden">
+								<MenuList className="container flex overflow-visible lg:hidden">
 									<ul className="w-full">
 										<Button
 											size="sm"
 											type="button"
 											onClick={handleLogout}
-											className="w-full text-white duration-100 bg-black rounded-full shadow-md hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100"
+											className="w-full text-white duration-100 bg-black rounded-full shadow-md max-w-7xl hover:shadow-gray-400 hover:text-blue-gray-900 hover:rounded-full hover:bg-gray-100"
 										>
 											<span className="lg:px-4">Log Out</span>
 										</Button>

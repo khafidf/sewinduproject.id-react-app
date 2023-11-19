@@ -36,7 +36,7 @@ export const CardHome = () => {
 					dignissimos soluta ipsa?
 				</Typography>
 			</CardBody>
-			<Button className="py-2 text-white bg-black rounded-t-none shadow-md rounded-b-md sm:font-medium hover:shadow-gray-400 hover:text-black hover:bg-gray-100">
+			<Button className="py-2 mx-2 mb-2 text-white bg-black rounded-full sm:font-medium hover:shadow-gray-400 hover:text-black hover:bg-gray-100">
 				Check
 			</Button>
 		</Card>
