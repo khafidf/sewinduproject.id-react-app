@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Option, Select } from "@material-tailwind/react";
-import { getPackagesByCategory } from "../../../api/services";
 import { CardHome } from "../../../components/CardHome";
 import { Carousel } from "../../../components/Carousel";
 
@@ -8,20 +7,9 @@ export const Section = () => {
 	const [category, setCategory] = useState("");
 	const [packages, setPackages] = useState([]);
 
-	const getPackages = async (category) => {
-		const response = await getPackagesByCategory(category);
-		setPackages(response.data.dataPackages);
-	};
-
 	const changeHandler = (value) => {
 		setCategory(value);
 	};
-
-	useEffect(() => {
-		if (category !== "") {
-			getPackages(category);
-		}
-	}, [category]);
 
 	const cardPackages = [
 		<CardHome key={1} />,
