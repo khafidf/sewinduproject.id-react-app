@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaBars, FaChevronDown, FaTimes } from "react-icons/fa";
+import { FaBarsStaggered, FaChevronDown, FaXmark } from "react-icons/fa6";
 import { LoginModal } from "./LoginModal";
 import {
 	Navbar,
@@ -87,7 +87,7 @@ export const Nav = () => {
 	);
 
 	return (
-		<Navbar className="sticky top-0 z-50 px-4 py-2 mx-auto max-w-screen-2xl lg:px-8 lg:py-4">
+		<Navbar className="sticky z-50 px-4 py-2 mx-auto top-2 lg:rounded-full max-w-screen-2xl lg:px-8 lg:py-4">
 			<div className="container flex items-center justify-between mx-auto text-blue-gray-900">
 				<a href="/">
 					<img
@@ -131,7 +131,7 @@ export const Nav = () => {
 											size="sm"
 											type="button"
 											onClick={handleLogout}
-											className="w-full text-white duration-100 bg-black rounded-full shadow-md hover:shadow-gray-400 hover:text-blue-gray-900 hover:rounded-full hover:bg-gray-100"
+											className="w-full text-white duration-100 rounded-full shadow-md bg-blue-gray-900 hover:shadow-gray-400 hover:text-blue-gray-900 hover:rounded-full hover:bg-gray-100"
 										>
 											<span className="lg:px-4">Log Out</span>
 										</Button>
@@ -149,7 +149,11 @@ export const Nav = () => {
 					ripple={false}
 					onClick={() => setOpenNav(!openNav)}
 				>
-					{openNav ? <FaTimes size={24} /> : <FaBars size={24} />}
+					{openNav ? (
+						<FaXmark size={24} color="gray" />
+					) : (
+						<FaBarsStaggered size={24} color="blue-gray" />
+					)}
 				</IconButton>
 			</div>
 			<Collapse open={openNav}>
@@ -184,7 +188,7 @@ export const Nav = () => {
 											size="sm"
 											type="button"
 											onClick={handleLogout}
-											className="w-full text-white duration-100 bg-black rounded-full shadow-md max-w-7xl hover:shadow-gray-400 hover:text-blue-gray-900 hover:rounded-full hover:bg-gray-100"
+											className="w-full duration-100 bg-gray-900 rounded-full shadow-md text-blue-gray-50 max-w-7xl hover:shadow-gray-400 hover:text-blue-gray-900 hover:rounded-full hover:bg-gray-100"
 										>
 											<span className="lg:px-4">Log Out</span>
 										</Button>

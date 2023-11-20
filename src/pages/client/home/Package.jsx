@@ -1,25 +1,88 @@
 import React from "react";
-import { Carousel } from "../../../components/Carousel";
-import { CardHome } from "../../../components/CardHome";
+import {
+	FaRing,
+	FaHeart,
+	FaGraduationCap,
+	FaBook,
+	FaPeoplePulling,
+	FaCircleChevronRight,
+} from "react-icons/fa6";
 
 export const Package = () => {
-	const cardPackages = [
-		<CardHome key={1} />,
-		<CardHome key={2} />,
-		<CardHome key={3} />,
-		<CardHome key={4} />,
-		<CardHome key={5} />,
-	];
-
 	return (
-		<div className="flex flex-col justify-center w-full max-h-[768px] lg:max-w-7xl mx-auto gap-6 py-4 px-2">
-			<div className="flex flex-col">
-				<h2 className="text-2xl font-bold lg:text-3xl">Package</h2>
-				<p>Select your package</p>
-			</div>
-			<div>
-				<Carousel content={cardPackages} />
+		<div className="w-full px-2 py-4 bg-gray-300 text-blue-gray-900">
+			<div className="container flex flex-col items-center justify-center p-4 mx-auto lg:h-[578px] xl:h-[478px] rounded-lg cursor-default">
+				<div className="p-2 text-center">
+					<p className="text-xs uppercase md:text-sm lg:text-base">Packages</p>
+					<h2 className="text-lg font-bold md:text-xl lg:text-2xl">
+						Capture Every Moment, Cherish Every Memory
+					</h2>
+				</div>
+				<div className="grid grid-cols-2 gap-4 mt-6 sm:mt-10 xl:mt-16 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80">
+						<div className="p-2 bg-gray-200 rounded-full">
+							<FaRing size={24} />
+						</div>
+						<h3 className="font-bold">Wedding</h3>
+						<p className="opacity-75">
+							Capturing timeless moments on your special day.
+						</p>
+						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+					</div>
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80">
+						<div className="p-2 bg-gray-200 rounded-full">
+							<FaHeart size={24} />
+						</div>
+						<h3 className="font-bold">Pre-Wedding</h3>
+						<p className="opacity-75">
+							Preserving your unique love story in stunning visuals.
+						</p>
+						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+					</div>
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80">
+						<div className="p-2 bg-gray-200 rounded-full">
+							<FaBook size={24} />
+						</div>
+						<h3 className="font-bold">Yearbook</h3>
+						<p className="opacity-75">
+							Crafting memories that reflect academic achievements.
+						</p>
+						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+					</div>
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80 lg:col-start-7 md:col-start-2">
+						<div className="p-2 bg-gray-200 rounded-full">
+							<FaPeoplePulling size={24} />
+						</div>
+						<h3 className="font-bold">Couple</h3>
+						<p className="opacity-75">
+							Celebrating love and connections in beautiful frames.
+						</p>
+						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+					</div>
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80 xl:col-start-9 md:col-start-4 sm:col-start-2">
+						<div className="p-2 bg-gray-200 rounded-full">
+							<FaGraduationCap size={24} />
+						</div>
+						<h3 className="font-bold">Graduation</h3>
+						<p className="opacity-75">
+							Capturing the pride-filled memories of academic milestones.
+						</p>
+						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+					</div>
+				</div>
 			</div>
 		</div>
 	);
 };
+
+{
+	/* <div className="flex flex-col justify-center w-full max-h-[768px] lg:max-w-7xl mx-auto gap-6 py-4 px-2">
+			<div className="flex flex-col">
+				<h2 className="text-2xl font-bold lg:text-3xl">Package</h2>
+				<p className="opacity-75">Select your package</p>
+			</div>
+			<div>
+				<Carousel content={cardPackages} />
+			</div>
+		</div> */
+}

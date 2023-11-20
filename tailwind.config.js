@@ -11,5 +11,6 @@ export default withMT({
 	theme: {
 		extend: {},
 	},
-	plugins: [],
+	// eslint-disable-next-line no-undef
+	plugins: [require("tailwindcss-animated")],
 });

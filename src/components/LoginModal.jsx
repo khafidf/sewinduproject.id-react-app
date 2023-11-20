@@ -12,7 +12,7 @@ import {
 } from "@material-tailwind/react";
 
 import { useLoginMutation } from "../redux/api/auth/authApiSlice.js";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 export const LoginModal = ({ openNav }) => {
 	const [identifier, setIdentifier] = useState("");
@@ -56,7 +56,7 @@ export const LoginModal = ({ openNav }) => {
 				onClick={handleOpenModal}
 				className={`${
 					openNav ? `w-full py-2.5` : `hidden lg:inline-block`
-				} text-white mx-3 duration-100 rounded-full bg-black shadow-md hover:shadow-gray-400  hover:text-blue-gray-900 hover:bg-gray-100`}
+				} text-blue-gray-50 duration-100 rounded-full bg-gray-900 shadow-md hover:shadow-gray-400  hover:text-blue-gray-900 hover:bg-gray-100`}
 			>
 				<span className="lg:px-4">Log In</span>
 			</Button>
@@ -101,12 +101,15 @@ export const LoginModal = ({ openNav }) => {
 									onChange={handlePasswordInput}
 									icon={
 										show ? (
-											<FaEyeSlash
+											<FaRegEyeSlash
 												className="cursor-pointer"
 												onClick={handleShow}
 											/>
 										) : (
-											<FaEye className="cursor-pointer" onClick={handleShow} />
+											<FaRegEye
+												className="cursor-pointer"
+												onClick={handleShow}
+											/>
 										)
 									}
 									required

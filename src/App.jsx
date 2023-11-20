@@ -27,7 +27,7 @@ export default function App() {
 
 					{/* Protect Admin Routes */}
 					{/* <Route element={<RequireAuth role="1" />}>
-						<Route />
+						<Route path="admin" />
 					</Route> */}
 					{/* Except All Routes */}
 					{/* <Route path="*" /> */}
