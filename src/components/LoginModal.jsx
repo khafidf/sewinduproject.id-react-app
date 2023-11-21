@@ -153,7 +153,7 @@ export const LoginModal = ({ openNav }) => {
 					className="bg-transparent shadow-none"
 				>
 					<Card className="mx-auto w-full rounded-none py-4 gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
-						<CardBody className="flex flex-col gap-4">
+						<CardBody className="flex flex-col gap-4 pb-0">
 							<Typography
 								variant="h4"
 								className="text-center"
