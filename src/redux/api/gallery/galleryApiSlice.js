@@ -5,7 +5,10 @@ export const galleryApiSlice = apiSlice.injectEndpoints({
 		photo: builder.query({
 			query: (category) => `gallery/${category}`,
 		}),
+		category: builder.query({
+			query: () => "category/",
+		}),
 	}),
 });
 
-export const { usePhotoQuery } = galleryApiSlice;
+export const { usePhotoQuery, useCategoryQuery } = galleryApiSlice;

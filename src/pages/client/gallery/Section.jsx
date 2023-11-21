@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Select, Option } from "@material-tailwind/react";
 import Loading from "../../../components/Loading";
-import { usePhotoQuery } from "../../../redux/api/gallery/galleryApiSlice";
+import {
+	useCategoryQuery,
+	usePhotoQuery,
+} from "../../../redux/api/gallery/galleryApiSlice";
 import { useLocation } from "react-router-dom";
 
 export const Section = () => {
@@ -14,17 +17,20 @@ export const Section = () => {
 
 	const { state } = useLocation();
 
-	console.log(state);
+	useEffect(() => {
+		if (state) {
+			setCategory(state.category);
+		}
+	}, [state]);
 
-	const { data: dataPhoto, isLoading } = usePhotoQuery(category);
+	const { data: dataCategory, isLoading: categoryLoading } = useCategoryQuery();
+	const { data: dataPhoto, isLoading: photoLoading } = usePhotoQuery(category);
 
 	useEffect(() => {
 		if (dataPhoto?.data) {
 			setPhotos(dataPhoto.data);
 		}
 	}, [category, dataPhoto?.data]);
-
-	const uniqueCategories = [...new Set(photos.map((item) => item.category))];
 
 	const capitalize = (str) => {
 		return str.charAt(0).toUpperCase() + str.slice(1);
@@ -34,26 +40,28 @@ export const Section = () => {
 		<div className="w-full">
 			<div className="container p-2 mx-auto">
 				<div className="pb-4 border-b-2 border-gray-900">
-					<Select
-						label="Select Category"
-						variant="standard"
-						value={category}
-						onChange={changeHandler}
-					>
-						{uniqueCategories.map((categories, index) => {
-							return (
-								<Option
-									className="hover:rounded-none"
-									key={index}
-									value={categories}
-								>
-									{capitalize(categories)}
-								</Option>
-							);
-						})}
-					</Select>
+					{!categoryLoading && (
+						<Select
+							label="Select Category"
+							variant="standard"
+							value={category}
+							onChange={changeHandler}
+						>
+							{dataCategory?.data?.map((item, index) => {
+								return (
+									<Option
+										className="hover:rounded-none"
+										key={index}
+										value={item.category}
+									>
+										{capitalize(item.category)}
+									</Option>
+								);
+							})}
+						</Select>
+					)}
 				</div>
-				{!isLoading ? (
+				{!photoLoading ? (
 					<div className="flex pt-4 mx-auto">
 						<div className=" mx-auto columns-1 md:columns-2 gap-5 lg:columns-3 2xl:columns-4 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-5">
 							{photos.map((item, index) => {
