@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Select, Option } from "@material-tailwind/react";
 import Loading from "../../../components/Loading";
 import { usePhotoQuery } from "../../../redux/api/gallery/galleryApiSlice";
+import { useLocation } from "react-router-dom";
 
 export const Section = () => {
 	const [category, setCategory] = useState("");
@@ -10,6 +11,10 @@ export const Section = () => {
 	const changeHandler = (value) => {
 		setCategory(value);
 	};
+
+	const { state } = useLocation();
+
+	console.log(state);
 
 	const { data: dataPhoto, isLoading } = usePhotoQuery(category);
 

@@ -11,6 +11,5 @@ export default withMT({
 	theme: {
 		extend: {},
 	},
-	// eslint-disable-next-line no-undef
 	plugins: [],
 });

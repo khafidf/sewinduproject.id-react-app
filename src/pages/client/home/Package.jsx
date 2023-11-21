@@ -7,6 +7,7 @@ import {
 	FaPeoplePulling,
 	FaCircleChevronRight,
 } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export const Package = () => {
 	return (
@@ -25,7 +26,9 @@ export const Package = () => {
 						<p className="opacity-75">
 							Capturing timeless moments on your special day.
 						</p>
-						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						<Link to="gallery" state={{ category: "wedding" }}>
+							<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						</Link>
 					</div>
 					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-lg lg ll">
 						<FaHeart size={24} />
@@ -33,7 +36,9 @@ export const Package = () => {
 						<p className="opacity-75">
 							Preserving your unique love story in stunning visuals.
 						</p>
-						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						<Link to="gallery" state={{ category: "pre-wedding" }}>
+							<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						</Link>
 					</div>
 					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-lg lgull">
 						<FaBook size={24} />
@@ -41,7 +46,9 @@ export const Package = () => {
 						<p className="opacity-75">
 							Crafting memories that reflect academic achievements.
 						</p>
-						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						<Link to="gallery" state={{ category: "yearbook" }}>
+							<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						</Link>
 					</div>
 					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-lg lg md:col-start-2 xl:col-start-7">
 						<FaPeoplePulling size={24} />
@@ -49,7 +56,9 @@ export const Package = () => {
 						<p className="opacity-75">
 							Celebrating love and connections in beautiful frames.
 						</p>
-						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						<Link to="gallery" state={{ category: "couple" }}>
+							<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						</Link>
 					</div>
 					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-lg lg xl:col-start-9 md:col-start-4 sm:col-start-2">
 						<FaGraduationCap size={24} />
@@ -57,7 +66,9 @@ export const Package = () => {
 						<p className="opacity-75">
 							Capturing the pride-filled memories of academic milestones.
 						</p>
-						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						<Link to="gallery" state={{ category: "graduation" }}>
+							<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
+						</Link>
 					</div>
 				</div>
 			</div>
