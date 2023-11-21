@@ -22,10 +22,10 @@ export const HowItWorks = () => {
 	// ];
 	return (
 		<div className="w-full px-2 py-4">
-			<div className="container py-4 mx-auto sm:px-2">
-				<div>
+			<div className="container py-8 mx-auto sm:px-2">
+				<div className="pt-8">
 					<div className="flex items-center justify-center gap-2">
-						<FaCameraRetro size={32} />
+						<FaCameraRetro size={36} />
 						<h2 className="text-lg font-bold md:text-xl lg:text-2xl">
 							How it works?
 						</h2>

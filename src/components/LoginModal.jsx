@@ -27,11 +27,15 @@ export const LoginModal = ({ openNav }) => {
 		e.preventDefault();
 
 		try {
-			await login({ identifier, password });
+			const response = await login({ identifier, password });
 			setPassword("");
 			setIdentifier("");
 			setOpenLogin((cur) => !cur);
-			navigate(0);
+			if (response?.data?.role === "1") {
+				navigate("/admin");
+			} else {
+				navigate(0);
+			}
 		} catch (error) {
 			console.log(error);
 		}

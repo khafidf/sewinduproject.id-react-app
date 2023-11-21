@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaBars, FaChevronDown, FaXmark } from "react-icons/fa6";
+import { FaBars, FaChevronDown, FaCircleUser, FaXmark } from "react-icons/fa6";
 import { LoginModal } from "./LoginModal";
 import {
 	Navbar,
@@ -109,6 +109,7 @@ export const Nav = () => {
 										className="font-normal"
 									>
 										<MenuItem className="items-center hidden gap-2 font-medium rounded-none text-blue-gray-900 lg:flex">
+											<FaCircleUser size={18} />
 											<Typography
 												variant="small"
 												color="blue-gray"
@@ -166,6 +167,7 @@ export const Nav = () => {
 								<MenuHandler>
 									<Typography variant="small" className="font-normal">
 										<MenuItem className="flex items-center gap-2 font-medium rounded-none text-blue-gray-900 lg:hidden">
+											<FaCircleUser size={18} />
 											<Typography
 												variant="small"
 												color="blue-gray"
