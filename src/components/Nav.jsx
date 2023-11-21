@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaBarsStaggered, FaChevronDown, FaXmark } from "react-icons/fa6";
+import { FaBars, FaChevronDown, FaXmark } from "react-icons/fa6";
 import { LoginModal } from "./LoginModal";
 import {
 	Navbar,
@@ -87,7 +87,7 @@ export const Nav = () => {
 	);
 
 	return (
-		<Navbar className="sticky z-50 px-4 py-2 mx-auto top-2 lg:rounded-full max-w-screen-2xl lg:px-8 lg:py-4">
+		<Navbar className="sticky z-50 px-4 py-2 mx-auto rounded-none top-2 max-w-screen-2xl lg:px-8 lg:py-4">
 			<div className="container flex items-center justify-between mx-auto text-blue-gray-900">
 				<a href="/">
 					<img
@@ -108,7 +108,7 @@ export const Nav = () => {
 										variant="small"
 										className="font-normal"
 									>
-										<MenuItem className="items-center hidden gap-2 font-medium text-blue-gray-900 lg:flex lg:rounded-full">
+										<MenuItem className="items-center hidden gap-2 font-medium rounded-none text-blue-gray-900 lg:flex">
 											<Typography
 												variant="small"
 												color="blue-gray"
@@ -131,7 +131,7 @@ export const Nav = () => {
 											size="sm"
 											type="button"
 											onClick={handleLogout}
-											className="w-full text-white duration-100 rounded-full shadow-md bg-blue-gray-900 hover:shadow-gray-400 hover:text-blue-gray-900 hover:rounded-full hover:bg-gray-100"
+											className="w-full text-white duration-100 rounded-none shadow-md bg-blue-gray-900 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100"
 										>
 											<span className="lg:px-4">Log Out</span>
 										</Button>
@@ -152,7 +152,7 @@ export const Nav = () => {
 					{openNav ? (
 						<FaXmark size={24} color="gray" />
 					) : (
-						<FaBarsStaggered size={24} color="blue-gray" />
+						<FaBars size={24} color="blue-gray" />
 					)}
 				</IconButton>
 			</div>
@@ -165,7 +165,7 @@ export const Nav = () => {
 							<Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
 								<MenuHandler>
 									<Typography variant="small" className="font-normal">
-										<MenuItem className="flex items-center gap-2 font-medium rounded-full text-blue-gray-900 lg:hidden">
+										<MenuItem className="flex items-center gap-2 font-medium rounded-none text-blue-gray-900 lg:hidden">
 											<Typography
 												variant="small"
 												color="blue-gray"
@@ -188,7 +188,7 @@ export const Nav = () => {
 											size="sm"
 											type="button"
 											onClick={handleLogout}
-											className="w-full duration-100 bg-gray-900 rounded-full shadow-md text-blue-gray-50 max-w-7xl hover:shadow-gray-400 hover:text-blue-gray-900 hover:rounded-full hover:bg-gray-100"
+											className="w-full duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 max-w-7xl hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100"
 										>
 											<span className="lg:px-4">Log Out</span>
 										</Button>

@@ -26,18 +26,22 @@ export const Section = () => {
 	};
 
 	return (
-		<div className="flex flex-col w-full gap-6 p-4 mx-auto xl:max-w-7xl">
-			<div className="flex flex-col gap-4">
-				<div className="py-2 border-b-2 border-gray-900">
+		<div className="w-full">
+			<div className="container p-2 mx-auto">
+				<div className="pb-4 border-b-2 border-gray-900">
 					<Select
 						label="Select Category"
-						variant="outlined"
+						variant="standard"
 						value={category}
 						onChange={changeHandler}
 					>
 						{uniqueCategories.map((categories, index) => {
 							return (
-								<Option key={index} value={categories}>
+								<Option
+									className="hover:rounded-none"
+									key={index}
+									value={categories}
+								>
 									{capitalize(categories)}
 								</Option>
 							);
@@ -45,14 +49,13 @@ export const Section = () => {
 					</Select>
 				</div>
 				{!isLoading ? (
-					<div className="flex py-2 mx-auto md:py-4">
-						<div className="columns-1 md:columns-2 gap-5 lg:columns-3 2xl:columns-4 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-5">
+					<div className="flex pt-4 mx-auto">
+						<div className=" mx-auto columns-1 md:columns-2 gap-5 lg:columns-3 2xl:columns-4 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-5">
 							{photos.map((item, index) => {
 								if (index < 14) {
 									return (
 										<div className="relative flex w-[296px] group" key={index}>
 											<img
-												className="rounded-md shadow-md shadow-gray-400"
 												src={item.photoUrl}
 												alt={item.photoName}
 												loading="lazy"

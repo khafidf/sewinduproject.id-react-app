@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@material-tailwind/react";
 
-export const Gallery = () => {
+export const Hero = () => {
 	return (
 		<div className="w-full text-blue-gray-900">
 			<div className="container flex justify-center items-center mx-auto h-[408px] lg:h-[480px] xl:h-[540px] mt-2">
@@ -16,8 +16,8 @@ export const Gallery = () => {
 							forever
 						</h1>
 					</div>
-					<Button className="mx-auto duration-300 bg-gray-900 rounded-full shadow-md text-blue-gray-50 w-fit hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100">
-						Our Galleries
+					<Button className="mx-auto duration-300 bg-gray-900 rounded-none shadow-md text-blue-gray-50 w-fit hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100">
+						Our Gallery
 					</Button>
 				</div>
 			</div>

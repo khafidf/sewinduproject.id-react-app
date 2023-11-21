@@ -11,7 +11,7 @@ import {
 export const Package = () => {
 	return (
 		<div className="w-full px-2 py-4 bg-gray-900 text-blue-gray-50">
-			<div className="container flex flex-col items-center justify-center p-4 mx-auto lg:h-[578px] xl:h-[478px] rounded-lg cursor-default">
+			<div className="container flex flex-col items-center justify-center p-4 mx-auto lg:h-[578px] xl:h-[478px] rounded-none lg cursor-default">
 				<div className="p-2 text-center">
 					<p className="text-xs uppercase md:text-sm lg:text-base">Packages</p>
 					<h2 className="text-lg font-bold md:text-xl lg:text-2xl">
@@ -19,50 +19,40 @@ export const Package = () => {
 					</h2>
 				</div>
 				<div className="grid grid-cols-2 gap-4 mt-6 sm:mt-10 xl:mt-16 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-10">
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md">
-						<div className="p-2 bg-gray-600 rounded-full">
-							<FaRing size={24} />
-						</div>
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-lg lull">
+						<FaRing size={24} />
 						<h3 className="font-bold">Wedding</h3>
 						<p className="opacity-75">
 							Capturing timeless moments on your special day.
 						</p>
 						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md ">
-						<div className="p-2 bg-gray-600 rounded-full">
-							<FaHeart size={24} />
-						</div>
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-lg lg ll">
+						<FaHeart size={24} />
 						<h3 className="font-bold">Pre-Wedding</h3>
 						<p className="opacity-75">
 							Preserving your unique love story in stunning visuals.
 						</p>
 						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md ">
-						<div className="p-2 bg-gray-600 rounded-full">
-							<FaBook size={24} />
-						</div>
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-lg lgull">
+						<FaBook size={24} />
 						<h3 className="font-bold">Yearbook</h3>
 						<p className="opacity-75">
 							Crafting memories that reflect academic achievements.
 						</p>
 						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md md:col-start-2 xl:col-start-7">
-						<div className="p-2 bg-gray-600 rounded-full">
-							<FaPeoplePulling size={24} />
-						</div>
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-lg lg md:col-start-2 xl:col-start-7">
+						<FaPeoplePulling size={24} />
 						<h3 className="font-bold">Couple</h3>
 						<p className="opacity-75">
 							Celebrating love and connections in beautiful frames.
 						</p>
 						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md xl:col-start-9 md:col-start-4 sm:col-start-2">
-						<div className="p-2 bg-gray-600 rounded-full">
-							<FaGraduationCap size={24} />
-						</div>
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-lg lg xl:col-start-9 md:col-start-4 sm:col-start-2">
+						<FaGraduationCap size={24} />
 						<h3 className="font-bold">Graduation</h3>
 						<p className="opacity-75">
 							Capturing the pride-filled memories of academic milestones.
