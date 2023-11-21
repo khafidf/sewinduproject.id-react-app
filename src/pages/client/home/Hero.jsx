@@ -3,8 +3,8 @@ import { Button } from "@material-tailwind/react";
 
 export const Hero = () => {
 	return (
-		<div className="w-full bg-[url('./background-home.png')] bg-no-repeat bg-contain bg-center text-blue-gray-900">
-			<div className="container flex justify-center items-center mx-auto h-[408px] lg:h-[480px] xl:h-[540px] mt-2">
+		<div className="w-full text-blue-gray-900">
+			<div className="container z-10 flex justify-center items-center mx-auto h-[408px] lg:h-[480px] xl:h-[540px] mt-2">
 				<div className="flex flex-col gap-2 p-2 md:gap-3 lg:gap-4 lg:px-16">
 					<div className="text-center cursor-default">
 						<p className="text-xs md:text-sm lg:text-base">
