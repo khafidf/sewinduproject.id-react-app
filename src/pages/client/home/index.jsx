@@ -1,14 +1,16 @@
 import React from "react";
 import { Gallery } from "./Gallery";
 import { Package } from "./Package";
-import { Booking } from "./Booking";
+import { HowItWorks } from "./HowItWorks";
+import { AboutUs } from "./AboutUs";
 
 export default function HomePage() {
 	return (
 		<>
 			<Gallery />
 			<Package />
-			<Booking />
+			<HowItWorks />
+			<AboutUs />
 		</>
 	);
 }

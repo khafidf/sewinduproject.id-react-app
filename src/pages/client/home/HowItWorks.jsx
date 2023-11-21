@@ -1,7 +1,7 @@
 import React from "react";
 import { FaCameraRetro } from "react-icons/fa6";
 
-export const Booking = () => {
+export const HowItWorks = () => {
 	// const date = [
 	// 	"Sa",
 	// 	"Su",
@@ -27,17 +27,17 @@ export const Booking = () => {
 					<div className="flex items-center justify-center gap-2">
 						<FaCameraRetro size={32} />
 						<h2 className="text-lg font-bold md:text-xl lg:text-2xl">
-							How it work
+							How it works?
 						</h2>
 					</div>
-					<div className="flex flex-col">
+					<div className="flex flex-col text-blue-gray-50">
 						<div className="flex flex-col items-center md:mx-auto md:flex-row">
 							<img
 								src="./book.png"
 								className="w-[300px] md:w-[360px] lg:w-[460px]"
 								alt="Booking"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-300 rounded-t-lg lg:p-8 md:rounded-none md:rounded-l-lg">
+							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-900 rounded-t-lg lg:p-8 md:rounded-none md:rounded-l-lg">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Book
 								</h3>
@@ -53,7 +53,7 @@ export const Booking = () => {
 								className="w-[300px] md:w-[360px] lg:w-[460px]"
 								alt="Planning"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-300 rounded-t-lg lg:p-8 md:rounded-none md:rounded-r-lg">
+							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-900 rounded-t-lg lg:p-8 md:rounded-none md:rounded-r-lg">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Plan
 								</h3>
@@ -69,7 +69,7 @@ export const Booking = () => {
 								className="w-[300px] md:w-[360px] lg:w-[460px]"
 								alt="Photoshoot"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-300 rounded-t-lg lg:p-8 md:rounded-none md:rounded-l-lg">
+							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-900 rounded-t-lg lg:p-8 md:rounded-none md:rounded-l-lg">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Shoot
 								</h3>
@@ -86,7 +86,7 @@ export const Booking = () => {
 								className="w-[300px] md:w-[360px] lg:w-[460px]"
 								alt="Delivery file"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-300 rounded-t-lg lg:p-8 md:rounded-none md:rounded-r-lg">
+							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-900 rounded-t-lg lg:p-8 md:rounded-none md:rounded-r-lg">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Delivery
 								</h3>

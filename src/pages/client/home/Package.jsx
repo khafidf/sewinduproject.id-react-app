@@ -10,7 +10,7 @@ import {
 
 export const Package = () => {
 	return (
-		<div className="w-full px-2 py-4 bg-gray-300 text-blue-gray-900">
+		<div className="w-full px-2 py-4 bg-gray-900 text-blue-gray-50">
 			<div className="container flex flex-col items-center justify-center p-4 mx-auto lg:h-[578px] xl:h-[478px] rounded-lg cursor-default">
 				<div className="p-2 text-center">
 					<p className="text-xs uppercase md:text-sm lg:text-base">Packages</p>
@@ -18,9 +18,9 @@ export const Package = () => {
 						Capture Every Moment, Cherish Every Memory
 					</h2>
 				</div>
-				<div className="grid grid-cols-2 gap-4 mt-6 sm:mt-10 xl:mt-16 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10">
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80">
-						<div className="p-2 bg-gray-200 rounded-full">
+				<div className="grid grid-cols-2 gap-4 mt-6 sm:mt-10 xl:mt-16 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-10">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md">
+						<div className="p-2 bg-gray-600 rounded-full">
 							<FaRing size={24} />
 						</div>
 						<h3 className="font-bold">Wedding</h3>
@@ -29,8 +29,8 @@ export const Package = () => {
 						</p>
 						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80">
-						<div className="p-2 bg-gray-200 rounded-full">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md ">
+						<div className="p-2 bg-gray-600 rounded-full">
 							<FaHeart size={24} />
 						</div>
 						<h3 className="font-bold">Pre-Wedding</h3>
@@ -39,8 +39,8 @@ export const Package = () => {
 						</p>
 						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80">
-						<div className="p-2 bg-gray-200 rounded-full">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md ">
+						<div className="p-2 bg-gray-600 rounded-full">
 							<FaBook size={24} />
 						</div>
 						<h3 className="font-bold">Yearbook</h3>
@@ -49,8 +49,8 @@ export const Package = () => {
 						</p>
 						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80 lg:col-start-7 md:col-start-2">
-						<div className="p-2 bg-gray-200 rounded-full">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md md:col-start-2 xl:col-start-7">
+						<div className="p-2 bg-gray-600 rounded-full">
 							<FaPeoplePulling size={24} />
 						</div>
 						<h3 className="font-bold">Couple</h3>
@@ -59,8 +59,8 @@ export const Package = () => {
 						</p>
 						<FaCircleChevronRight size={28} className="mt-2 cursor-pointer" />
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md shadow-gray-400 bg-gray-50/80 xl:col-start-9 md:col-start-4 sm:col-start-2">
-						<div className="p-2 bg-gray-200 rounded-full">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-md xl:col-start-9 md:col-start-4 sm:col-start-2">
+						<div className="p-2 bg-gray-600 rounded-full">
 							<FaGraduationCap size={24} />
 						</div>
 						<h3 className="font-bold">Graduation</h3>
