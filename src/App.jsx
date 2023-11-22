@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
-import { Layout } from "./layouts/Layouts";
+import { Layout } from "./layouts/Layout";
 import { LayoutAdmin } from "./layouts/LayoutAdmin";
 
 import Loading from "./components/Loading";
