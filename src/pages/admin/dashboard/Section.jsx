@@ -1,5 +1,6 @@
 import React from "react";
 import ReactECharts from "echarts-for-react";
+import { Typography } from "@material-tailwind/react";
 
 export const Section = () => {
 	const options = {
@@ -24,7 +25,9 @@ export const Section = () => {
 			<div className="grid w-full h-full grid-cols-2 gap-4">
 				<div className="p-4 border border-gray-900">
 					<div className="text-center">
-						<h1 className="font-bold">Total Photos</h1>
+						<Typography color="blue-gray" className="font-bold">
+							Total Photos
+						</Typography>
 					</div>
 					<ReactECharts
 						option={options}
@@ -35,7 +38,9 @@ export const Section = () => {
 				</div>
 				<div className="p-2 border border-gray-900">
 					<div className="text-center">
-						<h1 className="font-bold">Total Packages</h1>
+						<Typography color="blue-gray" className="font-bold">
+							Total Packages
+						</Typography>
 					</div>
 					<ReactECharts
 						option={options}
@@ -46,7 +51,9 @@ export const Section = () => {
 				</div>
 				<div className="p-2 border border-gray-900">
 					<div className="text-center">
-						<h1 className="font-bold">Total Booking</h1>
+						<Typography color="blue-gray" className="font-bold">
+							Total Booking
+						</Typography>
 					</div>
 					<ReactECharts
 						option={options}

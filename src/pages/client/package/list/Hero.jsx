@@ -1,5 +1,5 @@
-import { Typography } from "@material-tailwind/react";
 import React from "react";
+import { Typography } from "@material-tailwind/react";
 
 export const Hero = () => {
 	return (
@@ -9,20 +9,17 @@ export const Hero = () => {
 					<div className="cursor-default">
 						<Typography
 							color="blue-gray"
-							className="text-2xl font-bold md:text-3xl lg:text-4xl"
+							className="text-2xl font-bold text-right md:text-3xl lg:text-4xl"
 						>
-							Discover Our Captivating Gallery Collection
+							Discover Our Exclusive Packages
 						</Typography>
 						<Typography
 							color="blue-gray"
-							className="mt-1 text-xs opacity-75 md:text-sm lg:text-base"
+							className="mt-1 text-xs text-right opacity-75 md:text-sm lg:text-base"
 						>
-							Explore a curated collection of captivating images in our gallery.
+							Explore Our Exclusive Service Packages
 						</Typography>
-						<Typography
-							color="blue-gray"
-							className="text-xs text-right opacity-40"
-						>
+						<Typography color="blue-gray" className="text-xs opacity-40">
 							by Sewindu Project.
 						</Typography>
 					</div>

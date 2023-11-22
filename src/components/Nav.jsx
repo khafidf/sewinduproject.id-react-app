@@ -132,7 +132,7 @@ export const Nav = () => {
 											size="sm"
 											type="button"
 											onClick={handleLogout}
-											className="w-full text-white duration-100 rounded-none shadow-md bg-blue-gray-900 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100"
+											className="w-full duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
 										>
 											<span className="lg:px-4">Log Out</span>
 										</Button>
@@ -190,7 +190,7 @@ export const Nav = () => {
 											size="sm"
 											type="button"
 											onClick={handleLogout}
-											className="w-full duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 max-w-7xl hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-100"
+											className="w-full duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 max-w-7xl hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
 										>
 											<span className="lg:px-4">Log Out</span>
 										</Button>

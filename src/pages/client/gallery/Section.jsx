@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Select, Option } from "@material-tailwind/react";
+import { Select, Option, Typography } from "@material-tailwind/react";
 import Loading from "../../../components/Loading";
 import {
 	useCategoryQuery,
@@ -63,7 +63,7 @@ export const Section = () => {
 				</div>
 				{!photoLoading ? (
 					<div className="flex pt-4 mx-auto">
-						<div className=" mx-auto columns-1 md:columns-2 gap-5 lg:columns-3 xl:columns-4 2xl:columns-5 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-5">
+						<div className=" mx-auto columns-1 md:columns-2 gap-5 lg:columns-3 xl:columns-4 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-5">
 							{photos.map((item, index) => {
 								if (index < 14) {
 									return (
@@ -76,9 +76,9 @@ export const Section = () => {
 												alt={item.photoName}
 												loading="lazy"
 											/>
-											<p className="absolute w-[calc(100%-25%)] p-4 text-center text-sm text-gray-100 transition-opacity translate-x-1/2 rounded-md opacity-0 group-hover:opacity-100 backdrop-blur-lg bg-white/30 right-1/2 bottom-1/2 translate-y-1/2">
+											<Typography className="absolute w-[calc(100%-25%)] p-4 text-center text-sm text-gray-50 transition-opacity translate-x-1/2 rounded-md opacity-0 group-hover:opacity-100 backdrop-blur-lg bg-gray-50/30 right-1/2 bottom-1/2 translate-y-1/2">
 												{item.desc}
-											</p>
+											</Typography>
 										</div>
 									);
 								}

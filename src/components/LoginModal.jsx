@@ -60,7 +60,7 @@ export const LoginModal = ({ openNav }) => {
 				onClick={handleOpenModal}
 				className={`${
 					openNav ? `w-full py-2.5` : `hidden lg:inline-block`
-				} text-blue-gray-50 duration-100 rounded-none bg-gray-900 shadow-md hover:shadow-gray-400  hover:text-blue-gray-900 hover:bg-gray-100`}
+				} text-blue-gray-50 duration-100 rounded-none bg-gray-900 shadow-md hover:shadow-gray-400  hover:text-blue-gray-900 hover:bg-gray-50`}
 			>
 				<span className="lg:px-4">Log In</span>
 			</Button>

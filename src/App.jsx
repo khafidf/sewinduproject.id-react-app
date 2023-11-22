@@ -10,7 +10,8 @@ const LayoutAdmin = lazy(() => import("./Layout/LayoutAdmin"));
 
 const HomePage = lazy(() => import("./pages/client/home"));
 const GalleryPage = lazy(() => import("./pages/client/gallery"));
-const PackagePage = lazy(() => import("./pages/client/package"));
+const PackagePage = lazy(() => import("./pages/client/package/list"));
+// const PackageDetailPage = lazy(() => import("./pages/client/package/detail"));
 const BookingPage = lazy(() => import("./pages/client/booking"));
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 
@@ -36,6 +37,7 @@ export default function App() {
 					<Route index element={<HomePage />} />
 					<Route path="gallery" element={<GalleryPage />} />
 					<Route path="package" element={<PackagePage />} />
+					{/* <Route path="package" element={<PackageDetailPage />} /> */}
 
 					{/* Protect Client Routes */}
 					<Route element={<RequireAuth role="0" />}>
