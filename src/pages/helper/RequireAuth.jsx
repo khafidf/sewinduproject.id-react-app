@@ -1,20 +1,16 @@
 import React from "react";
 import { Outlet, useLocation, Navigate } from "react-router-dom";
-import { useProfileQuery } from "../../redux/api/user/userApiSlice";
-import Loading from "../../components/Loading";
+import Cookies from "js-cookie";
 
 export default function RequireAuth({ role }) {
-	const { data: profileData, isLoading } = useProfileQuery();
+	const user = Cookies.get("user");
+	const roles = Cookies.get("roles");
 
 	const location = useLocation();
 
-	if (isLoading) {
-		return <Loading />;
-	}
-
-	return profileData?.data?.roles === role ? (
+	return roles === role ? (
 		<Outlet />
-	) : profileData?.data?.name ? (
+	) : user ? (
 		<Navigate to="/unauthorized" state={{ from: location }} replace />
 	) : (
 		<Navigate to="/" state={{ from: location }} replace />

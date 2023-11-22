@@ -31,7 +31,7 @@ export const LoginModal = ({ openNav }) => {
 			setPassword("");
 			setIdentifier("");
 			setOpenLogin((cur) => !cur);
-			if (response?.data?.role === "1") {
+			if (response?.data?.roles === "1") {
 				navigate("/admin");
 			} else {
 				navigate(0);

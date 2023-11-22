@@ -63,11 +63,14 @@ export const Section = () => {
 				</div>
 				{!photoLoading ? (
 					<div className="flex pt-4 mx-auto">
-						<div className=" mx-auto columns-1 md:columns-2 gap-5 lg:columns-3 2xl:columns-4 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-5">
+						<div className=" mx-auto columns-1 md:columns-2 gap-5 lg:columns-3 xl:columns-4 2xl:columns-5 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-5">
 							{photos.map((item, index) => {
 								if (index < 14) {
 									return (
-										<div className="relative flex w-[296px] group" key={index}>
+										<div
+											className="relative flex w-[320px] sm:w-full group"
+											key={index}
+										>
 											<img
 												src={item.photoUrl}
 												alt={item.photoName}

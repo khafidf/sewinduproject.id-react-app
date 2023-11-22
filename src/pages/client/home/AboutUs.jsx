@@ -1,10 +1,11 @@
 import React from "react";
 import { FaInstagram } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export const AboutUs = () => {
 	return (
 		<div className="w-full">
-			<div className="container mx-auto">
+			<div className="container py-16 mx-auto">
 				<div className="relative px-2 mx-auto w-[360px] sm:w-[420px] lg:w-[528px] py-4 h-[504px]">
 					<div className="absolute w-[200px] rounded-none h-[120px] shadow-sm bg-gray-900">
 						<h1 className="absolute text-base font-bold text-blue-gray-50 left-8 top-12 md:text-lg lg:text-xl">
@@ -25,12 +26,12 @@ export const AboutUs = () => {
 						</p>
 					</div>
 					<div className="absolute w-[60px] bottom-12 left-1/2 -translate-x-1/2 p-4 rounded-none h-[60px] bg-gray-100 shadow-md">
-						<a href="https://www.instagram.com/sewinduproject.id">
+						<Link href="https://www.instagram.com/sewinduproject.id">
 							<FaInstagram
 								size={36}
 								className="absolute left-3 top-3 text-blue-gray-900"
 							/>
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

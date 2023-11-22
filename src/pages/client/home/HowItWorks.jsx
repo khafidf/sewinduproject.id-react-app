@@ -21,7 +21,7 @@ export const HowItWorks = () => {
 	// 	16,
 	// ];
 	return (
-		<div className="w-full px-2 py-4">
+		<div className="w-full px-2 py-4 bg-gray-900 text-blue-gray-50">
 			<div className="container py-8 mx-auto sm:px-2">
 				<div className="pt-8">
 					<div className="flex items-center justify-center gap-2">
@@ -30,14 +30,14 @@ export const HowItWorks = () => {
 							How it works?
 						</h2>
 					</div>
-					<div className="flex flex-col text-blue-gray-50">
+					<div className="flex flex-col text-blue-gray-900">
 						<div className="flex flex-col items-center md:mx-auto md:flex-row">
 							<img
 								src="./book.png"
 								className="w-[300px] md:w-[360px] lg:w-[460px]"
 								alt="Booking"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-900  lg:p-8 ">
+							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-50  lg:p-8 ">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Book
 								</h3>
@@ -53,7 +53,7 @@ export const HowItWorks = () => {
 								className="w-[300px] md:w-[360px] lg:w-[460px]"
 								alt="Planning"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-900">
+							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-50">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Plan
 								</h3>
@@ -69,7 +69,7 @@ export const HowItWorks = () => {
 								className="w-[300px] md:w-[360px] lg:w-[460px]"
 								alt="Photoshoot"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-900  lg:p-8 ">
+							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-50  lg:p-8 ">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Shoot
 								</h3>
@@ -86,7 +86,7 @@ export const HowItWorks = () => {
 								className="w-[300px] md:w-[360px] lg:w-[460px]"
 								alt="Delivery file"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-900">
+							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-50">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Delivery
 								</h3>
