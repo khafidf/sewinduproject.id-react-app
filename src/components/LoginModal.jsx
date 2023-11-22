@@ -90,6 +90,7 @@ export const LoginModal = ({ openNav }) => {
 								</Typography>
 
 								<Input
+									variant="standard"
 									label="Email or Phone Number"
 									size="lg"
 									className="rounded-none"
@@ -99,6 +100,7 @@ export const LoginModal = ({ openNav }) => {
 									required
 								/>
 								<Input
+									variant="standard"
 									label="Password"
 									size="lg"
 									className="rounded-none"
@@ -172,11 +174,32 @@ export const LoginModal = ({ openNav }) => {
 									Make account to booking.
 								</Typography>
 							</Typography>
-							<Input label="Name" className="rounded-none" size="md" />
-							<Input label="Email" className="rounded-none" size="md" />
-							<Input label="Phone Number" className="rounded-none" size="md" />
-							<Input label="Password" className="rounded-none" size="md" />
 							<Input
+								variant="standard"
+								label="Name"
+								className="rounded-none"
+								size="md"
+							/>
+							<Input
+								variant="standard"
+								label="Email"
+								className="rounded-none"
+								size="md"
+							/>
+							<Input
+								variant="standard"
+								label="Phone Number"
+								className="rounded-none"
+								size="md"
+							/>
+							<Input
+								variant="standard"
+								label="Password"
+								className="rounded-none"
+								size="md"
+							/>
+							<Input
+								variant="standard"
 								label="Confirm Password"
 								className="rounded-none"
 								size="md"
