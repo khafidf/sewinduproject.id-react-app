@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Sidebar } from "../components/Sidebar";
 import { Footer } from "../components/Footer";
 
-export const LayoutAdmin = () => {
+export default function LayoutAdmin() {
 	return (
 		<>
 			<Sidebar />
@@ -13,4 +13,4 @@ export const LayoutAdmin = () => {
 			<Footer />
 		</>
 	);
-};
+}

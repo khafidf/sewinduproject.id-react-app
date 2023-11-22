@@ -1,12 +1,12 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
-import { Layout } from "./layouts/Layout";
-import { LayoutAdmin } from "./layouts/LayoutAdmin";
-
 import Loading from "./components/Loading";
 import Cookies from "js-cookie";
+
 const RequireAuth = lazy(() => import("./pages/helper/RequireAuth"));
+const Layout = lazy(() => import("./Layout/Layout"));
+const LayoutAdmin = lazy(() => import("./Layout/LayoutAdmin"));
 
 const HomePage = lazy(() => import("./pages/client/home"));
 const GalleryPage = lazy(() => import("./pages/client/gallery"));
