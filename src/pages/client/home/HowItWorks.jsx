@@ -21,23 +21,23 @@ export const HowItWorks = () => {
 	// 	16,
 	// ];
 	return (
-		<div className="w-full px-2 py-4 bg-gray-900 text-blue-gray-50">
-			<div className="container py-8 mx-auto sm:px-2">
-				<div className="pt-8">
-					<div className="flex items-center justify-center gap-2 mb-8 sm:mb-12">
+		<div className="w-full px-2 py-8 bg-gray-900 xl:py-0 text-blue-gray-50">
+			<div className="container mx-auto xl:py-8 sm:px-2">
+				<div className="flex flex-col gap-2 xl:py-8">
+					<div className="flex items-center justify-center gap-4 mb-8 sm:mb-12">
 						<FaCameraRetro size={36} />
 						<h2 className="text-lg font-bold md:text-xl lg:text-2xl">
 							How it works?
 						</h2>
 					</div>
-					<div className="flex flex-col gap-4 text-blue-gray-900">
+					<div className="flex flex-col gap-4 md:px-2 text-blue-gray-900">
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row">
 							<img
 								src="./book.jpg"
-								className="w-[300px] md:w-[360px] lg:w-[460px]"
+								className="w-[320px] sm:w-[340px] lg:w-[460px]"
 								alt="Booking"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-50 lg:p-8">
+							<div className="flex w-[320px] sm:w-[340px] lg:w-[460px] flex-col gap-4 p-4  bg-gray-50 lg:p-8">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Book
 								</h3>
@@ -50,10 +50,10 @@ export const HowItWorks = () => {
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row-reverse">
 							<img
 								src="./plan.jpg"
-								className="w-[300px] md:w-[360px] lg:w-[460px]"
+								className="w-[320px] sm:w-[340px] lg:w-[460px]"
 								alt="Planning"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-50 lg:p-8">
+							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] bg-gray-50 lg:p-8">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Plan
 								</h3>
@@ -66,10 +66,10 @@ export const HowItWorks = () => {
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row">
 							<img
 								src="shot.jpg"
-								className="w-[300px] md:w-[360px] lg:w-[460px]"
+								className="w-[320px] sm:w-[340px] lg:w-[460px]"
 								alt="Photoshoot"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-50 lg:p-8">
+							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] bg-gray-50 lg:p-8">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Shoot
 								</h3>
@@ -83,10 +83,10 @@ export const HowItWorks = () => {
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row-reverse">
 							<img
 								src="delivery.jpg"
-								className="w-[300px] md:w-[360px] lg:w-[460px]"
+								className="w-[320px] sm:w-[340px] lg:w-[460px]"
 								alt="Delivery file"
 							/>
-							<div className="flex flex-col gap-4 p-4 xl:w-[460px] bg-gray-50 lg:p-8">
+							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] bg-gray-50 lg:p-8">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Delivery
 								</h3>
