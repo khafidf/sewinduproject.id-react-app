@@ -42,6 +42,7 @@ export default function App() {
 
 					{/* Protect Client Routes */}
 					{/* <Route element={<RequireAuth role="0" />}>
+						<Route path="booking" element={<BookingPage />} />
 					</Route> */}
 					{/* Except All Routes */}
 					{/* <Route path="*" /> */}

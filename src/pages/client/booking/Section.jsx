@@ -3,9 +3,11 @@ import {
 	format,
 	startOfMonth,
 	endOfMonth,
-	eachDayOfInterval,
 	isSameDay,
-	getDay,
+	startOfWeek,
+	endOfWeek,
+	addDays,
+	isSameMonth,
 } from "date-fns";
 import { DayModal } from "../../../components/DayModal";
 import { Typography } from "@material-tailwind/react";
@@ -23,14 +25,43 @@ export const Section = () => {
 	const startOfMonthDate = startOfMonth(currentMonth);
 	const endOfMonthDate = endOfMonth(currentMonth);
 
-	const daysInMonth = eachDayOfInterval({
-		start: startOfMonthDate,
-		end: endOfMonthDate,
+	const dateStart = startOfWeek(startOfMonthDate, {
+		weekStartsOn: 0,
 	});
 
-	const firstDayOfMonth = getDay(startOfMonthDate);
+	const dateEnd = endOfWeek(endOfMonthDate, {
+		weekStartsOn: 0,
+	});
 
-	const emptyCells = Array(firstDayOfMonth).fill(null);
+	const prevDates = [];
+	const dates = [];
+	const nextDates = [];
+
+	const totalDates = [];
+
+	let date = dateStart;
+
+	const prevMonth = new Date(
+		currentMonth.getFullYear(),
+		currentMonth.getMonth() - 1,
+		1
+	);
+
+	const nextMonth = new Date(
+		currentMonth.getFullYear(),
+		currentMonth.getMonth() + 1,
+		1
+	);
+
+	while (date <= dateEnd) {
+		totalDates.push(date);
+		isSameMonth(date, prevMonth)
+			? prevDates.push(date)
+			: isSameMonth(date, currentMonth)
+			? dates.push(date)
+			: isSameMonth(date, nextMonth) && nextDates.push(date);
+		date = addDays(date, 1);
+	}
 
 	const handleDateClick = (date) => {
 		setSelectedDate(date);
@@ -46,7 +77,11 @@ export const Section = () => {
 							{format(currentMonth, "MMMM yyyy")}
 						</Typography>
 					</div>
-					<div className="grid h-screen mt-1 p-1 grid-cols-7 border max-h-[28rem] gap-2">
+					<div
+						className={`grid h-screen mt-1 p-1 grid-cols-7 border ${
+							totalDates.length == 35 ? "max-h-[28rem]" : "max-h-[32.63rem]"
+						} gap-2`}
+					>
 						{days.map((day) => (
 							<div
 								key={day}
@@ -56,17 +91,29 @@ export const Section = () => {
 								{day}
 							</div>
 						))}
-						{/* Render empty cells before the first day of the month */}
-						{emptyCells.map((_, index) => (
-							<div key={`empty-${index}`} className="text-center" />
-						))}
-						{daysInMonth.map((day) => (
+						{prevDates.map((day, index) => (
 							<div
-								key={day.getTime()}
-								className={`flex justify-center cursor-pointer border-b-2 items-center p-2 text-center ${
+								key={index}
+								className="flex items-center justify-center p-2 text-center bg-gray-900 border-b-2 opacity-25 text-blue-gray-50"
+							>
+								<span>{format(day, "d")}</span>
+							</div>
+						))}
+						{dates.map((day, index) => (
+							<div
+								key={index}
+								className={`flex justify-center bg-red-100 cursor-pointer border-b-2 items-center p-2 text-center ${
 									isSameDay(day, new Date()) ? "bg-blue-200" : ""
 								}`}
 								onClick={() => handleDateClick(day)}
+							>
+								<span>{format(day, "d")}</span>
+							</div>
+						))}
+						{nextDates.map((day, index) => (
+							<div
+								key={index}
+								className="flex items-center justify-center p-2 text-center bg-gray-900 border-b-2 opacity-25 text-blue-gray-50"
 							>
 								<span>{format(day, "d")}</span>
 							</div>
