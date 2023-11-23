@@ -102,7 +102,7 @@ export const Section = () => {
 						{dates.map((day, index) => (
 							<div
 								key={index}
-								className={`flex justify-center bg-red-100 cursor-pointer border-b-2 items-center p-2 text-center ${
+								className={`flex justify-center cursor-pointer border-b-2 items-center p-2 text-center ${
 									isSameDay(day, new Date()) ? "bg-blue-200" : ""
 								}`}
 								onClick={() => handleDateClick(day)}
