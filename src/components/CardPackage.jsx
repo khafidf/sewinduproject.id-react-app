@@ -6,6 +6,7 @@ import {
 	Typography,
 	Button,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 export const CardPackage = () => {
 	return (
@@ -46,7 +47,7 @@ export const CardPackage = () => {
 					fullWidth={true}
 					className="px-1 py-2 duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
 				>
-					Details
+					<Link to={"/package/abcde"}>Details</Link>
 				</Button>
 				<Button
 					size="sm"

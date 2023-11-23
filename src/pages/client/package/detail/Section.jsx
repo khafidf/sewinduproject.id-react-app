@@ -1,7 +1,10 @@
 import React from "react";
 import { Button, Typography } from "@material-tailwind/react";
+import { useParams } from "react-router-dom";
 
 export const Section = () => {
+	const { id } = useParams();
+	console.log(id);
 	// MockData:
 	// category: string;
 	// desc: string;

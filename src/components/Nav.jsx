@@ -92,7 +92,7 @@ export const Nav = () => {
 				<a href="/">
 					<img
 						className="w-auto h-8"
-						src="sewinduproject-logo.png"
+						src="./sewinduproject-logo.png"
 						alt="sewinduproject.id"
 					/>
 				</a>

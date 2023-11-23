@@ -16,7 +16,7 @@ export const CardHome = () => {
 				color="transparent"
 				className="m-0 rounded-none"
 			>
-				<img className="object-cover rounded-t-md" src="1.jpg" alt="Tes" />
+				<img className="object-cover rounded-t-md" src="./1.jpg" alt="Tes" />
 			</CardHeader>
 			<CardBody>
 				<Typography
