@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -9,41 +9,152 @@ import {
 	CardFooter,
 	Typography,
 	Input,
+	Alert,
 } from "@material-tailwind/react";
 
-import { useLoginMutation } from "../redux/api/auth/authApiSlice.js";
+import {
+	useLoginMutation,
+	useRegisterMutation,
+} from "../redux/api/auth/authApiSlice.js";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 
 export const LoginModal = ({ openNav }) => {
-	const [identifier, setIdentifier] = useState("");
-	const [password, setPassword] = useState("");
+	// Login
+	const [loginData, setLoginData] = useState({
+		identifier: "",
+		password: "",
+	});
 
 	const [login] = useLoginMutation();
+
 	const navigate = useNavigate();
 
-	const handleUserInput = (e) => setIdentifier(e.target.value);
-	const handlePasswordInput = (e) => setPassword(e.target.value);
+	const handleLoginInput = (e) => {
+		const { name, value } = e.target;
+		setLoginData({
+			...loginData,
+			[name]: value,
+		});
+	};
 	const handleLogin = async (e) => {
 		e.preventDefault();
 
 		try {
-			const response = await login({ identifier, password });
-			setPassword("");
-			setIdentifier("");
-			setOpenLogin((cur) => !cur);
-			if (response?.data?.roles === "1") {
-				navigate("/admin");
+			const response = await login(loginData);
+			setLoginData({
+				identifier: "",
+				password: "",
+			});
+			if (response.data) {
+				setAlert({
+					open: true,
+					message: response.data.message,
+					type: "success",
+				});
+				setTimeout(() => {
+					setOpenLogin((cur) => !cur);
+					if (response?.data?.roles === "1") {
+						navigate("/admin");
+					} else {
+						navigate(0);
+					}
+				}, 500);
 			} else {
-				navigate(0);
+				setAlert({
+					open: true,
+					message: Object.values(response.error.data).join(", "),
+					type: "error",
+				});
 			}
 		} catch (error) {
 			console.log(error);
+			setAlert({
+				open: true,
+				message: "An error occurred during registration.",
+				type: "error",
+			});
+		}
+	};
+
+	// Register
+	const [registerData, setRegisterData] = useState({
+		name: "",
+		email: "",
+		phoneNumber: "",
+		password: "",
+		confirmPassword: "",
+	});
+
+	const handleRegisterInput = (e) => {
+		const { name, value } = e.target;
+		setRegisterData({
+			...registerData,
+			[name]: value,
+		});
+	};
+
+	const [register] = useRegisterMutation();
+
+	const handleRegister = async (e) => {
+		e.preventDefault();
+
+		try {
+			const response = await register(registerData);
+			setRegisterData({
+				name: "",
+				email: "",
+				phoneNumber: "",
+				password: "",
+				confirmPassword: "",
+			});
+			if (response.data) {
+				setAlert({
+					open: true,
+					message: response.data.message,
+					type: "success",
+				});
+				setTimeout(() => {
+					setAction("login");
+				}, 500);
+			} else {
+				setAlert({
+					open: true,
+					message: Object.values(response.error.data).join(", "),
+					type: "error",
+				});
+			}
+		} catch (error) {
+			console.log(error);
+			setAlert({
+				open: true,
+				message: "An error occurred during registration.",
+				type: "error",
+			});
 		}
 	};
 
 	const [openLogin, setOpenLogin] = useState(false);
 	const [show, setShow] = useState(false);
 	const [action, setAction] = useState("login");
+	const [alert, setAlert] = useState({
+		open: false,
+		message: "",
+		type: "",
+	});
+
+	useEffect(() => {
+		let timer;
+		if (alert.open) {
+			timer = setTimeout(() => {
+				setAlert({
+					open: false,
+					message: "",
+					type: "",
+				});
+			}, 1000);
+		}
+		return () => clearTimeout(timer);
+	}, [alert.open]);
 
 	const handleOpenModal = () => {
 		setOpenLogin((cur) => !cur);
@@ -71,6 +182,33 @@ export const LoginModal = ({ openNav }) => {
 					handler={handleOpenModal}
 					className="bg-transparent shadow-none"
 				>
+					{alert.type === "success" ? (
+						<Alert
+							open={alert.open}
+							onClose={() => setAlert({ ...alert, open: false })}
+							animate={{
+								mount: { y: 0 },
+								unmount: { y: 100 },
+							}}
+							color="green"
+							className="absolute z-50 -top-32"
+						>
+							{alert.message}
+						</Alert>
+					) : (
+						<Alert
+							open={alert.open}
+							onClose={() => setAlert({ ...alert, open: false })}
+							animate={{
+								mount: { y: 0 },
+								unmount: { y: 100 },
+							}}
+							color="red"
+							className="absolute z-50 -top-32"
+						>
+							{alert.message}
+						</Alert>
+					)}
 					<Card className="mx-auto w-full py-4 rounded-none gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
 						<form onSubmit={handleLogin}>
 							<CardBody className="flex flex-col gap-4">
@@ -95,8 +233,9 @@ export const LoginModal = ({ openNav }) => {
 									size="lg"
 									className="rounded-none"
 									type="text"
-									value={identifier}
-									onChange={handleUserInput}
+									name="identifier"
+									value={loginData.identifier}
+									onChange={handleLoginInput}
 									required
 								/>
 								<Input
@@ -105,8 +244,9 @@ export const LoginModal = ({ openNav }) => {
 									size="lg"
 									className="rounded-none"
 									type={show ? `text` : `password`}
-									value={password}
-									onChange={handlePasswordInput}
+									name="password"
+									value={loginData.password}
+									onChange={handleLoginInput}
 									icon={
 										show ? (
 											<FaRegEyeSlash
@@ -158,6 +298,24 @@ export const LoginModal = ({ openNav }) => {
 					handler={handleOpenModal}
 					className="bg-transparent shadow-none"
 				>
+					<Alert
+						open={alert.open}
+						onClose={() => setAlert({ ...alert, open: false })}
+						animate={{
+							mount: { y: 0 },
+							unmount: { y: 100 },
+						}}
+						color={
+							alert.type === "success"
+								? "green"
+								: alert.type === "error"
+								? "red"
+								: ""
+						}
+						className="absolute z-50 -top-32"
+					>
+						{alert.message}
+					</Alert>
 					<Card className="mx-auto w-full rounded-none py-4 gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
 						<CardBody className="flex flex-col gap-4 pb-0">
 							<Typography
@@ -179,38 +337,61 @@ export const LoginModal = ({ openNav }) => {
 								label="Name"
 								className="rounded-none"
 								size="md"
+								value={registerData.name}
+								name="name"
+								onChange={handleRegisterInput}
+								required
 							/>
 							<Input
 								variant="standard"
 								label="Email"
 								className="rounded-none"
 								size="md"
+								value={registerData.email}
+								name="email"
+								onChange={handleRegisterInput}
+								required
 							/>
 							<Input
 								variant="standard"
 								label="Phone Number"
 								className="rounded-none"
 								size="md"
+								value={registerData.phoneNumber}
+								name="phoneNumber"
+								onChange={handleRegisterInput}
+								required
 							/>
 							<Input
 								variant="standard"
 								label="Password"
 								className="rounded-none"
 								size="md"
+								value={registerData.password}
+								name="password"
+								onChange={handleRegisterInput}
+								required
 							/>
 							<Input
 								variant="standard"
 								label="Confirm Password"
 								className="rounded-none"
 								size="md"
+								value={registerData.confirmPassword}
+								name="confirmPassword"
+								onChange={handleRegisterInput}
+								required
 							/>
 						</CardBody>
 						<CardFooter className="pt-0">
 							<Button
 								variant="gradient"
-								onClick={handleOpenModal}
+								onClick={handleRegister}
 								className="rounded-none"
 								fullWidth
+								disabled={
+									!(registerData.password === registerData.confirmPassword)
+								}
 							>
 								Register
 							</Button>
