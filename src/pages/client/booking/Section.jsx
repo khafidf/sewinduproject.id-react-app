@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
 	format,
 	startOfMonth,
@@ -9,16 +9,22 @@ import {
 	addDays,
 	isSameMonth,
 } from "date-fns";
-import { DayModal } from "../../../components/DayModal";
 import { Typography } from "@material-tailwind/react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { dateSelector } from "../../../redux/slice/calendarSlice";
 import { FaGripLinesVertical } from "react-icons/fa6";
+import {
+	openAccordionSelector,
+	dateAccordionSelector,
+	setCloseAccordionSection,
+	setOpenAccordionSection,
+} from "../../../redux/slice/accordionSlice";
 
 export const Section = () => {
-	const [selectedDate, setSelectedDate] = useState(null);
-	const [showModal, setShowModal] = useState(false);
+	const openData = useSelector(openAccordionSelector);
+	const dateData = useSelector(dateAccordionSelector);
 	const currentMonth = useSelector(dateSelector);
+	const dispatch = useDispatch();
 
 	const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -63,14 +69,14 @@ export const Section = () => {
 		date = addDays(date, 1);
 	}
 
-	const handleDateClick = (date) => {
-		setSelectedDate(date);
-		setShowModal(true);
-	};
+	// console.log(
+	// 	totalDates.map((date) => isSameDay(date, new Date("03/27/2024")))
+	// );
+	// console.log(new Date("12/02/2023 13:24")); => bulan/tanggal/tahun jam:menit
 
 	return (
 		<div className="w-full">
-			<div className="container px-2 pt-6 mx-auto h-[496px] md:h-[546px] xl:h-[586px] mb-12">
+			<div className="container px-2 pt-6 mx-auto mb-12">
 				<div className="max-w-[50rem] mx-auto">
 					<div className="py-2 text-center bg-red-600 sm:py-3">
 						<Typography className="text-2xl font-bold cursor-default text-blue-gray-50">
@@ -105,7 +111,13 @@ export const Section = () => {
 								className={`flex justify-center cursor-pointer border-b-2 items-center p-2 text-center ${
 									isSameDay(day, new Date()) ? "bg-blue-200" : ""
 								}`}
-								onClick={() => handleDateClick(day)}
+								onClick={() => {
+									if (openData === 0 || !isSameDay(day, dateData)) {
+										dispatch(setOpenAccordionSection({ open: 1, date: day }));
+									} else {
+										dispatch(setCloseAccordionSection({ date: day }));
+									}
+								}}
 							>
 								<span>{format(day, "d")}</span>
 							</div>
@@ -120,12 +132,6 @@ export const Section = () => {
 						))}
 					</div>
 				</div>
-				{showModal && (
-					<DayModal
-						date={selectedDate}
-						closeModal={() => setShowModal(false)}
-					/>
-				)}
 			</div>
 		</div>
 	);

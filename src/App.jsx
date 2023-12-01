@@ -38,14 +38,12 @@ export default function App() {
 					<Route path="gallery" element={<GalleryPage />} />
 					<Route path="package" element={<PackagePage />} />
 					<Route path="package/:id" element={<PackageDetailPage />} />
-					<Route path="booking" element={<BookingPage />} />
 
 					{/* Protect Client Routes */}
-					{/* <Route element={<RequireAuth role="0" />}>
+					<Route element={<RequireAuth role="0" />}>
 						<Route path="booking" element={<BookingPage />} />
-					</Route> */}
+					</Route>
 					{/* Except All Routes */}
-					{/* <Route path="*" /> */}
 				</Route>
 				<Route path="/admin" element={<LayoutAdmin />}>
 					<Route element={<RequireAuth role="1" />}>
@@ -54,6 +52,7 @@ export default function App() {
 						<Route path="package" element={} /> */}
 					</Route>
 				</Route>
+				<Route path="*" element={<div>Ilank</div>} />
 			</Routes>
 		</Suspense>
 	);
