@@ -7,8 +7,9 @@ import {
 	Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import toRupiah from "@develoka/angka-rupiah-js";
 
-export const CardPackage = () => {
+export const CardPackage = ({ name, price, id, photoUrl, desc }) => {
 	return (
 		<Card className="w-full max-w-[20rem] mx-auto rounded-none">
 			<CardHeader
@@ -17,7 +18,7 @@ export const CardPackage = () => {
 				className="h-screen mx-auto max-h-[7rem] w-full max-w-[16.5rem] rounded-none"
 			>
 				<img
-					src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
+					src={photoUrl}
 					alt="card-image"
 					className="object-cover w-full h-full"
 				/>
@@ -25,10 +26,14 @@ export const CardPackage = () => {
 			<CardBody>
 				<div className="flex items-center justify-between mb-2">
 					<Typography color="blue-gray" className="font-medium">
-						Nama Package
+						{name}
 					</Typography>
 					<Typography color="blue-gray" className="text-sm font-medium">
-						Rp. 3.000.000,-
+						{toRupiah(Number(price), {
+							formal: false,
+							dot: ",",
+							floatingPoint: 0,
+						})}
 					</Typography>
 				</div>
 				<div className="min-w-[16rem] min-h-[4rem]">
@@ -37,7 +42,7 @@ export const CardPackage = () => {
 						color="gray"
 						className="font-normal opacity-75"
 					>
-						With
+						{desc}
 					</Typography>
 				</div>
 			</CardBody>
@@ -47,7 +52,7 @@ export const CardPackage = () => {
 					fullWidth={true}
 					className="px-1 py-2 duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
 				>
-					<Link to={"/package/abcde"}>Details</Link>
+					<Link to={`/package/${id}`}>Details</Link>
 				</Button>
 				<Button
 					size="sm"

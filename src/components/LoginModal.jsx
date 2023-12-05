@@ -9,7 +9,6 @@ import {
 	CardFooter,
 	Typography,
 	Input,
-	Alert,
 } from "@material-tailwind/react";
 
 import {
@@ -17,6 +16,7 @@ import {
 	useRegisterMutation,
 } from "../redux/api/auth/authApiSlice.js";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { AlertComponent } from "./Alert.jsx";
 
 export const LoginModal = ({ openNav }) => {
 	// Login
@@ -41,10 +41,12 @@ export const LoginModal = ({ openNav }) => {
 
 		try {
 			const response = await login(loginData);
+
 			setLoginData({
 				identifier: "",
 				password: "",
 			});
+
 			if (response.data) {
 				setAlert({
 					open: true,
@@ -67,7 +69,6 @@ export const LoginModal = ({ openNav }) => {
 				});
 			}
 		} catch (error) {
-			console.log(error);
 			setAlert({
 				open: true,
 				message: "An error occurred during registration.",
@@ -100,6 +101,7 @@ export const LoginModal = ({ openNav }) => {
 
 		try {
 			const response = await register(registerData);
+
 			setRegisterData({
 				name: "",
 				email: "",
@@ -107,6 +109,7 @@ export const LoginModal = ({ openNav }) => {
 				password: "",
 				confirmPassword: "",
 			});
+
 			if (response.data) {
 				setAlert({
 					open: true,
@@ -124,7 +127,6 @@ export const LoginModal = ({ openNav }) => {
 				});
 			}
 		} catch (error) {
-			console.log(error);
 			setAlert({
 				open: true,
 				message: "An error occurred during registration.",
@@ -151,7 +153,7 @@ export const LoginModal = ({ openNav }) => {
 					message: "",
 					type: "",
 				});
-			}, 1000);
+			}, 2500);
 		}
 		return () => clearTimeout(timer);
 	}, [alert.open]);
@@ -182,33 +184,12 @@ export const LoginModal = ({ openNav }) => {
 					handler={handleOpenModal}
 					className="bg-transparent shadow-none"
 				>
-					{alert.type === "success" ? (
-						<Alert
-							open={alert.open}
-							onClose={() => setAlert({ ...alert, open: false })}
-							animate={{
-								mount: { y: 0 },
-								unmount: { y: 100 },
-							}}
-							color="green"
-							className="absolute z-50 -top-32"
-						>
-							{alert.message}
-						</Alert>
-					) : (
-						<Alert
-							open={alert.open}
-							onClose={() => setAlert({ ...alert, open: false })}
-							animate={{
-								mount: { y: 0 },
-								unmount: { y: 100 },
-							}}
-							color="red"
-							className="absolute z-50 -top-32"
-						>
-							{alert.message}
-						</Alert>
-					)}
+					<AlertComponent
+						open={alert.open}
+						onClose={() => setAlert({ ...alert, open: false })}
+						message={alert.message}
+						type={alert.type}
+					/>
 					<Card className="mx-auto w-full py-4 rounded-none gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
 						<form onSubmit={handleLogin}>
 							<CardBody className="flex flex-col gap-4">
@@ -298,24 +279,12 @@ export const LoginModal = ({ openNav }) => {
 					handler={handleOpenModal}
 					className="bg-transparent shadow-none"
 				>
-					<Alert
+					<AlertComponent
 						open={alert.open}
 						onClose={() => setAlert({ ...alert, open: false })}
-						animate={{
-							mount: { y: 0 },
-							unmount: { y: 100 },
-						}}
-						color={
-							alert.type === "success"
-								? "green"
-								: alert.type === "error"
-								? "red"
-								: ""
-						}
-						className="absolute z-50 -top-32"
-					>
-						{alert.message}
-					</Alert>
+						message={alert.message}
+						type={alert.type}
+					/>
 					<Card className="mx-auto w-full rounded-none py-4 gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
 						<CardBody className="flex flex-col gap-4 pb-0">
 							<Typography

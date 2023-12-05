@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
 	Card,
 	Typography,
@@ -50,12 +50,14 @@ export const Sidebar = () => {
 	return (
 		<Card className="h-[calc(100vh-9.2vh)] rounded-none my-4 ml-5 w-full max-w-[20rem] bg-gray-50 z-10 text-blue-gray-900 p-4 shadow-lg shadow-blue-gray-900/40">
 			<div className="flex justify-center p-4 mb-2">
-				<img
-					src="./sewinduproject-logo.png"
-					className="cursor-pointer"
-					alt="brand"
-					width={120}
-				/>
+				<Link to={"/admin"}>
+					<img
+						src="./sewinduproject-logo.png"
+						className="cursor-pointer"
+						alt="brand"
+						width={120}
+					/>
+				</Link>
 			</div>
 			<List>
 				<Accordion
@@ -84,24 +86,30 @@ export const Sidebar = () => {
 					</ListItem>
 					<AccordionBody>
 						<List>
-							<ListItem className="rounded-none">
-								<ListItemPrefix>
-									<FaCircle strokeWidth={3} className="w-5 h-2.5" />
-								</ListItemPrefix>
-								Gallery
-							</ListItem>
-							<ListItem className="rounded-none">
-								<ListItemPrefix>
-									<FaCircle strokeWidth={3} className="w-5 h-2.5" />
-								</ListItemPrefix>
-								Package
-							</ListItem>
-							<ListItem className="rounded-none">
-								<ListItemPrefix>
-									<FaCircle strokeWidth={3} className="w-5 h-2.5" />
-								</ListItemPrefix>
-								Booking
-							</ListItem>
+							<Link to={"/admin/gallery"}>
+								<ListItem>
+									<ListItemPrefix>
+										<FaCircle strokeWidth={3} className="w-5 h-2.5" />
+									</ListItemPrefix>
+									Gallery
+								</ListItem>
+							</Link>
+							<Link to={"/admin/package"}>
+								<ListItem className="rounded-none">
+									<ListItemPrefix>
+										<FaCircle strokeWidth={3} className="w-5 h-2.5" />
+									</ListItemPrefix>
+									Package
+								</ListItem>
+							</Link>
+							<Link to={"/admin/booking"}>
+								<ListItem className="rounded-none">
+									<ListItemPrefix>
+										<FaCircle strokeWidth={3} className="w-5 h-2.5" />
+									</ListItemPrefix>
+									Booking
+								</ListItem>
+							</Link>
 						</List>
 					</AccordionBody>
 				</Accordion>

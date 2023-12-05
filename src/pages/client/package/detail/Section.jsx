@@ -1,53 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Typography } from "@material-tailwind/react";
 import { useParams } from "react-router-dom";
+import toRupiah from "@develoka/angka-rupiah-js";
+import { usePackageDetailsQuery } from "../../../../redux/api/package/packageApiSlice";
 
 export const Section = () => {
 	const { id } = useParams();
-	console.log(id);
-	// MockData:
-	// category: string;
-	// desc: string;
-	// photoUrl: string;
-	// photoName: string;
-	// price: string;
+	const [packages, setPackages] = useState({
+		photoUrl: "",
+		category: "",
+		name: "",
+		desc: "",
+		price: "",
+	});
+
+	const { data: packageDetails, isLoading } = usePackageDetailsQuery(id);
+
+	useEffect(() => {
+		if (packageDetails?.data && !isLoading) {
+			setPackages({
+				photoUrl: packageDetails.data.photoUrl,
+				category: packageDetails.data.category,
+				name: packageDetails.data.name,
+				desc: packageDetails.data.desc,
+				price: packageDetails.data.price,
+			});
+		}
+	}, [packageDetails?.data, isLoading]);
 
 	return (
-		<div className="w-full">
-			<div className="container p-2 mx-auto mt-2 md:py-[11rem] lg:py-[5.6rem]">
-				<div className="flex flex-col gap-4 p-8 shadow-lg md:flex-row lg:justify-evenly">
-					<div>
-						<img
-							src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
-							alt="Airpods"
-							className="w-full mx-auto max-w-[20rem] h-[24rem] md:h-[36rem] max-h-[36rem] object-cover"
-						/>
-					</div>
-					<div className="w-full md:flex md:flex-col md:justify-between mx-auto lg:mx-0 max-w-[20rem]">
-						<div>
-							<Typography className="text-sm opacity-50">Category</Typography>
-							<div className="flex items-center justify-between mb-2">
-								<Typography color="blue-gray" className="text-lg font-semibold">
-									Nama Package
-								</Typography>
-								<Typography color="blue-gray" className="text-sm font-medium">
-									Rp. 3.000.000,-
-								</Typography>
-							</div>
-							<Typography
-								color="blue-gray"
-								className="text-base h-screen max-h-[18rem]"
-							>
-								Desc
+		<div className="w-full flex justify-center items-center min-h-[calc(100vh-7rem)]">
+			<div className="container p-2">
+				<div className="flex flex-wrap mx-auto lg:w-4/5">
+					<img
+						alt="Package photo"
+						className="object-cover object-center w-full border border-gray-200 rounded max-h-[578px] lg:w-1/2"
+						src={packages.photoUrl}
+					/>
+					<div className="w-full mt-6 lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
+						<Typography className="text-sm tracking-widest text-gray-500 title-font">
+							{packages.category}
+						</Typography>
+						<Typography className="mb-1 text-3xl font-medium text-gray-900 title-font">
+							{packages.name}
+						</Typography>
+						<Typography className="leading-relaxed">{packages.desc}</Typography>
+						<div className="flex items-center pb-5 mt-3 mb-5 border-b-2 border-gray-200" />
+						<div className="flex justify-between">
+							<Typography className="text-2xl font-medium text-gray-900 title-font">
+								{toRupiah(Number(packages.price), {
+									formal: false,
+									dot: ",",
+									floatingPoint: 0,
+								})}
 							</Typography>
+							<Button
+								size="sm"
+								className="px-4 py-2 duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
+							>
+								Booking
+							</Button>
 						</div>
-						<Button
-							size="sm"
-							fullWidth={true}
-							className="px-1 py-2 duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
-						>
-							Booking
-						</Button>
 					</div>
 				</div>
 			</div>

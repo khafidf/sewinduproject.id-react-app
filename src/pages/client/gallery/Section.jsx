@@ -3,7 +3,7 @@ import { Select, Option, Typography } from "@material-tailwind/react";
 import Loading from "../../../components/Loading";
 import {
 	useCategoryQuery,
-	usePhotoQuery,
+	usePhotosQuery,
 } from "../../../redux/api/gallery/galleryApiSlice";
 import { useLocation } from "react-router-dom";
 
@@ -24,7 +24,7 @@ export const Section = () => {
 	}, [state]);
 
 	const { data: dataCategory, isLoading: categoryLoading } = useCategoryQuery();
-	const { data: dataPhoto, isLoading: photoLoading } = usePhotoQuery(category);
+	const { data: dataPhoto, isLoading: photoLoading } = usePhotosQuery(category);
 
 	useEffect(() => {
 		if (dataPhoto?.data) {
