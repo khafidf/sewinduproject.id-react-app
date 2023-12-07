@@ -2,24 +2,6 @@ import React from "react";
 import { FaCameraRetro } from "react-icons/fa6";
 
 export const HowItWorks = () => {
-	// const date = [
-	// 	"Sa",
-	// 	"Su",
-	// 	"Mo",
-	// 	"Tu",
-	// 	30,
-	// 	1,
-	// 	2,
-	// 	3,
-	// 	4,
-	// 	7,
-	// 	8,
-	// 	9,
-	// 	10,
-	// 	14,
-	// 	15,
-	// 	16,
-	// ];
 	return (
 		<div className="w-full px-2 py-8 bg-gray-900 xl:py-0 text-blue-gray-50">
 			<div className="container mx-auto xl:py-8 sm:px-2">
@@ -33,8 +15,10 @@ export const HowItWorks = () => {
 					<div className="flex flex-col gap-4 md:px-2 text-blue-gray-900">
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row">
 							<img
-								src="./book.jpg"
-								className="w-[320px] sm:w-[340px] lg:w-[460px]"
+								src="book.webp"
+								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px]"
+								width={460}
+								height={460}
 								alt="Booking"
 							/>
 							<div className="flex w-[320px] sm:w-[340px] lg:w-[460px] flex-col gap-4 p-4  bg-gray-50 lg:p-8">
@@ -49,8 +33,10 @@ export const HowItWorks = () => {
 						</div>
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row-reverse">
 							<img
-								src="./plan.jpg"
-								className="w-[320px] sm:w-[340px] lg:w-[460px]"
+								src="plan.webp"
+								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px]"
+								width={460}
+								height={460}
 								alt="Planning"
 							/>
 							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] bg-gray-50 lg:p-8">
@@ -65,8 +51,10 @@ export const HowItWorks = () => {
 						</div>
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row">
 							<img
-								src="shot.jpg"
-								className="w-[320px] sm:w-[340px] lg:w-[460px]"
+								src="shot.webp"
+								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px]"
+								width={460}
+								height={460}
 								alt="Photoshoot"
 							/>
 							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] bg-gray-50 lg:p-8">
@@ -82,8 +70,10 @@ export const HowItWorks = () => {
 						</div>
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row-reverse">
 							<img
-								src="delivery.jpg"
-								className="w-[320px] sm:w-[340px] lg:w-[460px]"
+								src="delivery.webp"
+								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px]"
+								width={460}
+								height={460}
 								alt="Delivery file"
 							/>
 							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] bg-gray-50 lg:p-8">
@@ -102,32 +92,3 @@ export const HowItWorks = () => {
 		</div>
 	);
 };
-
-{
-	/* <div className="flex w-full py-4 px-2 h-[480px] xl:h-[528px] max-h-[624px]">
-			<div className="flex flex-col w-full gap-6 mt-8 mb-auto overflow-hidden sm:flex-row sm:max-w-lg lg:max-w-3xl xl:max-w-7xl sm:m-auto">
-				<div className="flex flex-col items-center w-full p-2 my-auto">
-					<h3 className="text-2xl font-bold lg:text-3xl">Booking</h3>
-					<p className="text-md lg:text-lg">Save your date </p>
-				</div>
-				<div className="relative w-full left-0 -top-2 h-[240px]">
-					<div className="grid absolute w-[400px] h-[280px] grid-cols-4 p-2 gap-1">
-						{date.map((item, index) => {
-							return (
-								<div
-									className={`flex border-gray-400 items-center rounded-md border justify-center  ${
-										typeof item == "string" && "bg-black text-white"
-									} ${item == 30 && "bg-slate-200 text-slate-400"} ${
-										(item == 2) | (item == 7) && " bg-green-500 text-white"
-									} ${item == 16 && "bg-red-500 text-white"}`}
-									key={index}
-								>
-									{item}
-								</div>
-							);
-						})}
-					</div>
-				</div>
-			</div>
-		</div> */
-}

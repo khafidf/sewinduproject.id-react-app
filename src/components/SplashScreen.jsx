@@ -5,7 +5,7 @@ export default function SplashScreen() {
 		<div className="flex items-center justify-center w-full h-screen">
 			<img
 				className="animate-bounce"
-				src="sewinduproject-logo.png"
+				src="sewinduproject-logo.webp"
 				width={120}
 				alt="sewinduproject"
 			/>

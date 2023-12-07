@@ -52,7 +52,7 @@ export const Sidebar = () => {
 			<div className="flex justify-center p-4 mb-2">
 				<Link to={"/admin"}>
 					<img
-						src="./sewinduproject-logo.png"
+						src="sewinduproject-logo.webp"
 						className="cursor-pointer"
 						alt="brand"
 						width={120}

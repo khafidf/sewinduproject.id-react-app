@@ -57,7 +57,7 @@ export const Nav = () => {
 				as="li"
 				variant="small"
 				color="blue-gray"
-				className="flex items-center p-1 px-3 font-semibold gap-x-2"
+				className="flex items-center p-1 px-3 font-medium gap-x-2"
 			>
 				<a href="/gallery" className="flex items-center">
 					Gallery
@@ -67,7 +67,7 @@ export const Nav = () => {
 				as="li"
 				variant="small"
 				color="blue-gray"
-				className="flex items-center p-1 px-3 font-semibold gap-x-2"
+				className="flex items-center p-1 px-3 font-medium gap-x-2"
 			>
 				<a href="/package" className="flex items-center">
 					Packages
@@ -77,7 +77,7 @@ export const Nav = () => {
 				as="li"
 				variant="small"
 				color="blue-gray"
-				className="flex items-center p-1 px-3 font-semibold gap-x-2"
+				className="flex items-center p-1 px-3 font-medium gap-x-2"
 			>
 				<a href="/booking" className="flex items-center">
 					Booking
@@ -92,7 +92,9 @@ export const Nav = () => {
 				<a href="/">
 					<img
 						className="w-auto h-8"
-						src="./sewinduproject-logo.png"
+						width={98}
+						height={32}
+						src="sewinduproject-logo.webp"
 						alt="sewinduproject.id"
 					/>
 				</a>
@@ -113,7 +115,7 @@ export const Nav = () => {
 											<Typography
 												variant="small"
 												color="blue-gray"
-												className="font-semibold "
+												className="font-medium"
 											>
 												{user}
 											</Typography>
