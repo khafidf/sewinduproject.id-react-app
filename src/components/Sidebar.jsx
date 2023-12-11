@@ -48,7 +48,7 @@ export const Sidebar = () => {
 	};
 
 	return (
-		<Card className="h-[calc(100vh-9.2vh)] rounded-none my-4 ml-5 w-full max-w-[20rem] bg-gray-50 z-10 text-blue-gray-900 p-4 shadow-lg shadow-blue-gray-900/40">
+		<Card className="h-[calc(100vh-9.2vh)] my-4 ml-5 w-full max-w-[20rem] bg-gray-50 z-10 text-blue-gray-900 p-4 shadow-lg shadow-blue-gray-900/40">
 			<div className="flex justify-center p-4 mb-2">
 				<Link to={"/admin"}>
 					<img
@@ -71,7 +71,7 @@ export const Sidebar = () => {
 						/>
 					}
 				>
-					<ListItem className="p-0 rounded-none" selected={open === 1}>
+					<ListItem className="p-0" selected={open === 1}>
 						<AccordionHeader
 							onClick={() => handleOpen(1)}
 							className="p-3 border-b-0"
@@ -95,7 +95,7 @@ export const Sidebar = () => {
 								</ListItem>
 							</Link>
 							<Link to={"/admin/package"}>
-								<ListItem className="rounded-none">
+								<ListItem>
 									<ListItemPrefix>
 										<FaCircle strokeWidth={3} className="w-5 h-2.5" />
 									</ListItemPrefix>
@@ -103,7 +103,7 @@ export const Sidebar = () => {
 								</ListItem>
 							</Link>
 							<Link to={"/admin/booking"}>
-								<ListItem className="rounded-none">
+								<ListItem>
 									<ListItemPrefix>
 										<FaCircle strokeWidth={3} className="w-5 h-2.5" />
 									</ListItemPrefix>
@@ -114,13 +114,13 @@ export const Sidebar = () => {
 					</AccordionBody>
 				</Accordion>
 				<hr className="my-2 border-blue-gray-50" />
-				<ListItem className="rounded-none">
+				<ListItem>
 					<ListItemPrefix>
 						<FaCircleUser className="w-5 h-5" />
 					</ListItemPrefix>
 					{user}
 				</ListItem>
-				<ListItem className="rounded-none" onClick={handleLogout}>
+				<ListItem onClick={handleLogout}>
 					<ListItemPrefix>
 						<FaPowerOff className="w-5 h-5" />
 					</ListItemPrefix>

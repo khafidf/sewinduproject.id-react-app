@@ -173,7 +173,7 @@ export const LoginModal = ({ openNav }) => {
 				onClick={handleOpenModal}
 				className={`${
 					openNav ? `w-full py-2.5` : `hidden lg:inline-block`
-				} text-blue-gray-50 duration-100 rounded-none bg-gray-900 shadow-md hover:shadow-gray-400  hover:text-blue-gray-900 hover:bg-gray-50`}
+				} text-blue-gray-50 duration-100 bg-gray-900 shadow-md hover:shadow-gray-400  hover:text-blue-gray-900 hover:bg-gray-50`}
 			>
 				<span className="lg:px-4">Log In</span>
 			</Button>
@@ -190,7 +190,7 @@ export const LoginModal = ({ openNav }) => {
 						message={alert.message}
 						type={alert.type}
 					/>
-					<Card className="mx-auto w-full py-4 rounded-none gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
+					<Card className="mx-auto w-full py-4 gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
 						<form onSubmit={handleLogin}>
 							<CardBody className="flex flex-col gap-4">
 								<Typography
@@ -212,7 +212,6 @@ export const LoginModal = ({ openNav }) => {
 									variant="standard"
 									label="Email or Phone Number"
 									size="lg"
-									className="rounded-none"
 									type="text"
 									name="identifier"
 									value={loginData.identifier}
@@ -223,7 +222,6 @@ export const LoginModal = ({ openNav }) => {
 									variant="standard"
 									label="Password"
 									size="lg"
-									className="rounded-none"
 									type={show ? `text` : `password`}
 									name="password"
 									value={loginData.password}
@@ -245,12 +243,7 @@ export const LoginModal = ({ openNav }) => {
 								/>
 							</CardBody>
 							<CardFooter className="pt-0">
-								<Button
-									variant="gradient"
-									type="submit"
-									className="rounded-none"
-									fullWidth
-								>
+								<Button variant="gradient" type="submit" fullWidth>
 									Log in
 								</Button>
 								<Typography
@@ -285,7 +278,7 @@ export const LoginModal = ({ openNav }) => {
 						message={alert.message}
 						type={alert.type}
 					/>
-					<Card className="mx-auto w-full rounded-none py-4 gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
+					<Card className="mx-auto w-full py-4 gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
 						<CardBody className="flex flex-col gap-4 pb-0">
 							<Typography
 								variant="h4"
@@ -304,7 +297,6 @@ export const LoginModal = ({ openNav }) => {
 							<Input
 								variant="standard"
 								label="Name"
-								className="rounded-none"
 								size="md"
 								value={registerData.name}
 								name="name"
@@ -314,7 +306,6 @@ export const LoginModal = ({ openNav }) => {
 							<Input
 								variant="standard"
 								label="Email"
-								className="rounded-none"
 								size="md"
 								value={registerData.email}
 								name="email"
@@ -324,7 +315,6 @@ export const LoginModal = ({ openNav }) => {
 							<Input
 								variant="standard"
 								label="Phone Number"
-								className="rounded-none"
 								size="md"
 								value={registerData.phoneNumber}
 								name="phoneNumber"
@@ -334,7 +324,6 @@ export const LoginModal = ({ openNav }) => {
 							<Input
 								variant="standard"
 								label="Password"
-								className="rounded-none"
 								size="md"
 								value={registerData.password}
 								name="password"
@@ -344,7 +333,6 @@ export const LoginModal = ({ openNav }) => {
 							<Input
 								variant="standard"
 								label="Confirm Password"
-								className="rounded-none"
 								size="md"
 								value={registerData.confirmPassword}
 								name="confirmPassword"
@@ -356,7 +344,6 @@ export const LoginModal = ({ openNav }) => {
 							<Button
 								variant="gradient"
 								onClick={handleRegister}
-								className="rounded-none"
 								fullWidth
 								disabled={
 									!(registerData.password === registerData.confirmPassword)

@@ -43,17 +43,13 @@ export const Section = () => {
 					{!categoryLoading && (
 						<Select
 							label="Select Category"
-							variant="standard"
+							variant="outlined"
 							value={category}
 							onChange={changeHandler}
 						>
 							{dataCategory?.data?.map((item, index) => {
 								return (
-									<Option
-										className="hover:rounded-none"
-										key={index}
-										value={item.category}
-									>
+									<Option key={index} value={item.category}>
 										{capitalize(item.category)}
 									</Option>
 								);

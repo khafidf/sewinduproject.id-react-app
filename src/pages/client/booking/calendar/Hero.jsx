@@ -8,7 +8,7 @@ import {
 	goToNextYear,
 	goToToday,
 	dateSelector,
-} from "../../../redux/slice/calendarSlice.js";
+} from "../../../../redux/slice/calendarSlice.js";
 import {
 	FaAngleLeft,
 	FaAngleRight,

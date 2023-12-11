@@ -13,7 +13,7 @@ import {
 	openAccordionSelector,
 	setCloseAccordion,
 	setOpenAccordion,
-} from "../../../redux/slice/accordionSlice";
+} from "../../../../redux/slice/accordionSlice";
 import { FaAngleDown } from "react-icons/fa6";
 
 export const Details = () => {

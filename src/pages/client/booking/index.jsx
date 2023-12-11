@@ -1,14 +1,59 @@
 import React from "react";
-import { Section } from "./Section";
-import { Hero } from "./Hero";
-import { Details } from "./Details";
+import {
+	Tabs,
+	TabsHeader,
+	TabsBody,
+	Tab,
+	TabPanel,
+} from "@material-tailwind/react";
+import { Section } from "./calendar/Section";
+import { Hero } from "./calendar/Hero";
+import { Details } from "./calendar/Details";
 
 export default function BookingPage() {
+	const data = [
+		{
+			value: "calendar",
+			label: "Calendar",
+			element: (
+				<>
+					<Hero />
+					<Section />
+					<Details />
+				</>
+			),
+		},
+		{
+			value: "history",
+			label: "Order History",
+			element: (
+				<>
+					<Hero />
+				</>
+			),
+		},
+	];
 	return (
-		<>
-			<Hero />
-			<Section />
-			<Details />
-		</>
+		<Tabs className="container mx-auto" value="calendar">
+			<TabsHeader className="w-1/4 mx-auto mt-4">
+				{data.map(({ label, value }) => (
+					<Tab key={value} value={value}>
+						{label}
+					</Tab>
+				))}
+			</TabsHeader>
+			<TabsBody>
+				{data.map(({ value, element }) => (
+					<TabPanel key={value} value={value}>
+						{element}
+					</TabPanel>
+				))}
+			</TabsBody>
+		</Tabs>
+		// <>
+		// 	<Hero />
+		// 	<Section />
+		// 	<Details />
+		// </>
 	);
 }

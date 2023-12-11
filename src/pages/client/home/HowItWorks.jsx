@@ -16,12 +16,12 @@ export const HowItWorks = () => {
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row">
 							<img
 								src="book.webp"
-								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px]"
+								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px] rounded-lg"
 								width={460}
 								height={460}
 								alt="Booking"
 							/>
-							<div className="flex w-[320px] sm:w-[340px] lg:w-[460px] flex-col gap-4 p-4  bg-gray-50 lg:p-8">
+							<div className="flex w-[320px] sm:w-[340px] lg:w-[460px] flex-col gap-4 p-4 rounded-lg bg-gray-50 lg:p-8">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Book
 								</h3>
@@ -34,12 +34,12 @@ export const HowItWorks = () => {
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row-reverse">
 							<img
 								src="plan.webp"
-								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px]"
+								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px] rounded-lg"
 								width={460}
 								height={460}
 								alt="Planning"
 							/>
-							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] bg-gray-50 lg:p-8">
+							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] rounded-lg bg-gray-50 lg:p-8">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Plan
 								</h3>
@@ -52,12 +52,12 @@ export const HowItWorks = () => {
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row">
 							<img
 								src="shot.webp"
-								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px]"
+								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px] rounded-lg"
 								width={460}
 								height={460}
 								alt="Photoshoot"
 							/>
-							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] bg-gray-50 lg:p-8">
+							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] rounded-lg bg-gray-50 lg:p-8">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Shoot
 								</h3>
@@ -71,12 +71,12 @@ export const HowItWorks = () => {
 						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row-reverse">
 							<img
 								src="delivery.webp"
-								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px]"
+								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px] rounded-lg"
 								width={460}
 								height={460}
 								alt="Delivery file"
 							/>
-							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] bg-gray-50 lg:p-8">
+							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] rounded-lg bg-gray-50 lg:p-8">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Delivery
 								</h3>

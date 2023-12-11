@@ -11,11 +11,11 @@ import toRupiah from "@develoka/angka-rupiah-js";
 
 export const CardPackage = ({ name, price, id, photoUrl, desc }) => {
 	return (
-		<Card className="w-full max-w-[20rem] mx-auto rounded-none">
+		<Card className="w-full max-w-[20rem] mx-auto">
 			<CardHeader
 				shadow={false}
 				floated={false}
-				className="h-screen mx-auto max-h-[7rem] w-full max-w-[16.5rem] rounded-none"
+				className="h-screen mx-auto max-h-[7rem] w-full max-w-[16.5rem]"
 			>
 				<img
 					src={photoUrl}
@@ -50,16 +50,11 @@ export const CardPackage = ({ name, price, id, photoUrl, desc }) => {
 				<Button
 					size="sm"
 					fullWidth={true}
-					className="px-1 py-2 duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
+					className="px-1 py-2 duration-100 bg-gray-900shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
 				>
 					<Link to={`/package/${id}`}>Details</Link>
 				</Button>
-				<Button
-					size="sm"
-					fullWidth={true}
-					variant="text"
-					className="rounded-none shadow-md"
-				>
+				<Button size="sm" fullWidth={true} variant="text" className="shadow-md">
 					Booking
 				</Button>
 			</CardFooter>

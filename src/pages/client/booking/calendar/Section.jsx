@@ -11,14 +11,14 @@ import {
 } from "date-fns";
 import { Typography } from "@material-tailwind/react";
 import { useSelector, useDispatch } from "react-redux";
-import { dateSelector } from "../../../redux/slice/calendarSlice";
+import { dateSelector } from "../../../../redux/slice/calendarSlice";
 import { FaGripLinesVertical } from "react-icons/fa6";
 import {
 	openAccordionSelector,
 	dateAccordionSelector,
 	setCloseAccordionSection,
 	setOpenAccordionSection,
-} from "../../../redux/slice/accordionSlice";
+} from "../../../../redux/slice/accordionSlice";
 
 export const Section = () => {
 	const openData = useSelector(openAccordionSelector);
@@ -78,20 +78,20 @@ export const Section = () => {
 		<div className="w-full">
 			<div className="container px-2 pt-6 mx-auto mb-12">
 				<div className="max-w-[50rem] mx-auto">
-					<div className="py-2 text-center bg-red-600 sm:py-3">
+					<div className="py-2 text-center bg-red-600 rounded-lg sm:py-3">
 						<Typography className="text-2xl font-bold cursor-default text-blue-gray-50">
 							{format(currentMonth, "MMMM yyyy")}
 						</Typography>
 					</div>
 					<div
-						className={`grid h-screen mt-1 p-1 grid-cols-7 border ${
+						className={`grid h-screen mt-1 p-1 grid-cols-7 rounded-lg border ${
 							totalDates.length == 35 ? "max-h-[28rem]" : "max-h-[32.63rem]"
 						} gap-2`}
 					>
 						{days.map((day) => (
 							<div
 								key={day}
-								className="flex flex-col items-center font-bold text-center border-b-2 cursor-default"
+								className="flex flex-col items-center font-bold text-center border-b-2 rounded-lg cursor-default"
 							>
 								<FaGripLinesVertical size={18} className="relative -top-3" />
 								{day}
@@ -100,7 +100,7 @@ export const Section = () => {
 						{prevDates.map((day, index) => (
 							<div
 								key={index}
-								className="flex items-center justify-center p-2 text-center bg-gray-900 border-b-2 opacity-25 text-blue-gray-50"
+								className="flex items-center justify-center p-2 text-center bg-gray-900 border-b-2 rounded-lg opacity-25 text-blue-gray-50"
 							>
 								<span>{format(day, "d")}</span>
 							</div>
@@ -108,7 +108,7 @@ export const Section = () => {
 						{dates.map((day, index) => (
 							<div
 								key={index}
-								className={`flex justify-center cursor-pointer border-b-2 items-center p-2 text-center ${
+								className={`flex justify-center rounded-lg cursor-pointer border-b-2 items-center p-2 text-center ${
 									isSameDay(day, new Date()) ? "bg-blue-200" : ""
 								}`}
 								onClick={() => {
@@ -125,7 +125,7 @@ export const Section = () => {
 						{nextDates.map((day, index) => (
 							<div
 								key={index}
-								className="flex items-center justify-center p-2 text-center bg-gray-900 border-b-2 opacity-25 text-blue-gray-50"
+								className="flex items-center justify-center p-2 text-center bg-gray-900 border-b-2 rounded-lg opacity-25 text-blue-gray-50"
 							>
 								<span>{format(day, "d")}</span>
 							</div>

@@ -158,7 +158,7 @@ export const EditPackageModal = ({
 					message={alert.message}
 					type={alert.type}
 				/>
-				<Card className="mx-auto w-full py-4 rounded-none gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
+				<Card className="mx-auto w-full py-4 gap-4 lg:py-6 lg:gap-6 max-w-[40rem]">
 					<form onSubmit={handleSubmit}>
 						<CardBody className="flex flex-col gap-4">
 							<Typography
@@ -184,7 +184,6 @@ export const EditPackageModal = ({
 								variant="standard"
 								label="Package Name"
 								size="lg"
-								className="rounded-none"
 								type="text"
 								name="name"
 								value={packageData.name}
@@ -198,28 +197,17 @@ export const EditPackageModal = ({
 								value={packageData.category}
 								onChange={handleSelectChange}
 							>
-								<Option className="hover:rounded-none" value="couple">
-									Couple
-								</Option>
-								<Option className="hover:rounded-none" value="wedding">
-									Wedding
-								</Option>
-								<Option className="hover:rounded-none" value="tedak sinten">
-									Tedak Sinten
-								</Option>
-								<Option className="hover:rounded-none" value="graduation">
-									Graduation
-								</Option>
-								<Option className="hover:rounded-none" value="birthday">
-									Birthday
-								</Option>
+								<Option value="couple">Couple</Option>
+								<Option value="wedding">Wedding</Option>
+								<Option value="tedak sinten">Tedak Sinten</Option>
+								<Option value="graduation">Graduation</Option>
+								<Option value="birthday">Birthday</Option>
 							</Select>
 
 							<Input
 								variant="standard"
 								label="Description"
 								size="lg"
-								className="rounded-none"
 								type="text"
 								name="desc"
 								value={packageData.desc}
@@ -230,7 +218,6 @@ export const EditPackageModal = ({
 								variant="standard"
 								label="Price"
 								size="lg"
-								className="rounded-none"
 								type="text"
 								name="price"
 								value={packageData.price}
@@ -241,7 +228,6 @@ export const EditPackageModal = ({
 								variant="standard"
 								label="Hour"
 								size="lg"
-								className="rounded-none"
 								type="text"
 								name="hour"
 								value={packageData.hour}
@@ -249,12 +235,7 @@ export const EditPackageModal = ({
 							/>
 						</CardBody>
 						<CardFooter className="pt-0">
-							<Button
-								variant="gradient"
-								type="submit"
-								className="rounded-none"
-								fullWidth
-							>
+							<Button variant="gradient" type="submit" fullWidth>
 								Edit Package
 							</Button>
 						</CardFooter>

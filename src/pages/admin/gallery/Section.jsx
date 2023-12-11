@@ -104,17 +104,13 @@ export const Section = () => {
 					{!categoryLoading && (
 						<Select
 							label="Select Category"
-							variant="standard"
+							variant="outlined"
 							value={category}
 							onChange={changeHandler}
 						>
 							{dataCategory?.data?.map((item, index) => {
 								return (
-									<Option
-										className="hover:rounded-none"
-										key={index}
-										value={item.category}
-									>
+									<Option key={index} value={item.category}>
 										{capitalize(item.category)}
 									</Option>
 								);
@@ -128,7 +124,7 @@ export const Section = () => {
 					refetchCategory={refetchCategory}
 				/>
 			</div>
-			<Card className="w-full h-[calc(100vh-19.3vh)] overflow-scroll rounded-none">
+			<Card className="w-full h-[calc(100vh-19.3vh)] overflow-scroll">
 				<table className="w-full text-left table-auto min-w-max">
 					<thead className="sticky top-0 z-40">
 						<tr>

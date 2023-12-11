@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export const Package = () => {
 	return (
 		<div className="w-full px-2 py-4 bg-gray-50">
-			<div className="container flex flex-col items-center justify-center p-4 mx-auto lg:h-[578px] xl:h-[478px] rounded-none cursor-default">
+			<div className="container flex flex-col items-center justify-center p-4 mx-auto lg:h-[578px] xl:h-[478px] cursor-default">
 				<div className="p-2 text-center">
 					<Typography
 						color="blue-gray"
@@ -29,7 +29,7 @@ export const Package = () => {
 					</Typography>
 				</div>
 				<div className="grid grid-cols-2 gap-4 mt-6 sm:mt-10 xl:mt-16 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-10">
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-xl">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-xl">
 						<FaRing size={36} />
 						<h3 className="font-bold">Wedding</h3>
 						<Typography color="blue-gray" className="opacity-75">
@@ -39,7 +39,7 @@ export const Package = () => {
 							<FaCircleChevronRight size={24} className="mt-2 cursor-pointer" />
 						</Link>
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-xl">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-xl">
 						<FaHeart size={36} />
 						<h3 className="font-bold">Pre-Wedding</h3>
 						<Typography color="blue-gray" className="opacity-75">
@@ -49,7 +49,7 @@ export const Package = () => {
 							<FaCircleChevronRight size={24} className="mt-2 cursor-pointer" />
 						</Link>
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-xl">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-xl">
 						<FaBook size={36} />
 						<h3 className="font-bold">Yearbook</h3>
 						<Typography color="blue-gray" className="opacity-75">
@@ -59,7 +59,7 @@ export const Package = () => {
 							<FaCircleChevronRight size={24} className="mt-2 cursor-pointer" />
 						</Link>
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-xl lg md:col-start-2 xl:col-start-7">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-xl lg md:col-start-2 xl:col-start-7">
 						<FaPeoplePulling size={36} />
 						<h3 className="font-bold">Couple</h3>
 						<Typography color="blue-gray" className="opacity-75">
@@ -69,7 +69,7 @@ export const Package = () => {
 							<FaCircleChevronRight size={24} className="mt-2 cursor-pointer" />
 						</Link>
 					</div>
-					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-none shadow-xl lg xl:col-start-9 md:col-start-4 sm:col-start-2">
+					<div className="flex flex-col items-center w-full col-span-2 gap-2 p-6 mx-auto text-center rounded-lg shadow-xl lg xl:col-start-9 md:col-start-4 sm:col-start-2">
 						<FaGraduationCap size={36} />
 						<h3 className="font-bold">Graduation</h3>
 						<Typography color="blue-gray" className="opacity-75">
@@ -84,15 +84,3 @@ export const Package = () => {
 		</div>
 	);
 };
-
-{
-	/* <div className="flex flex-col justify-center w-full max-h-[768px] lg:max-w-7xl mx-auto gap-6 py-4 px-2">
-			<div className="flex flex-col">
-				<Typography color="blue-gray" className="text-2xl font-bold lg:text-3xl">Package</Typography>
-				<Typography color="blue-gray" className="opacity-75">Select your package</Typography>
-			</div>
-			<div>
-				<Carousel content={cardPackages} />
-			</div>
-		</div> */
-}

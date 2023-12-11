@@ -23,7 +23,7 @@ export const Hero = () => {
 							forever
 						</Typography>
 					</div>
-					<Button className="mx-auto duration-300 rounded-none shadow-md bg-gray-50 text-blue-gray-900 w-fit hover:shadow-gray-800 hover:text-blue-gray-50 hover:bg-gray-900">
+					<Button className="mx-auto duration-300 shadow-md bg-gray-50 text-blue-gray-900 w-fit hover:shadow-gray-800 hover:text-blue-gray-50 hover:bg-gray-900">
 						<Link to={"/gallery"}>Our Gallery</Link>
 					</Button>
 				</div>
