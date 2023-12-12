@@ -1,27 +1,25 @@
 import React from "react";
-import { FaCameraRetro } from "react-icons/fa6";
 
 export const HowItWorks = () => {
 	return (
-		<div className="w-full px-2 py-8 bg-gray-900 xl:py-0 text-blue-gray-50">
+		<div className="w-full px-2 py-8 bg-secondary xl:py-0 text-primary">
 			<div className="container mx-auto xl:py-8 sm:px-2">
 				<div className="flex flex-col xl:py-8">
-					<div className="flex items-center justify-center gap-4 mb-8 xl:mb-16">
-						<FaCameraRetro size={36} />
+					<div className="flex items-center justify-center mb-8 xl:mb-16">
 						<h2 className="text-lg font-bold md:text-xl lg:text-2xl">
-							How it works?
+							HOW IT WORKS?
 						</h2>
 					</div>
-					<div className="flex flex-col gap-4 md:px-2 text-blue-gray-900">
-						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row">
+					<div className="flex flex-col gap-4 md:gap-8 md:px-2 text-secondary">
+						<div className="flex flex-col items-center md:mx-auto md:flex-row">
 							<img
 								src="book.webp"
-								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px] rounded-lg"
+								className="max-w-[300px] shadow-lg shadow-secondary -bottom-6 md:bottom-0 md:left-6 lg:left-8 sm:max-w-[320px] relative lg:max-w-[420px] rounded-none"
 								width={460}
 								height={460}
 								alt="Booking"
 							/>
-							<div className="flex w-[320px] sm:w-[340px] lg:w-[460px] flex-col gap-4 p-4 rounded-lg bg-gray-50 lg:p-8">
+							<div className="flex justify-center w-[320px] sm:w-[340px] lg:w-[460px] h-[320px] sm:h-[340px] lg:h-[460px] flex-col gap-4 p-4 pt-10 md:pt-4 md:pl-10 rounded-none bg-primary lg:p-8 lg:pl-16">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Book
 								</h3>
@@ -31,15 +29,15 @@ export const HowItWorks = () => {
 								</p>
 							</div>
 						</div>
-						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row-reverse">
+						<div className="flex flex-col items-center md:mx-auto md:flex-row-reverse">
 							<img
 								src="plan.webp"
-								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px] rounded-lg"
+								className="max-w-[300px] shadow-lg shadow-secondary -bottom-6 md:bottom-0 md:right-6 lg:right-8 sm:max-w-[320px] relative lg:max-w-[420px] rounded-none"
 								width={460}
 								height={460}
 								alt="Planning"
 							/>
-							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] rounded-lg bg-gray-50 lg:p-8">
+							<div className="flex justify-center w-[320px] sm:w-[340px] lg:w-[460px] h-[320px] sm:h-[340px] lg:h-[460px] flex-col gap-4 p-4 pt-10 md:pt-4 md:pr-10 rounded-none bg-primary lg:p-8 lg:pr-16">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Plan
 								</h3>
@@ -49,15 +47,15 @@ export const HowItWorks = () => {
 								</p>
 							</div>
 						</div>
-						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row">
+						<div className="flex flex-col items-center md:mx-auto md:flex-row">
 							<img
 								src="shot.webp"
-								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px] rounded-lg"
+								className="max-w-[300px] shadow-lg shadow-secondary -bottom-6 md:bottom-0 md:left-6 lg:left-8 sm:max-w-[320px] relative lg:max-w-[420px] rounded-none"
 								width={460}
 								height={460}
 								alt="Photoshoot"
 							/>
-							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] rounded-lg bg-gray-50 lg:p-8">
+							<div className="flex justify-center w-[320px] sm:w-[340px] lg:w-[460px] h-[320px] sm:h-[340px] lg:h-[460px] flex-col gap-4 p-4 pt-10 md:pt-4 md:pl-10 rounded-none bg-primary lg:p-8 lg:pl-16">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Shoot
 								</h3>
@@ -68,15 +66,15 @@ export const HowItWorks = () => {
 								</p>
 							</div>
 						</div>
-						<div className="flex flex-col items-center gap-4 md:mx-auto md:flex-row-reverse">
+						<div className="flex flex-col items-center md:mx-auto md:flex-row-reverse">
 							<img
 								src="delivery.webp"
-								className="max-w-[320px] sm:max-w-[340px] lg:max-w-[460px] rounded-lg"
+								className="max-w-[300px] shadow-lg shadow-secondary -bottom-6 md:bottom-0 md:right-6 lg:right-8 sm:max-w-[320px] relative lg:max-w-[420px] rounded-none"
 								width={460}
 								height={460}
 								alt="Delivery file"
 							/>
-							<div className="flex flex-col gap-4 p-4 w-[320px] sm:w-[340px] lg:w-[460px] rounded-lg bg-gray-50 lg:p-8">
+							<div className="flex justify-center w-[320px] sm:w-[340px] lg:w-[460px] h-[320px] sm:h-[340px] lg:h-[460px] flex-col gap-4 p-4 pt-10 md:pt-4 md:pr-10 rounded-none bg-primary lg:p-8 lg:pr-16">
 								<h3 className="text-base font-bold md:text-lg lg:text-xl">
 									Delivery
 								</h3>

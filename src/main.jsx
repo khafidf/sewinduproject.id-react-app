@@ -8,11 +8,12 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
 
 import { ThemeProvider } from "@material-tailwind/react";
+import { theme } from "./styles/theme.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<ThemeProvider>
+			<ThemeProvider value={theme}>
 				<Router>
 					<Routes>
 						<Route path="/*" element={<App />} />

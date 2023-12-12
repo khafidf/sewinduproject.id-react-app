@@ -170,20 +170,15 @@ export const LoginModal = ({ openNav }) => {
 		<>
 			<Button
 				size="sm"
+				variant="filled"
+				color="blue-gray"
 				onClick={handleOpenModal}
-				className={`${
-					openNav ? `w-full py-2.5` : `hidden lg:inline-block`
-				} text-blue-gray-50 duration-100 bg-gray-900 shadow-md hover:shadow-gray-400  hover:text-blue-gray-900 hover:bg-gray-50`}
+				className={`${openNav ? `w-full py-2.5` : `hidden lg:inline-block`} `}
 			>
 				<span className="lg:px-4">Log In</span>
 			</Button>
 			{action === "login" ? (
-				<Dialog
-					size="xs"
-					open={openLogin}
-					handler={handleOpenModal}
-					className="bg-transparent shadow-none"
-				>
+				<Dialog size="xs" open={openLogin} handler={handleOpenModal}>
 					<AlertComponent
 						open={alert.open}
 						onClose={() => setAlert({ ...alert, open: false })}
@@ -210,6 +205,7 @@ export const LoginModal = ({ openNav }) => {
 
 								<Input
 									variant="standard"
+									color="blue-gray"
 									label="Email or Phone Number"
 									size="lg"
 									type="text"
@@ -220,6 +216,7 @@ export const LoginModal = ({ openNav }) => {
 								/>
 								<Input
 									variant="standard"
+									color="blue-gray"
 									label="Password"
 									size="lg"
 									type={show ? `text` : `password`}
@@ -242,12 +239,19 @@ export const LoginModal = ({ openNav }) => {
 									required
 								/>
 							</CardBody>
-							<CardFooter className="pt-0">
-								<Button variant="gradient" type="submit" fullWidth>
+							<CardFooter>
+								<Button
+									size="sm"
+									variant="filled"
+									color="blue-gray"
+									type="submit"
+									fullWidth
+								>
 									Log in
 								</Button>
 								<Typography
 									variant="small"
+									color="gray"
 									className="flex justify-center mt-4"
 								>
 									Don&apos;t have an account?
@@ -266,12 +270,7 @@ export const LoginModal = ({ openNav }) => {
 					</Card>
 				</Dialog>
 			) : (
-				<Dialog
-					size="xs"
-					open={openLogin}
-					handler={handleOpenModal}
-					className="bg-transparent shadow-none"
-				>
+				<Dialog size="xs" open={openLogin} handler={handleOpenModal}>
 					<AlertComponent
 						open={alert.open}
 						onClose={() => setAlert({ ...alert, open: false })}
@@ -296,6 +295,7 @@ export const LoginModal = ({ openNav }) => {
 							</Typography>
 							<Input
 								variant="standard"
+								color="blue-gray"
 								label="Name"
 								size="md"
 								value={registerData.name}
@@ -305,6 +305,7 @@ export const LoginModal = ({ openNav }) => {
 							/>
 							<Input
 								variant="standard"
+								color="blue-gray"
 								label="Email"
 								size="md"
 								value={registerData.email}
@@ -314,6 +315,7 @@ export const LoginModal = ({ openNav }) => {
 							/>
 							<Input
 								variant="standard"
+								color="blue-gray"
 								label="Phone Number"
 								size="md"
 								value={registerData.phoneNumber}
@@ -323,6 +325,7 @@ export const LoginModal = ({ openNav }) => {
 							/>
 							<Input
 								variant="standard"
+								color="blue-gray"
 								label="Password"
 								size="md"
 								value={registerData.password}
@@ -332,6 +335,7 @@ export const LoginModal = ({ openNav }) => {
 							/>
 							<Input
 								variant="standard"
+								color="blue-gray"
 								label="Confirm Password"
 								size="md"
 								value={registerData.confirmPassword}
@@ -340,18 +344,25 @@ export const LoginModal = ({ openNav }) => {
 								required
 							/>
 						</CardBody>
-						<CardFooter className="pt-0">
+						<CardFooter>
 							<Button
-								variant="gradient"
-								onClick={handleRegister}
+								size="sm"
+								variant="filled"
+								color="blue-gray"
+								type="submit"
 								fullWidth
+								onClick={handleRegister}
 								disabled={
 									!(registerData.password === registerData.confirmPassword)
 								}
 							>
 								Register
 							</Button>
-							<Typography variant="small" className="flex justify-center mt-4">
+							<Typography
+								variant="small"
+								color="gray"
+								className="flex justify-center mt-4"
+							>
 								Already have an account?
 								<Typography
 									as="a"
