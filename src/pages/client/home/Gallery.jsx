@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Gallery = () => {
 	return (
 		<div className="w-full px-2 py-4 bg-primary">
-			<div className="container flex flex-col items-center justify-center p-4 mx-auto lg:h-[578px] xl:h-[478px] cursor-default">
+			<div className="container flex flex-col items-center justify-center p-4 mx-auto h-[378px] lg:h-[578px] xl:h-[478px] cursor-default">
 				<div className="p-2 text-center">
 					<Typography variant="h4" color="blue-gray" className="uppercase">
 						Our Galleries
