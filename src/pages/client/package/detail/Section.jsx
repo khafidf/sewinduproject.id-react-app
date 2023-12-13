@@ -34,30 +34,38 @@ export const Section = () => {
 				<div className="flex flex-wrap mx-auto lg:w-4/5">
 					<img
 						alt="Package photo"
-						className="object-cover object-center w-full border border-gray-200 rounded max-h-[578px] lg:w-1/2"
+						className="object-cover object-center w-full border border-secondary rounded-none max-h-[578px] lg:w-1/2"
 						src={packages.photoUrl}
 					/>
 					<div className="w-full mt-6 lg:w-1/2 lg:pl-10 lg:py-6 lg:mt-0">
-						<Typography className="text-sm tracking-widest text-gray-500 title-font">
+						<Typography
+							color="blue-gray"
+							className="text-sm tracking-widest opacity-80 title-font"
+						>
 							{packages.category}
 						</Typography>
-						<Typography className="mb-1 text-3xl font-medium text-gray-900 title-font">
+						<Typography
+							color="blue-gray"
+							className="mb-1 text-3xl font-medium title-font"
+						>
 							{packages.name}
 						</Typography>
-						<Typography className="leading-relaxed">{packages.desc}</Typography>
-						<div className="flex items-center pb-5 mt-3 mb-5 border-b-2 border-gray-200" />
+						<Typography color="blue-gray" className="leading-relaxed">
+							{packages.desc}
+						</Typography>
+						<div className="flex items-center pb-5 mt-3 mb-5 border-b-2 border-secondary" />
 						<div className="flex justify-between">
-							<Typography className="text-2xl font-medium text-gray-900 title-font">
+							<Typography
+								color="blue-gray"
+								className="text-2xl font-medium title-font"
+							>
 								{toRupiah(Number(packages.price), {
 									formal: false,
 									dot: ",",
 									floatingPoint: 0,
 								})}
 							</Typography>
-							<Button
-								size="sm"
-								className="px-4 py-2 duration-100 bg-gray-900 shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
-							>
+							<Button size="md" variant="filled" color="blue-gray">
 								Booking
 							</Button>
 						</div>

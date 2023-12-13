@@ -39,11 +39,13 @@ export const Section = () => {
 	return (
 		<div className="w-full">
 			<div className="container p-2 mx-auto">
-				<div className="pb-4 border-b-2 border-gray-900">
+				<div className="pb-4 border-b-2 border-secondary">
 					{!categoryLoading && (
 						<Select
 							label="Select Category"
 							variant="outlined"
+							color="blue-gray"
+							className="rounded-none"
 							value={category}
 							onChange={changeHandler}
 						>
@@ -72,7 +74,7 @@ export const Section = () => {
 												alt={item.photoName}
 												loading="lazy"
 											/>
-											<Typography className="absolute w-[calc(100%-25%)] p-4 text-center text-sm text-gray-50 transition-opacity translate-x-1/2 rounded-md opacity-0 group-hover:opacity-100 backdrop-blur-lg bg-gray-50/30 right-1/2 bottom-1/2 translate-y-1/2">
+											<Typography className="absolute w-[calc(100%-25%)] p-4 text-center text-sm text-primary transition-opacity translate-x-1/2 rounded-md opacity-0 group-hover:opacity-100 backdrop-blur-lg bg-secondary/30 right-1/2 bottom-1/2 translate-y-1/2">
 												{item.desc}
 											</Typography>
 										</div>

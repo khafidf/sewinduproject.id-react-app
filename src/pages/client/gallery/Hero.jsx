@@ -14,14 +14,14 @@ export const Hero = () => {
 							Discover Our Captivating Gallery Collection
 						</Typography>
 						<Typography
-							color="blue-gray"
-							className="mt-1 text-xs opacity-75 md:text-sm lg:text-base"
+							color="gray"
+							className="mt-1 text-xs md:text-sm lg:text-base"
 						>
 							Explore a curated collection of captivating images in our gallery.
 						</Typography>
 						<Typography
 							color="blue-gray"
-							className="text-xs text-right opacity-40"
+							className="text-xs text-right opacity-70"
 						>
 							by Sewindu Project.
 						</Typography>

@@ -9,8 +9,10 @@ import {
 import { Section } from "./calendar/Section";
 import { Hero } from "./calendar/Hero";
 import { Details } from "./calendar/Details";
+import Cookies from "js-cookie";
 
 export default function BookingPage() {
+	const user = Cookies.get("user");
 	const data = [
 		{
 			value: "calendar",
@@ -33,14 +35,23 @@ export default function BookingPage() {
 			),
 		},
 	];
+
+	const tabsContent = user ? (
+		data.map(({ label, value }) => (
+			<Tab key={value} value={value}>
+				{label}
+			</Tab>
+		))
+	) : (
+		<Tab key={data[0].value} value={data[0].value}>
+			{data[0].label}
+		</Tab>
+	);
+
 	return (
 		<Tabs className="container mx-auto" value="calendar">
 			<TabsHeader className="w-full mx-auto mt-4 sm:w-1/2 lg:w-1/4">
-				{data.map(({ label, value }) => (
-					<Tab key={value} value={value}>
-						{label}
-					</Tab>
-				))}
+				{tabsContent}
 			</TabsHeader>
 			<TabsBody>
 				{data.map(({ value, element }) => (
@@ -50,10 +61,5 @@ export default function BookingPage() {
 				))}
 			</TabsBody>
 		</Tabs>
-		// <>
-		// 	<Hero />
-		// 	<Section />
-		// 	<Details />
-		// </>
 	);
 }

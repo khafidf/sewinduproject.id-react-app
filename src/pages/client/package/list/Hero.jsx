@@ -14,12 +14,12 @@ export const Hero = () => {
 							Discover Our Exclusive Packages
 						</Typography>
 						<Typography
-							color="blue-gray"
-							className="mt-1 text-xs text-right opacity-75 md:text-sm lg:text-base"
+							color="gray"
+							className="mt-1 text-xs text-right md:text-sm lg:text-base"
 						>
 							Explore Our Exclusive Service Packages
 						</Typography>
-						<Typography color="blue-gray" className="text-xs opacity-40">
+						<Typography color="blue-gray" className="text-xs opacity-70">
 							by Sewindu Project.
 						</Typography>
 					</div>

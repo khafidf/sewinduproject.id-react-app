@@ -11,11 +11,11 @@ import toRupiah from "@develoka/angka-rupiah-js";
 
 export const CardPackage = ({ name, price, id, photoUrl, desc }) => {
 	return (
-		<Card className="w-full max-w-[20rem] mx-auto">
+		<Card className="w-full rounded-none max-w-[20rem] mx-auto">
 			<CardHeader
 				shadow={false}
 				floated={false}
-				className="h-screen mx-auto max-h-[7rem] w-full max-w-[16.5rem]"
+				className="h-screen rounded-none mx-auto max-h-[7rem] w-full max-w-[16.5rem]"
 			>
 				<img
 					src={photoUrl}
@@ -39,7 +39,7 @@ export const CardPackage = ({ name, price, id, photoUrl, desc }) => {
 				<div className="min-w-[16rem] min-h-[4rem]">
 					<Typography
 						variant="small"
-						color="gray"
+						color="blue-gray"
 						className="font-normal opacity-75"
 					>
 						{desc}
@@ -47,14 +47,10 @@ export const CardPackage = ({ name, price, id, photoUrl, desc }) => {
 				</div>
 			</CardBody>
 			<CardFooter className="flex gap-5 pt-0 pb-4">
-				<Button
-					size="sm"
-					fullWidth={true}
-					className="px-1 py-2 duration-100 bg-gray-900shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
-				>
+				<Button size="sm" variant="filled" color="gray" fullWidth>
 					<Link to={`/package/${id}`}>Details</Link>
 				</Button>
-				<Button size="sm" fullWidth={true} variant="text" className="shadow-md">
+				<Button size="sm" variant="filled" color="blue-gray" fullWidth>
 					Booking
 				</Button>
 			</CardFooter>

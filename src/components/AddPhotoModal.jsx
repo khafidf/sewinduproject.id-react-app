@@ -158,7 +158,8 @@ export const AddPhotoModal = ({ refetchPhoto, refetchCategory }) => {
 								variant="standard"
 								label="Photo"
 								size="lg"
-								className="text-sm file:mr-5 file:py-1 file:px-3 file:border-none file:text-xs file:bg-gray-200 file:text-blue-gray-900 hover:file:cursor-pointer hover:file:bg-gray-900 hover:file:text-blue-gray-50"
+								color="blue-gray"
+								className="text-sm file:mr-5 file:py-1 file:px-3 file:border-none file:text-xs file:bg-secondary/20 file:text-secondary hover:file:cursor-pointer hover:file:bg-secondary hover:file:text-primary"
 								type="file"
 								name="photo"
 								accept="image/png, image/jpeg"
@@ -168,6 +169,7 @@ export const AddPhotoModal = ({ refetchPhoto, refetchCategory }) => {
 							<Select
 								label="Select Category"
 								variant="standard"
+								color="blue-gray"
 								name="category"
 								value={photoData.category}
 								onChange={handleSelectChange}
@@ -183,6 +185,7 @@ export const AddPhotoModal = ({ refetchPhoto, refetchCategory }) => {
 								variant="standard"
 								label="Description"
 								size="lg"
+								color="blue-gray"
 								type="text"
 								name="desc"
 								value={photoData.desc}

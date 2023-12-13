@@ -29,21 +29,16 @@ export const Section = () => {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
 
-	// MockData:
-	// category: string;
-	// desc: string;
-	// photoUrl: string;
-	// photoName: string;
-	// price: string;
-
 	return (
 		<div className="w-full">
 			<div className="container p-2 mx-auto">
-				<div className="pb-4 border-b-2 border-gray-900">
+				<div className="pb-4 border-b-2 border-secondary">
 					{!categoryLoading && (
 						<Select
 							label="Select Category"
 							variant="outlined"
+							color="blue-gray"
+							className="rounded-none"
 							value={category}
 							onChange={changeHandler}
 						>

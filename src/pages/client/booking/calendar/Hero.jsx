@@ -61,11 +61,11 @@ export const Hero = () => {
 				<div className="flex justify-around w-full mt-2 md:justify-evenly lg:px-20 xl:px-24">
 					<div className="flex gap-6">
 						<FaAnglesLeft
-							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10"
+							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10 text-secondary"
 							onClick={handlePreviousYear}
 						/>
 						<FaAngleLeft
-							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10"
+							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10 text-secondary"
 							onClick={handlePreviousMonth}
 						/>
 					</div>
@@ -77,17 +77,17 @@ export const Hero = () => {
 						}`}
 					>
 						<FaArrowsRotate
-							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10"
+							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10 text-secondary"
 							onClick={handleToday}
 						/>
 					</div>
 					<div className="flex gap-6">
 						<FaAngleRight
-							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10"
+							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10 text-secondary"
 							onClick={handleNextMonth}
 						/>
 						<FaAnglesRight
-							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10"
+							className="w-6 h-auto cursor-pointer sm:w-7 md:w-8 lg:w-9 xl:w-10 text-secondary"
 							onClick={handleNextYear}
 						/>
 					</div>
