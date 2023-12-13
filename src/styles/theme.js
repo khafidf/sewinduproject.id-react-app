@@ -77,6 +77,47 @@ export const theme = {
 			},
 		},
 	},
+	card: {
+		defaultProps: {
+			variant: "filled",
+			color: "white",
+			shadow: true,
+			className: "",
+		},
+		valid: {
+			variants: ["filled", "gradient"],
+			colors: [
+				"transparent",
+				"white",
+				"blue-gray",
+				"gray",
+				"brown",
+				"deep-orange",
+				"orange",
+				"amber",
+				"yellow",
+				"lime",
+				"light-green",
+				"green",
+				"teal",
+				"cyan",
+				"light-blue",
+				"blue",
+				"indigo",
+				"deep-purple",
+				"purple",
+				"pink",
+				"red",
+			],
+		},
+		styles: {
+			base: {
+				initial: {
+					borderRadius: "rounded-none",
+				},
+			},
+		},
+	},
 	cardFooter: {
 		styles: {
 			base: {
@@ -365,6 +406,15 @@ export const theme = {
 						color:
 							"hover:text-secondary focus:text-secondary active:text-secondary",
 					},
+				},
+			},
+		},
+	},
+	alert: {
+		styles: {
+			base: {
+				alert: {
+					borderRadius: "rounded-none",
 				},
 			},
 		},

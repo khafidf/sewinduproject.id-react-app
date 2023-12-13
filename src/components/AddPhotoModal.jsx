@@ -125,8 +125,10 @@ export const AddPhotoModal = ({ refetchPhoto, refetchCategory }) => {
 			<div className="flex items-center justify-center">
 				<Button
 					size="sm"
+					variant="filled"
+					color="blue-gray"
 					onClick={handleOpenModal}
-					className="flex gap-4 duration-100 bg-gray-900 shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
+					className="flex gap-2"
 				>
 					<FaPlus size={14} /> Add photo
 				</Button>
@@ -193,7 +195,12 @@ export const AddPhotoModal = ({ refetchPhoto, refetchCategory }) => {
 							/>
 						</CardBody>
 						<CardFooter className="pt-0">
-							<Button variant="gradient" type="submit" fullWidth>
+							<Button
+								variant="filled"
+								color="blue-gray"
+								type="submit"
+								fullWidth
+							>
 								Post Photo
 							</Button>
 						</CardFooter>

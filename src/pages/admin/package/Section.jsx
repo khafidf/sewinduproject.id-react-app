@@ -17,6 +17,8 @@ import { EditPackageModal } from "../../../components/EditPackageModal";
 import { AlertComponent } from "../../../components/Alert";
 import { AddPackageModal } from "../../../components/AddPackageModal";
 import toRupiah from "@develoka/angka-rupiah-js";
+import { useSelector } from "react-redux";
+import { sidebarSelector } from "../../../redux/slice/sidebarSlice";
 
 export const Section = () => {
 	const [category, setCategory] = useState("");
@@ -26,6 +28,8 @@ export const Section = () => {
 		message: "",
 		type: "",
 	});
+
+	const openSidebar = useSelector(sidebarSelector);
 
 	const [deletePackage] = useDeletePackageMutation();
 	const {
@@ -108,13 +112,19 @@ export const Section = () => {
 	];
 
 	return (
-		<div>
-			<div className="flex justify-between">
-				<div className="pb-4 mx-2 w-[50%]">
+		<div
+			className={`absolute top-4 right-5 z-0 duration-300 shadow-lg p-4 shadow-secondary/40 bg-primary text-secondary h-[calc(100vh-9.2vh)] max-w-[calc(100vw-6.5rem)] ${
+				openSidebar ? "w-[calc(100vw-24rem)]" : "w-full"
+			}`}
+		>
+			<div className="flex justify-between pb-2">
+				<div className="w-[50%]">
 					{!categoryLoading && (
 						<Select
 							label="Select Category"
 							variant="outlined"
+							color="blue-gray"
+							className="rounded-none"
 							value={category}
 							onChange={changeHandler}
 						>
@@ -135,17 +145,17 @@ export const Section = () => {
 				/>
 			</div>
 			<Card className="w-full h-[calc(100vh-19.3vh)] overflow-scroll">
-				<table className="w-full text-left table-auto min-w-max">
+				<table className="w-full table-auto min-w-max">
 					<thead className="sticky top-0 z-40">
 						<tr>
 							{TABLE_HEAD.map((head) => (
 								<th
 									key={head}
-									className="p-4 border-b border-blue-gray-100 bg-blue-gray-50"
+									className="p-4 mx-auto text-center border-b border-secondary/10 bg-secondary"
 								>
 									<Typography
 										variant="small"
-										color="blue-gray"
+										color="white"
 										className="font-normal leading-none opacity-70"
 									>
 										{head}
@@ -171,11 +181,11 @@ export const Section = () => {
 									const isLast = index === packages.length - 1;
 									const classes = isLast
 										? "p-4"
-										: "p-4 border-b border-blue-gray-50";
+										: "p-4 border-b border-blue-primary";
 									if (index < 15) {
 										return (
 											<tr key={index}>
-												<td className={classes}>
+												<td className={`${classes} text-center`}>
 													<Typography
 														variant="small"
 														color="blue-gray"
@@ -184,7 +194,7 @@ export const Section = () => {
 														{index + 1}
 													</Typography>
 												</td>
-												<td className={classes}>
+												<td className={`${classes} text-center`}>
 													<Avatar
 														src={photoUrl}
 														size="xl"
@@ -192,7 +202,7 @@ export const Section = () => {
 														variant="square"
 													/>
 												</td>
-												<td className={classes}>
+												<td className={`${classes} text-center`}>
 													<Typography
 														variant="small"
 														color="blue-gray"
@@ -201,7 +211,7 @@ export const Section = () => {
 														{name}
 													</Typography>
 												</td>
-												<td className={classes}>
+												<td className={`${classes} text-center`}>
 													<Typography
 														variant="small"
 														color="blue-gray"
@@ -219,7 +229,7 @@ export const Section = () => {
 														{desc}
 													</Typography>
 												</td>
-												<td className={classes}>
+												<td className={`${classes} text-center`}>
 													<Typography
 														variant="small"
 														color="blue-gray"
@@ -232,7 +242,7 @@ export const Section = () => {
 														})}
 													</Typography>
 												</td>
-												<td className={classes}>
+												<td className={`${classes} text-center`}>
 													<Typography
 														variant="small"
 														color="blue-gray"
@@ -241,8 +251,8 @@ export const Section = () => {
 														{hour}
 													</Typography>
 												</td>
-												<td className={classes}>
-													<div className="flex gap-2">
+												<td className={`${classes}`}>
+													<div className="flex justify-center gap-2">
 														<EditPackageModal
 															name={name}
 															category={category}

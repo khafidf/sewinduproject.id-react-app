@@ -135,8 +135,10 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 			<div className="flex items-center justify-center">
 				<Button
 					size="sm"
+					variant="filled"
+					color="blue-gray"
 					onClick={handleOpenModal}
-					className="flex gap-4 duration-100 bg-gray-900 rounded-none shadow-md text-blue-gray-50 hover:shadow-gray-400 hover:text-blue-gray-900 hover:bg-gray-50"
+					className="flex gap-2"
 				>
 					<FaPlus size={14} /> Add package
 				</Button>
@@ -168,7 +170,8 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 								variant="standard"
 								label="Photo"
 								size="lg"
-								className="text-sm file:mr-5 file:py-1 file:px-3 file:border-none file:text-xs file:bg-gray-200 file:text-blue-gray-900 hover:file:cursor-pointer hover:file:bg-gray-900 hover:file:text-blue-gray-50"
+								color="blue-gray"
+								className="text-sm file:mr-5 file:py-1 file:px-3 file:border-none file:text-xs file:bg-secondary/20 file:text-secondary hover:file:cursor-pointer hover:file:bg-secondary hover:file:text-primary"
 								type="file"
 								name="photo"
 								accept="image/png, image/jpeg"
@@ -179,6 +182,7 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 								variant="standard"
 								label="Package Name"
 								size="lg"
+								color="blue-gray"
 								type="text"
 								name="name"
 								value={packageData.name}
@@ -188,6 +192,7 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 							<Select
 								label="Select Category"
 								variant="standard"
+								color="blue-gray"
 								name="category"
 								value={packageData.category}
 								onChange={handleSelectChange}
@@ -203,6 +208,7 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 								variant="standard"
 								label="Description"
 								size="lg"
+								color="blue-gray"
 								type="text"
 								name="desc"
 								value={packageData.desc}
@@ -213,6 +219,7 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 								variant="standard"
 								label="Price"
 								size="lg"
+								color="blue-gray"
 								type="text"
 								name="price"
 								value={packageData.price}
@@ -223,6 +230,7 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 								variant="standard"
 								label="Hour"
 								size="lg"
+								color="blue-gray"
 								type="text"
 								name="hour"
 								value={packageData.hour}
@@ -230,7 +238,12 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 							/>
 						</CardBody>
 						<CardFooter className="pt-0">
-							<Button variant="gradient" type="submit" fullWidth>
+							<Button
+								variant="filled"
+								color="blue-gray"
+								type="submit"
+								fullWidth
+							>
 								Post Package
 							</Button>
 						</CardFooter>
