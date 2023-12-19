@@ -168,64 +168,63 @@ export const Section = () => {
 								const classes = isLast
 									? "p-4"
 									: "p-4 border-b border-blue-gray-50";
-								if (index < 15) {
-									return (
-										<tr key={index}>
-											<td className={classes}>
-												<Typography
-													variant="small"
-													color="blue-gray"
-													className="font-normal"
-												>
-													{index + 1}
-												</Typography>
-											</td>
-											<td className={classes}>
-												<Avatar
-													src={photoUrl}
-													size="xl"
-													alt="avatar"
-													variant="square"
+
+								return (
+									<tr key={index}>
+										<td className={classes}>
+											<Typography
+												variant="small"
+												color="blue-gray"
+												className="font-normal"
+											>
+												{index + 1}
+											</Typography>
+										</td>
+										<td className={classes}>
+											<Avatar
+												src={photoUrl}
+												size="xl"
+												alt="avatar"
+												variant="square"
+											/>
+										</td>
+										<td className={classes}>
+											<Typography
+												variant="small"
+												color="blue-gray"
+												className="font-normal"
+											>
+												{capitalize(category)}
+											</Typography>
+										</td>
+										<td className={classes}>
+											<Typography
+												variant="small"
+												color="blue-gray"
+												className="font-normal"
+											>
+												{desc}
+											</Typography>
+										</td>
+										<td className={classes}>
+											<div className="flex justify-center gap-2">
+												<EditPhotoModal
+													category={category}
+													desc={desc}
+													id={_id}
+													refetchPhoto={refetchPhoto}
 												/>
-											</td>
-											<td className={classes}>
-												<Typography
-													variant="small"
-													color="blue-gray"
-													className="font-normal"
-												>
-													{capitalize(category)}
-												</Typography>
-											</td>
-											<td className={classes}>
-												<Typography
-													variant="small"
-													color="blue-gray"
-													className="font-normal"
-												>
-													{desc}
-												</Typography>
-											</td>
-											<td className={classes}>
-												<div className="flex justify-center gap-2">
-													<EditPhotoModal
-														category={category}
-														desc={desc}
-														id={_id}
-														refetchPhoto={refetchPhoto}
-													/>
-													<FaRegTrashCan
-														onClick={() => {
-															handleDelete(_id);
-														}}
-														className="cursor-pointer"
-														size={14}
-													/>
-												</div>
-											</td>
-										</tr>
-									);
-								}
+												<FaRegTrashCan
+													onClick={() => {
+														handleDelete(_id);
+													}}
+													className="cursor-pointer"
+													size={14}
+												/>
+											</div>
+										</td>
+									</tr>
+								);
 							})}
 						</tbody>
 					) : (

@@ -32,8 +32,6 @@ export const Sidebar = () => {
 	const openSidebar = useSelector(sidebarSelector);
 	const dispatch = useDispatch();
 
-	console.log(openSidebar);
-
 	const navigate = useNavigate();
 
 	const [logout] = useLogoutMutation();
@@ -133,7 +131,7 @@ export const Sidebar = () => {
 					</ListItem>
 					<hr
 						className={`my-2 border-blue-primary ${`duration-300 ${
-							!openSidebar && "w-11"
+							!openSidebar && "w-8 mx-[.375rem]"
 						}`} ${open !== 1 && "hidden"}`}
 					/>
 					<AccordionBody className={`${!openSidebar && "pl-0 py-0"}`}>
@@ -188,7 +186,7 @@ export const Sidebar = () => {
 				</Accordion>
 				<hr
 					className={`my-2 border-blue-primary ${`duration-300 ${
-						!openSidebar && "w-11"
+						!openSidebar && "w-8 mx-[.375rem]"
 					}`}`}
 				/>
 				<ListItem className={`duration-300 ${!openSidebar && "w-11"}`}>
@@ -222,13 +220,15 @@ export const Sidebar = () => {
 				</ListItem>
 			</List>
 			<div className="absolute -translate-x-1/2 bottom-4 left-1/2">
-				<FaChevronDown
-					onClick={openSidebarHandler}
-					size={16}
-					className={`mx-auto transition-transform duration-300 cursor-pointer ${
-						openSidebar ? "rotate-90" : "-rotate-90"
-					}`}
-				/>
+				<div className="p-2 bg-secondary/5">
+					<FaChevronDown
+						onClick={openSidebarHandler}
+						size={16}
+						className={`mx-auto transition-transform duration-300 cursor-pointer ${
+							openSidebar ? "rotate-90" : "-rotate-90"
+						}`}
+					/>
+				</div>
 			</div>
 		</Card>
 	);

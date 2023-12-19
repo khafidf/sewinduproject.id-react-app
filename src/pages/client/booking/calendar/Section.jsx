@@ -8,57 +8,50 @@ import {
 	endOfWeek,
 	addDays,
 	isSameMonth,
+	isAfter,
+	isBefore,
 } from "date-fns";
 import { Typography } from "@material-tailwind/react";
 import { useSelector, useDispatch } from "react-redux";
 import { dateSelector } from "../../../../redux/slice/calendarSlice";
-import { FaGripLinesVertical } from "react-icons/fa6";
+import { FaCircle, FaGripLinesVertical } from "react-icons/fa6";
 import {
 	openAccordionSelector,
 	dateAccordionSelector,
 	setCloseAccordionSection,
 	setOpenAccordionSection,
 } from "../../../../redux/slice/accordionSlice";
+import { useAllBookingQuery } from "../../../../redux/api/booking/bookingSlice";
 
 export const Section = () => {
 	const openData = useSelector(openAccordionSelector);
 	const dateData = useSelector(dateAccordionSelector);
 	const currentMonth = useSelector(dateSelector);
 	const dispatch = useDispatch();
-
 	const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
 	const startOfMonthDate = startOfMonth(currentMonth);
 	const endOfMonthDate = endOfMonth(currentMonth);
-
 	const dateStart = startOfWeek(startOfMonthDate, {
 		weekStartsOn: 0,
 	});
-
 	const dateEnd = endOfWeek(endOfMonthDate, {
 		weekStartsOn: 0,
 	});
-
 	const prevDates = [];
 	const dates = [];
 	const nextDates = [];
-
 	const totalDates = [];
-
 	let date = dateStart;
-
 	const prevMonth = new Date(
 		currentMonth.getFullYear(),
 		currentMonth.getMonth() - 1,
 		1
 	);
-
 	const nextMonth = new Date(
 		currentMonth.getFullYear(),
 		currentMonth.getMonth() + 1,
 		1
 	);
-
 	while (date <= dateEnd) {
 		totalDates.push(date);
 		isSameMonth(date, prevMonth)
@@ -69,10 +62,16 @@ export const Section = () => {
 		date = addDays(date, 1);
 	}
 
+	const { data: scheduleData, isLoading } = useAllBookingQuery();
+
+	// const hour = new Date("2023-12-02");
+	// const hour = new Date("12-02-2023 13:24").getHours();
+	// const minute = new Date("12-02-2023 13:24").getMinutes();
+	// console.log(`${hour}:${minute}`);
 	// console.log(
-	// 	totalDates.map((date) => isSameDay(date, new Date("03/27/2024")))
+	// 	totalDates.map((date) => isSameDay(date, new Date("03-27-2024")))
 	// );
-	// console.log(new Date("12/02/2023 13:24")); => bulan/tanggal/tahun jam:menit
+	// console.log(new Date("12/02/2023 13:24")); => bulan-tanggal-tahun jam:menit
 
 	return (
 		<div className="w-full">
@@ -88,46 +87,76 @@ export const Section = () => {
 							totalDates.length == 35 ? "max-h-[28rem]" : "max-h-[32.63rem]"
 						} gap-2`}
 					>
-						{days.map((day) => (
+						{days.map((dayCalendar) => (
 							<div
-								key={day}
+								key={dayCalendar}
 								className="flex flex-col items-center font-bold text-center border-b-2 cursor-default"
 							>
 								<FaGripLinesVertical size={18} className="relative -top-3" />
-								{day}
+								{dayCalendar}
 							</div>
 						))}
-						{prevDates.map((day, index) => (
+						{prevDates.map((dayCalendar, index) => (
 							<div
 								key={index}
 								className="flex items-center justify-center p-2 text-center border-b-2 bg-secondary/20 text-secondary/70"
 							>
-								<span>{format(day, "d")}</span>
+								<span>{format(dayCalendar, "d")}</span>
 							</div>
 						))}
-						{dates.map((day, index) => (
+						{dates.map((dayCalendar, index) => (
 							<div
 								key={index}
-								className={`flex justify-center cursor-pointer border-b-2 items-center p-2 text-center ${
-									isSameDay(day, new Date()) ? "bg-blue-200" : ""
+								className={`flex relative justify-center cursor-pointer border-b-2 items-center p-2 text-center ${
+									isSameDay(dayCalendar, new Date())
+										? "bg-secondary/70 text-primary"
+										: ""
 								}`}
 								onClick={() => {
-									if (openData === 0 || !isSameDay(day, dateData)) {
-										dispatch(setOpenAccordionSection({ open: 1, date: day }));
+									if (openData === 0 || !isSameDay(dayCalendar, dateData)) {
+										dispatch(
+											setOpenAccordionSection({ open: 1, date: dayCalendar })
+										);
 									} else {
-										dispatch(setCloseAccordionSection({ date: day }));
+										dispatch(setCloseAccordionSection({ date: dayCalendar }));
 									}
 								}}
 							>
-								<span>{format(day, "d")}</span>
+								{!isLoading &&
+									scheduleData?.data.map(({ date }, index) => {
+										const { day } = date;
+										const dateCurrent = new Date(day);
+
+										const isDateBefore = isBefore(dateCurrent, new Date());
+										const isDateAfter = isAfter(dateCurrent, new Date());
+										const isDateSame = isSameDay(dateCurrent, new Date());
+
+										const colorType = isDateSame
+											? "blue"
+											: isDateAfter
+											? "red"
+											: isDateBefore && "green";
+
+										return (
+											isSameDay(dateCurrent, dayCalendar) && (
+												<FaCircle
+													key={index}
+													className="absolute -right-0.5 -top-0.5"
+													size={8}
+													color={colorType}
+												/>
+											)
+										);
+									})}
+								<span>{format(dayCalendar, "d")}</span>
 							</div>
 						))}
-						{nextDates.map((day, index) => (
+						{nextDates.map((dayCalendar, index) => (
 							<div
 								key={index}
 								className="flex items-center justify-center p-2 text-center border-b-2 bg-secondary/20 text-secondary/70"
 							>
-								<span>{format(day, "d")}</span>
+								<span>{format(dayCalendar, "d")}</span>
 							</div>
 						))}
 					</div>
@@ -136,3 +165,87 @@ export const Section = () => {
 		</div>
 	);
 };
+
+// Form untuk create transaction
+// const initialOrder = {
+// 	userId: "",
+// 	packageId: "",
+// 	day: "",
+// 	time: "",
+// };
+
+// const [orders, setOrders] = useState([initialOrder]);
+
+// const handleInputChange = (index, event) => {
+// 	const { name, value } = event.target;
+// 	const newOrders = [...orders];
+// 	newOrders[index][name] = value;
+// 	setOrders(newOrders);
+// };
+
+// const handleAddOrder = () => {
+// 	setOrders([...orders, initialOrder]);
+// };
+
+// const handleRemoveOrder = (index) => {
+// 	if (orders.length > 1) {
+// 		const newOrders = orders.filter((_, i) => i !== index);
+// 		setOrders(newOrders);
+// 	}
+// };
+
+// const handleSubmit = (event) => {
+// 	event.preventDefault();
+
+// 	console.log(orders);
+// };
+
+// return (
+// 	<div>
+// 		<form onSubmit={handleSubmit}>
+// 			{orders.map((order, index) => (
+// 				<div key={index}>
+// 					<input
+// 						type="text"
+// 						name="userId"
+// 						value={order.userId}
+// 						onChange={(e) => handleInputChange(index, e)}
+// 						placeholder="User ID"
+// 					/>
+// 					<input
+// 						type="text"
+// 						name="packageId"
+// 						value={order.packageId}
+// 						onChange={(e) => handleInputChange(index, e)}
+// 						placeholder="Package ID"
+// 					/>
+// 					<input
+// 						type="text"
+// 						name="day"
+// 						value={order.day}
+// 						onChange={(e) => handleInputChange(index, e)}
+// 						placeholder="Day"
+// 					/>
+// 					<input
+// 						type="text"
+// 						name="time"
+// 						value={order.time}
+// 						onChange={(e) => handleInputChange(index, e)}
+// 						placeholder="Time"
+// 					/>
+// 					{orders.length > 1 && (
+// 						<button type="button" onClick={() => handleRemoveOrder(index)}>
+// 							Remove Order
+// 						</button>
+// 					)}
+// 				</div>
+// 			))}
+
+// 			<button type="button" onClick={handleAddOrder}>
+// 				Add New Order
+// 			</button>
+
+// 			<button type="submit">Submit All Orders</button>
+// 		</form>
+// 	</div>
+// );

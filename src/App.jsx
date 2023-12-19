@@ -8,6 +8,7 @@ const Layout = lazy(() => import("./Layout/Layout"));
 const LayoutAdmin = lazy(() => import("./Layout/LayoutAdmin"));
 
 const SplashScreen = lazy(() => import("./components/SplashScreen"));
+const PageNotFound = lazy(() => import("./components/PageNotFound"));
 
 const HomePage = lazy(() => import("./pages/client/home"));
 const GalleryPage = lazy(() => import("./pages/client/gallery"));
@@ -70,7 +71,7 @@ export default function App() {
 						<Route path="package" element={<PackageAdmin />} />
 					</Route>
 				</Route>
-				<Route path="*" element={<div>Ilank</div>} />
+				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 		</Suspense>
 	);

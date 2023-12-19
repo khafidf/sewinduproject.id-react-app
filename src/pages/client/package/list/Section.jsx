@@ -54,22 +54,22 @@ export const Section = () => {
 				</div>
 				{!packageLoading ? (
 					packages.length > 0 ? (
-						<div className="flex pt-4">
+						<div className="flex min-h-[50vh] pt-4">
 							<div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 								{packages.map((item, index) => {
-									if (index < 14) {
-										return (
-											<div className="w-full" key={index}>
-												<CardPackage
-													name={item.name}
-													price={item.price}
-													id={item._id}
-													photoUrl={item.photoUrl}
-													desc={item.desc}
-												/>
-											</div>
-										);
-									}
+									// if (index < 14) {
+									return (
+										<div className="w-full" key={index}>
+											<CardPackage
+												name={item.name}
+												price={item.price}
+												id={item._id}
+												photoUrl={item.photoUrl}
+												desc={item.desc}
+											/>
+										</div>
+									);
+									// }
 								})}
 							</div>
 						</div>

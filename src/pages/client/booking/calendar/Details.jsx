@@ -5,6 +5,8 @@ import {
 	AccordionBody,
 	List,
 	ListItem,
+	Typography,
+	Spinner,
 } from "@material-tailwind/react";
 import { useSelector, useDispatch } from "react-redux";
 import { format } from "date-fns";
@@ -15,6 +17,7 @@ import {
 	setOpenAccordion,
 } from "../../../../redux/slice/accordionSlice";
 import { FaAngleDown } from "react-icons/fa6";
+import { useBookingByDayQuery } from "../../../../redux/api/booking/bookingSlice";
 
 export const Details = () => {
 	const openData = useSelector(openAccordionSelector);
@@ -25,6 +28,15 @@ export const Details = () => {
 		mount: { scale: 1 },
 		unmount: { scale: 0.9 },
 	};
+
+	const dateParams = format(dateData, "yyyy-MM-dd");
+	const { data: bookingData, isLoading } = useBookingByDayQuery(dateParams);
+
+	const capitalize = (str) => {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	};
+
+	// const dateNow = format(dateData, "yyyy-MM-dd"); return 2023-01-02
 
 	return (
 		<div className="w-full">
@@ -48,11 +60,34 @@ export const Details = () => {
 						Booking Details ({format(dateData, "MMMM d, yyyy")}) :
 					</AccordionHeader>
 					<AccordionBody>
-						<List>
-							<ListItem>Inbox</ListItem>
-							<ListItem>Trash</ListItem>
-							<ListItem>Settings</ListItem>
-						</List>
+						{!isLoading ? (
+							bookingData?.data.length !== 0 ? (
+								<List>
+									{bookingData?.data.map(
+										({ packageName, categoryName, date }, index) => (
+											<ListItem key={index} className="flex justify-between">
+												<Typography variant="paragraph" color="blue-gray">
+													{packageName} ({capitalize(categoryName)})
+												</Typography>
+												<Typography variant="paragraph" color="blue-gray">
+													{date.time[0]} - {date.time[1]}
+												</Typography>
+											</ListItem>
+										)
+									)}
+								</List>
+							) : (
+								<div className="flex justify-center text-center">
+									<Typography variant="h5" color="blue-gray">
+										Date available, Booking Now!
+									</Typography>
+								</div>
+							)
+						) : (
+							<div className="flex justify-center">
+								<Spinner />
+							</div>
+						)}
 					</AccordionBody>
 				</Accordion>
 			</div>

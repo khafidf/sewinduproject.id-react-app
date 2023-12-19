@@ -61,9 +61,9 @@ export const Section = () => {
 				</div>
 				{!photoLoading ? (
 					photos.length > 0 ? (
-						<div className="flex pt-4 mx-auto">
+						<div className="flex pt-4 min-h-[50vh] mx-auto">
 							<div className=" mx-auto columns-1 md:columns-2 gap-5 lg:columns-3 xl:columns-4 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-5">
-								{photos.slice(0, 14).map((item, index) => (
+								{photos.map((item, index) => (
 									<div
 										className="relative flex w-[320px] sm:w-full group"
 										key={index}

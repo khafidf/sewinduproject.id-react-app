@@ -6,8 +6,10 @@ import {
 	Tab,
 	TabPanel,
 } from "@material-tailwind/react";
-import { Section } from "./calendar/Section";
-import { Hero } from "./calendar/Hero";
+import { Section as SectionCalendar } from "./calendar/Section";
+import { Section as SectionOrder } from "./order/Section";
+import { Hero as HeroCalendar } from "./calendar/Hero";
+import { Hero as HeroOrder } from "./order/Hero";
 import { Details } from "./calendar/Details";
 import Cookies from "js-cookie";
 
@@ -19,8 +21,8 @@ export default function BookingPage() {
 			label: "Calendar",
 			element: (
 				<>
-					<Hero />
-					<Section />
+					<HeroCalendar />
+					<SectionCalendar />
 					<Details />
 				</>
 			),
@@ -30,7 +32,8 @@ export default function BookingPage() {
 			label: "Order History",
 			element: (
 				<>
-					<Hero />
+					<HeroOrder />
+					<SectionOrder />
 				</>
 			),
 		},
