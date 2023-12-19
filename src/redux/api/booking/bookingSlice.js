@@ -8,14 +8,11 @@ export const bookingApiSlice = apiSlice.injectEndpoints({
 		allBooking: builder.query({
 			query: () => "booking/schedule",
 		}),
-		bookingByUser: builder.query({
-			query: () => "booking/status-order",
+		history: builder.query({
+			query: () => "booking/history",
 		}),
 	}),
 });
 
-export const {
-	useBookingByDayQuery,
-	useAllBookingQuery,
-	useBookingByUserQuery,
-} = bookingApiSlice;
+export const { useBookingByDayQuery, useAllBookingQuery, useHistoryQuery } =
+	bookingApiSlice;

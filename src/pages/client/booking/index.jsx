@@ -11,9 +11,18 @@ import { Section as SectionOrder } from "./order/Section";
 import { Hero as HeroCalendar } from "./calendar/Hero";
 import { Hero as HeroOrder } from "./order/Hero";
 import { Details } from "./calendar/Details";
+import { useSelector } from "react-redux";
+
 import Cookies from "js-cookie";
+import {
+	selectRefetchCalendar,
+	selectRefetchHistory,
+} from "../../../redux/slice/bookingSlice";
 
 export default function BookingPage() {
+	const refetchCalendar = useSelector(selectRefetchCalendar);
+	const refetchHistory = useSelector(selectRefetchHistory);
+
 	const user = Cookies.get("user");
 	const data = [
 		{
@@ -41,12 +50,29 @@ export default function BookingPage() {
 
 	const tabsContent = user ? (
 		data.map(({ label, value }) => (
-			<Tab key={value} value={value}>
+			<Tab
+				key={value}
+				value={value}
+				onClick={() => {
+					if (value === "calendar") {
+						refetchCalendar();
+					}
+					if (value === "history") {
+						refetchHistory();
+					}
+				}}
+			>
 				{label}
 			</Tab>
 		))
 	) : (
-		<Tab key={data[0].value} value={data[0].value}>
+		<Tab
+			key={data[0].value}
+			value={data[0].value}
+			onClick={() => {
+				refetchCalendar();
+			}}
+		>
 			{data[0].label}
 		</Tab>
 	);

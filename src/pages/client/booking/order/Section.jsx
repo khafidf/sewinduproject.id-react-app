@@ -1,101 +1,48 @@
-import React from "react";
-import {
-	Card,
-	Typography,
-	CardBody,
-	Chip,
-	Avatar,
-} from "@material-tailwind/react";
-// import { useBookingByUserQuery } from "../../../../redux/api/booking/bookingSlice";
+import React, { useEffect } from "react";
+import { Card, Typography, CardBody, Chip } from "@material-tailwind/react";
+import toRupiah from "@develoka/angka-rupiah-js";
+import { useHistoryQuery } from "../../../../redux/api/booking/bookingSlice";
+import { useDispatch } from "react-redux";
+import { setRefetchHistory } from "../../../../redux/slice/bookingSlice";
 
 export const Section = () => {
+	const dispatch = useDispatch();
+
 	const TABLE_HEAD = [
 		"Package Name",
 		"Date Booking",
+		"Expire",
 		"Bank",
 		"Amount",
 		"Status",
 		"Action",
 	];
 
-	const TABLE_ROWS = [
-		{
-			img: "https://docs.material-tailwind.com/img/logos/logo-spotify.svg",
-			name: "Spotify",
-			amount: "$2,500",
-			date: "Wed 3:00pm",
-			status: "paid",
-			account: "visa",
-			accountNumber: "1234",
-			expiry: "06/2026",
-		},
-		{
-			img: "https://docs.material-tailwind.com/img/logos/logo-amazon.svg",
-			name: "Amazon",
-			amount: "$5,000",
-			date: "Wed 1:00pm",
-			status: "paid",
-			account: "master-card",
-			accountNumber: "1234",
-			expiry: "06/2026",
-		},
-		{
-			img: "https://docs.material-tailwind.com/img/logos/logo-pinterest.svg",
-			name: "Pinterest",
-			amount: "$3,400",
-			date: "Mon 7:40pm",
-			status: "pending",
-			account: "master-card",
-			accountNumber: "1234",
-			expiry: "06/2026",
-		},
-		{
-			img: "https://docs.material-tailwind.com/img/logos/logo-google.svg",
-			name: "Google",
-			amount: "$1,000",
-			date: "Wed 5:00pm",
-			status: "paid",
-			account: "visa",
-			accountNumber: "1234",
-			expiry: "06/2026",
-		},
-		{
-			img: "https://docs.material-tailwind.com/img/logos/logo-netflix.svg",
-			name: "netflix",
-			amount: "$14,000",
-			date: "Wed 3:30am",
-			status: "cancelled",
-			account: "visa",
-			accountNumber: "1234",
-			expiry: "06/2026",
-		},
-	];
+	const {
+		data: tableData,
+		isLoading,
+		refetch: refetchHistory,
+	} = useHistoryQuery();
 
-	// const { data: tabelData, isLoading } = useBookingByUserQuery();
-
-	// History = {
-	// 	packageName,
-	// 	Date Booking,
-	// 	Bank,
-	// 	Amount,
-	// 	Status
-	// }
+	useEffect(() => {
+		dispatch(setRefetchHistory(refetchHistory));
+	}, [dispatch, refetchHistory]);
 
 	return (
 		<Card className="w-full h-full">
-			<CardBody className="px-0 overflow-scroll">
+			<CardBody className="px-0 overflow-scroll min-h-[calc(100vh-50vh)]">
 				<table className="w-full text-left table-auto min-w-max">
 					<thead>
 						<tr>
 							{TABLE_HEAD.map((head) => (
 								<th
 									key={head}
-									className="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50"
+									className="p-4 border-y border-secondary/20 bg-secondary/5"
 								>
 									<Typography
 										variant="small"
 										color="blue-gray"
-										className="font-normal leading-none opacity-70"
+										className="font-normal leading-none text-center opacity-70"
 									>
 										{head}
 									</Typography>
@@ -104,123 +51,129 @@ export const Section = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{TABLE_ROWS.map(
-							(
-								{
-									img,
-									name,
-									amount,
-									date,
-									status,
-									account,
-									accountNumber,
-									expiry,
-								},
-								index
-							) => {
-								const isLast = index === TABLE_ROWS.length - 1;
-								const classes = isLast
-									? "p-4"
-									: "p-4 border-b border-blue-gray-50";
+						{!isLoading ? (
+							tableData?.data.map(
+								({
+									_id,
+									packageName,
+									categoryName,
+									created,
+									bank,
+									price,
+									statusOrder,
+									expire,
+								}) => {
+									const isLast =
+										_id === tableData?.data[tableData?.data.length - 1]._id;
+									const classes = isLast
+										? "p-4"
+										: "p-4 border-b p-4 border-blue-gray-50";
 
-								return (
-									<tr key={name}>
-										<td className={classes}>
-											<div className="flex items-center gap-3">
-												<Avatar
-													src={img}
-													alt={name}
-													size="md"
-													className="object-contain p-1 border border-blue-gray-50 bg-blue-gray-50/50"
-												/>
+									return (
+										<tr key={_id}>
+											<td className={classes}>
 												<Typography
 													variant="small"
 													color="blue-gray"
-													className="font-bold"
+													className="font-normal text-center"
 												>
-													name
+													{packageName.length === 2 ? (
+														<>
+															{packageName[0]} ({categoryName[0]}) <br />
+															{packageName[1]} ({categoryName[1]})
+														</>
+													) : (
+														<>
+															{packageName[0]} ({categoryName[0]})
+														</>
+													)}
 												</Typography>
-											</div>
-										</td>
-										<td className={classes}>
-											<Typography
-												variant="small"
-												color="blue-gray"
-												className="font-normal"
-											>
-												{amount}
-											</Typography>
-										</td>
-										<td className={classes}>
-											<Typography
-												variant="small"
-												color="blue-gray"
-												className="font-normal"
-											>
-												{date}
-											</Typography>
-										</td>
-										<td className={classes}>
-											<div className="w-max">
-												<Chip
-													size="sm"
-													variant="ghost"
-													value={status}
-													color={
-														status === "paid"
-															? "green"
-															: status === "pending"
-															? "amber"
-															: "red"
-													}
+											</td>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal text-center"
+												>
+													{created}
+												</Typography>
+											</td>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal text-center"
+												>
+													{expire}
+												</Typography>
+											</td>
+											<td className={`${classes} flex justify-center`}>
+												<img
+													src={`${bank}.svg`}
+													className="rounded"
+													width={64}
+													alt={bank}
 												/>
-											</div>
-										</td>
-										<td className={classes}>
-											<div className="flex items-center gap-3">
-												<div className="w-12 p-1 border rounded-md h-9 border-blue-gray-50">
-													<Avatar
-														src={
-															account === "visa"
-																? "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/visa.png"
-																: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/logos/mastercard.png"
-														}
+											</td>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal text-center"
+												>
+													{toRupiah(Number(price), {
+														formal: false,
+														dot: ",",
+														floatingPoint: 0,
+													})}
+												</Typography>
+											</td>
+											<td className={classes}>
+												<div className="mx-auto w-max">
+													<Chip
 														size="sm"
-														alt={account}
-														variant="square"
-														className="object-contain w-full h-full p-1"
+														className="rounded-none"
+														variant="ghost"
+														value={statusOrder}
+														color={
+															statusOrder === "settlement"
+																? "green"
+																: statusOrder === "pending"
+																? "amber"
+																: "red"
+														}
 													/>
 												</div>
-												<div className="flex flex-col">
-													<Typography
-														variant="small"
-														color="blue-gray"
-														className="font-normal capitalize"
-													>
-														{account.split("-").join(" ")} {accountNumber}
-													</Typography>
-													<Typography
-														variant="small"
-														color="blue-gray"
-														className="font-normal opacity-70"
-													>
-														{expiry}
-													</Typography>
+											</td>
+											<td className={classes}>
+												<div className="mx-auto w-max">
+													<Chip
+														size="sm"
+														variant="ghost"
+														className="rounded-none"
+														value="It's Action"
+														color={
+															statusOrder === "settlement"
+																? "green"
+																: statusOrder === "pending"
+																? "amber"
+																: "red"
+														}
+													/>
 												</div>
-											</div>
-										</td>
-										<td className={classes}>
-											<Typography
-												variant="small"
-												color="blue-gray"
-												className="font-normal"
-											>
-												{date}
-											</Typography>
-										</td>
-									</tr>
-								);
-							}
+											</td>
+										</tr>
+									);
+								}
+							)
+						) : (
+							<Typography
+								variant="h3"
+								color="blue-gray"
+								className="font-normal"
+							>
+								Data not Found
+							</Typography>
 						)}
 					</tbody>
 				</table>

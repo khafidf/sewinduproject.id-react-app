@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	format,
 	startOfMonth,
@@ -21,6 +21,7 @@ import {
 	setCloseAccordionSection,
 	setOpenAccordionSection,
 } from "../../../../redux/slice/accordionSlice";
+import { setRefetchCalendar } from "../../../../redux/slice/bookingSlice";
 import { useAllBookingQuery } from "../../../../redux/api/booking/bookingSlice";
 
 export const Section = () => {
@@ -62,7 +63,15 @@ export const Section = () => {
 		date = addDays(date, 1);
 	}
 
-	const { data: scheduleData, isLoading } = useAllBookingQuery();
+	const {
+		data: scheduleData,
+		isLoading,
+		refetch: refetchCalendar,
+	} = useAllBookingQuery();
+
+	useEffect(() => {
+		dispatch(setRefetchCalendar(refetchCalendar));
+	}, [dispatch, refetchCalendar]);
 
 	// const hour = new Date("2023-12-02");
 	// const hour = new Date("12-02-2023 13:24").getHours();
