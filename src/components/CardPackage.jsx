@@ -51,7 +51,7 @@ export const CardPackage = ({ name, price, id, photoUrl, desc }) => {
 					<Link to={`/package/${id}`}>Details</Link>
 				</Button>
 				<Button size="sm" variant="filled" color="blue-gray" fullWidth>
-					Booking
+					<Link to={"/booking-order"}>Booking</Link>
 				</Button>
 			</CardFooter>
 		</Card>

@@ -33,7 +33,7 @@ export const Hero = () => {
 						color="blue-gray"
 						className="mx-auto"
 					>
-						<Link to={"#"}>Book Now!</Link> {/* To page checkout */}
+						<Link to={"/booking-order"}>Book Now!</Link>
 					</Button>
 				</div>
 			</div>

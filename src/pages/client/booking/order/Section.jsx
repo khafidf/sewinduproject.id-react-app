@@ -4,6 +4,8 @@ import toRupiah from "@develoka/angka-rupiah-js";
 import { useHistoryQuery } from "../../../../redux/api/booking/bookingSlice";
 import { useDispatch } from "react-redux";
 import { setRefetchHistory } from "../../../../redux/slice/bookingSlice";
+import { PayOrder } from "../../../../components/PayOrder";
+import { FaSquareCheck, FaSquareXmark } from "react-icons/fa6";
 
 export const Section = () => {
 	const dispatch = useDispatch();
@@ -15,7 +17,7 @@ export const Section = () => {
 		"Bank",
 		"Amount",
 		"Status",
-		"Action",
+		"Pay",
 	];
 
 	const {
@@ -30,7 +32,7 @@ export const Section = () => {
 
 	return (
 		<Card className="w-full h-full">
-			<CardBody className="px-0 overflow-scroll min-h-[calc(100vh-50vh)]">
+			<CardBody className="px-0 overflow-scroll max-h-[calc(100vh-46vh)]">
 				<table className="w-full text-left table-auto min-w-max">
 					<thead>
 						<tr>
@@ -58,6 +60,7 @@ export const Section = () => {
 									packageName,
 									categoryName,
 									created,
+									orderId,
 									bank,
 									price,
 									statusOrder,
@@ -77,16 +80,12 @@ export const Section = () => {
 													color="blue-gray"
 													className="font-normal text-center"
 												>
-													{packageName.length === 2 ? (
-														<>
-															{packageName[0]} ({categoryName[0]}) <br />
-															{packageName[1]} ({categoryName[1]})
-														</>
-													) : (
-														<>
-															{packageName[0]} ({categoryName[0]})
-														</>
-													)}
+													{packageName.map((name, index) => (
+														<React.Fragment key={index}>
+															{index > 0 && <br />}{" "}
+															{`${name} (${categoryName[index]})`}
+														</React.Fragment>
+													))}
 												</Typography>
 											</td>
 											<td className={classes}>
@@ -147,19 +146,13 @@ export const Section = () => {
 											</td>
 											<td className={classes}>
 												<div className="mx-auto w-max">
-													<Chip
-														size="sm"
-														variant="ghost"
-														className="rounded-none"
-														value="It's Action"
-														color={
-															statusOrder === "settlement"
-																? "green"
-																: statusOrder === "pending"
-																? "amber"
-																: "red"
-														}
-													/>
+													{statusOrder === "pending" ? (
+														<PayOrder orderId={orderId} />
+													) : statusOrder === "settlement" ? (
+														<FaSquareCheck className="text-[#1b5e20]" />
+													) : (
+														<FaSquareXmark className="text-[#b71c1c]" />
+													)}
 												</div>
 											</td>
 										</tr>
@@ -167,13 +160,17 @@ export const Section = () => {
 								}
 							)
 						) : (
-							<Typography
-								variant="h3"
-								color="blue-gray"
-								className="font-normal"
-							>
-								Data not Found
-							</Typography>
+							<tr>
+								<td colSpan="7" className="text-center">
+									<Typography
+										variant="h3"
+										color="blue-gray"
+										className="font-normal"
+									>
+										Data not Found
+									</Typography>
+								</td>
+							</tr>
 						)}
 					</tbody>
 				</table>

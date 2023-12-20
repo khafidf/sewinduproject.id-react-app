@@ -57,7 +57,6 @@ export const Section = () => {
 						<div className="flex min-h-[50vh] pt-4">
 							<div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 								{packages.map((item, index) => {
-									// if (index < 14) {
 									return (
 										<div className="w-full" key={index}>
 											<CardPackage
@@ -69,7 +68,6 @@ export const Section = () => {
 											/>
 										</div>
 									);
-									// }
 								})}
 							</div>
 						</div>

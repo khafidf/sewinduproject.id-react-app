@@ -11,8 +11,23 @@ export const bookingApiSlice = apiSlice.injectEndpoints({
 		history: builder.query({
 			query: () => "booking/history",
 		}),
+		createTransaction: builder.mutation({
+			query: (transaction) => ({
+				url: "booking/create-transaction",
+				method: "POST",
+				body: transaction,
+			}),
+		}),
+		getOrder: builder.query({
+			query: (orderId) => `booking/pay-order/${orderId}`,
+		}),
 	}),
 });
 
-export const { useBookingByDayQuery, useAllBookingQuery, useHistoryQuery } =
-	bookingApiSlice;
+export const {
+	useBookingByDayQuery,
+	useAllBookingQuery,
+	useHistoryQuery,
+	useGetOrderQuery,
+	useCreateTransactionMutation,
+} = bookingApiSlice;

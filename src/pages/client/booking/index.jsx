@@ -18,6 +18,7 @@ import {
 	selectRefetchCalendar,
 	selectRefetchHistory,
 } from "../../../redux/slice/bookingSlice";
+import BookingNow from "./calendar/BookingNow";
 
 export default function BookingPage() {
 	const refetchCalendar = useSelector(selectRefetchCalendar);
@@ -33,6 +34,7 @@ export default function BookingPage() {
 					<HeroCalendar />
 					<SectionCalendar />
 					<Details />
+					<BookingNow />
 				</>
 			),
 		},

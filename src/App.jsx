@@ -20,6 +20,8 @@ const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 const GalleryAdmin = lazy(() => import("./pages/admin/gallery"));
 const PackageAdmin = lazy(() => import("./pages/admin/package"));
 
+const BookingOrder = lazy(() => import("./pages/client/bookingOrder"));
+
 export default function App() {
 	const [splash, setSplash] = useState(true);
 	const { pathname } = useLocation();
@@ -71,6 +73,7 @@ export default function App() {
 						<Route path="package" element={<PackageAdmin />} />
 					</Route>
 				</Route>
+				<Route path={`/booking-order`} element={<BookingOrder />} />
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 		</Suspense>
