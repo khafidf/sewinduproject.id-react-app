@@ -137,6 +137,7 @@ export const LoginModal = ({ openNav }) => {
 
 	const [openLogin, setOpenLogin] = useState(false);
 	const [show, setShow] = useState(false);
+	const [showConfirm, setShowConfirm] = useState(false);
 	const [action, setAction] = useState("login");
 	const [alert, setAlert] = useState({
 		open: false,
@@ -165,6 +166,7 @@ export const LoginModal = ({ openNav }) => {
 	const handleToRegister = () => setAction("register");
 	const handleToLogin = () => setAction("login");
 	const handleShow = () => setShow((cur) => !cur);
+	const handleShowConfirm = () => setShowConfirm((cur) => !cur);
 
 	return (
 		<>
@@ -331,6 +333,17 @@ export const LoginModal = ({ openNav }) => {
 								value={registerData.password}
 								name="password"
 								onChange={handleRegisterInput}
+								type={show ? `text` : `password`}
+								icon={
+									show ? (
+										<FaRegEyeSlash
+											className="cursor-pointer"
+											onClick={handleShow}
+										/>
+									) : (
+										<FaRegEye className="cursor-pointer" onClick={handleShow} />
+									)
+								}
 								required
 							/>
 							<Input
@@ -341,6 +354,20 @@ export const LoginModal = ({ openNav }) => {
 								value={registerData.confirmPassword}
 								name="confirmPassword"
 								onChange={handleRegisterInput}
+								type={showConfirm ? `text` : `password`}
+								icon={
+									showConfirm ? (
+										<FaRegEyeSlash
+											className="cursor-pointer"
+											onClick={handleShowConfirm}
+										/>
+									) : (
+										<FaRegEye
+											className="cursor-pointer"
+											onClick={handleShowConfirm}
+										/>
+									)
+								}
 								required
 							/>
 						</CardBody>

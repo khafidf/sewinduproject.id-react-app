@@ -19,6 +19,7 @@ const BookingPage = lazy(() => import("./pages/client/booking"));
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
 const GalleryAdmin = lazy(() => import("./pages/admin/gallery"));
 const PackageAdmin = lazy(() => import("./pages/admin/package"));
+const BookingAdmin = lazy(() => import("./pages/admin/booking"));
 
 const BookingOrder = lazy(() => import("./pages/client/bookingOrder"));
 
@@ -71,6 +72,7 @@ export default function App() {
 						<Route index element={<Dashboard />} />
 						<Route path="gallery" element={<GalleryAdmin />} />
 						<Route path="package" element={<PackageAdmin />} />
+						<Route path="booking" element={<BookingAdmin />} />
 					</Route>
 				</Route>
 				<Route path={`/booking-order`} element={<BookingOrder />} />

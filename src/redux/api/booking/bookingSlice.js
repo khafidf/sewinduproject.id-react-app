@@ -21,6 +21,9 @@ export const bookingApiSlice = apiSlice.injectEndpoints({
 		getOrder: builder.query({
 			query: (orderId) => `booking/pay-order/${orderId}`,
 		}),
+		getOrderAdmin: builder.query({
+			query: () => "booking/order",
+		}),
 	}),
 });
 
@@ -29,5 +32,6 @@ export const {
 	useAllBookingQuery,
 	useHistoryQuery,
 	useGetOrderQuery,
+	useGetOrderAdminQuery,
 	useCreateTransactionMutation,
 } = bookingApiSlice;

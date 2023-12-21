@@ -11,6 +11,7 @@ export const Section = () => {
 	const dispatch = useDispatch();
 
 	const TABLE_HEAD = [
+		"No",
 		"Package Name",
 		"Date Booking",
 		"Expire",
@@ -55,17 +56,20 @@ export const Section = () => {
 					<tbody>
 						{!isLoading ? (
 							tableData?.data.map(
-								({
-									_id,
-									packageName,
-									categoryName,
-									created,
-									orderId,
-									bank,
-									price,
-									statusOrder,
-									expire,
-								}) => {
+								(
+									{
+										_id,
+										packageName,
+										categoryName,
+										created,
+										orderId,
+										bank,
+										price,
+										statusOrder,
+										expire,
+									},
+									index
+								) => {
 									const isLast =
 										_id === tableData?.data[tableData?.data.length - 1]._id;
 									const classes = isLast
@@ -74,6 +78,15 @@ export const Section = () => {
 
 									return (
 										<tr key={_id}>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal text-center"
+												>
+													{index + 1}
+												</Typography>
+											</td>
 											<td className={classes}>
 												<Typography
 													variant="small"
@@ -161,11 +174,11 @@ export const Section = () => {
 							)
 						) : (
 							<tr>
-								<td colSpan="7" className="text-center">
+								<td colSpan="7">
 									<Typography
 										variant="h3"
 										color="blue-gray"
-										className="font-normal"
+										className="py-8 font-normal"
 									>
 										Data not Found
 									</Typography>
