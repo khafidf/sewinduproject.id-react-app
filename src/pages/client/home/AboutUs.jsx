@@ -27,7 +27,7 @@ export const AboutUs = () => {
 						</Typography>
 					</div>
 					<div className="absolute w-[60px] bottom-8 left-1/2 -translate-x-1/2 p-4 h-[60px] bg-primary shadow-lg">
-						<Link href="https://www.instagram.com/sewinduproject.id">
+						<Link to={"https://www.instagram.com/sewinduproject.id"}>
 							<FaInstagram
 								size={36}
 								className="absolute left-3 top-3 text-secondary"

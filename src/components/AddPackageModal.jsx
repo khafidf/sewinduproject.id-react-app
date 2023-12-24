@@ -202,6 +202,7 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 								<Option value="tedak sinten">Tedak Sinten</Option>
 								<Option value="graduation">Graduation</Option>
 								<Option value="birthday">Birthday</Option>
+								<Option value="custom">Custom</Option>
 							</Select>
 
 							<Input
@@ -222,7 +223,11 @@ export const AddPackageModal = ({ refetchPackage, refetchCategory }) => {
 								color="blue-gray"
 								type="text"
 								name="price"
-								value={packageData.price}
+								value={
+									packageData.category === "custom"
+										? "500000"
+										: packageData.price
+								}
 								onChange={handleInputChange}
 							/>
 

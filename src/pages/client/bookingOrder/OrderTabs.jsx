@@ -15,6 +15,7 @@ import Cookies from "js-cookie";
 import { LoginModal } from "../../../components/LoginModal";
 import { useNavigate } from "react-router-dom";
 import { useCreateTransactionMutation } from "../../../redux/api/booking/bookingSlice";
+import toRupiah from "@develoka/angka-rupiah-js";
 
 export default function OrderTabs() {
 	const user = Cookies.get("userId");
@@ -24,6 +25,7 @@ export default function OrderTabs() {
 	const [showPopup, setShowPopup] = useState(false);
 	const [bank, setBank] = useState("");
 	const [vaNumber, setVaNumber] = useState("");
+	const [totalPayment, setTotalPayment] = useState("");
 
 	const [tabs, setTabs] = useState([
 		{
@@ -37,9 +39,10 @@ export default function OrderTabs() {
 		provider: "",
 	});
 
-	const handleShowPopup = (vaNumber, bank) => {
+	const handleShowPopup = (vaNumber, amount, bank) => {
 		setVaNumber(vaNumber);
 		setBank(bank);
+		setTotalPayment(amount);
 		setShowPopup(true);
 	};
 
@@ -47,14 +50,20 @@ export default function OrderTabs() {
 		const newTabIndex = tabs.length;
 		const newTab = {
 			index: newTabIndex,
-			orders: [{ userId: "", packageId: "", day: "", time: ["", ""] }],
+			orders: [
+				{ userId: user, packageId: "", note: "", day: "", time: ["", ""] },
+			],
 		};
 		setTabs([...tabs, newTab]);
 	};
 
 	const removeTab = (indexToRemove) => {
 		const updatedTabs = tabs.filter((tab) => tab.index !== indexToRemove);
-		setTabs(updatedTabs);
+		const reindexTabs = updatedTabs.map((tab, index) => ({
+			...tab,
+			index,
+		}));
+		setTabs(reindexTabs);
 	};
 
 	const [createTransaction] = useCreateTransactionMutation();
@@ -69,10 +78,11 @@ export default function OrderTabs() {
 	};
 
 	const convertOrder = (order) => {
-		const [{ userId, packageId, day, time }] = order;
+		const [{ userId, packageId, note, day, time }] = order;
 		return {
 			userId,
 			packageId,
+			note,
 			date: {
 				day: format(day, "yyyy-MM-dd"),
 				time,
@@ -87,16 +97,17 @@ export default function OrderTabs() {
 		tabs.forEach((tab) => {
 			orders.push(convertOrder(tab.orders));
 		});
+
 		const response = await handleFormSubmit(orders, payment);
 		if (response.data) {
-			const { va_numbers } = response.data;
+			const { va_numbers, gross_amount } = response.data;
 
 			const virtualAccounts = va_numbers.map(({ va_number }) => va_number);
 			const bankAccounts = va_numbers.map(({ bank }) => bank);
 			const [va_number] = virtualAccounts;
 			const [bank] = bankAccounts;
 
-			handleShowPopup(va_number, bank);
+			handleShowPopup(va_number, gross_amount, bank);
 		}
 	};
 
@@ -149,6 +160,14 @@ export default function OrderTabs() {
 							<Typography variant="paragraph">
 								Bank: <span className="uppercase">{bank}</span>
 							</Typography>
+							<Typography variant="paragraph">
+								Price total:{" "}
+								{toRupiah(Number(totalPayment), {
+									formal: false,
+									dot: ",",
+									floatingPoint: 0,
+								})}
+							</Typography>
 							<Typography variant="paragraph">VA Number: {vaNumber}</Typography>
 						</div>
 						<div className="flex justify-end">
@@ -197,7 +216,7 @@ export default function OrderTabs() {
 					Add New Order
 				</Button>
 				<Button disabled={!auth} type="button" onClick={handleSubmitAllOrders}>
-					Submit All Orders
+					{tabs.length === 1 ? "Checkout Order" : "Checkout All Order"}
 				</Button>
 			</div>
 		</Tabs>

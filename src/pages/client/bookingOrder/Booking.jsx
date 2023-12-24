@@ -1,10 +1,20 @@
 import React, { useState } from "react";
-import { Radio, Input, Select, Option } from "@material-tailwind/react";
+import {
+	Radio,
+	Input,
+	Select,
+	Option,
+	Textarea,
+} from "@material-tailwind/react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { addHours, format, setMinutes } from "date-fns";
 import Cookies from "js-cookie";
-import { usePackageQuery } from "../../../redux/api/package/packageApiSlice";
+import {
+	usePackageDetailsQuery,
+	usePackageQuery,
+} from "../../../redux/api/package/packageApiSlice";
+import { useGetDaysQuery } from "../../../redux/api/dayOff/dayOffSlice";
 
 const css = `
   .my-selected:not([disabled]) {
@@ -22,19 +32,43 @@ const css = `
 
 export default function Booking({ orders }) {
 	const user = Cookies.get("userId");
+	const userName = Cookies.get("user");
 	const initialOrder = {
 		userId: user,
 		packageId: "",
+		note: "",
 		day: "",
 		time: ["", ""],
 	};
 
 	// eslint-disable-next-line no-unused-vars
 	const [ordersData, setOrdersData] = useState(orders || [initialOrder]);
+	const [indexKey, setIndexKey] = useState(0);
+
+	const { data: dataDetailPackage, refetch } = usePackageDetailsQuery(
+		ordersData[indexKey].packageId
+	);
+
+	const { data: daysData, isLoading } = useGetDaysQuery();
+
+	const disableDate =
+		!isLoading &&
+		[
+			...(daysData?.data?.map(({ date }) => new Date(date)) || []), // Extracting dates or an empty array
+			{ before: new Date() },
+		].filter(Boolean);
 
 	const handleSelectPackage = (index, value) => {
 		const newOrders = [...orders];
 		newOrders[index]["packageId"] = value;
+		refetch();
+		setOrdersData(newOrders);
+		setIndexKey(index);
+	};
+
+	const handleNoteChange = (index, value) => {
+		const newOrders = [...orders];
+		newOrders[index]["note"] = value;
 		setOrdersData(newOrders);
 	};
 
@@ -46,7 +80,10 @@ export default function Booking({ orders }) {
 
 	const handleTimeInputChange = (index, value) => {
 		const newOrders = [...orders];
-		const limitHours = 2;
+		const limitHours =
+			dataDetailPackage?.data?.length === 0
+				? 1
+				: Number(dataDetailPackage?.data?.hour);
 
 		const [hours] = value.split(":");
 		const currentTime = new Date();
@@ -96,7 +133,7 @@ export default function Booking({ orders }) {
 								type="text"
 								className="px-3"
 								name="userId"
-								value={user}
+								value={userName}
 								placeholder="User ID"
 								readOnly
 								disabled
@@ -121,6 +158,14 @@ export default function Booking({ orders }) {
 								</Select>
 							)}
 
+							<Textarea
+								variant="static"
+								label="Note"
+								placeholder="Add location or a note for crew."
+								value={order.note}
+								onChange={(e) => handleNoteChange(index, e.target.value)}
+							/>
+
 							<div className="flex justify-center">
 								<style>{css}</style>
 								<DayPicker
@@ -128,6 +173,7 @@ export default function Booking({ orders }) {
 										selected: "my-selected",
 										today: "my-today",
 									}}
+									disabled={disableDate}
 									selected={order.day}
 									onDayClick={(day) => handleDayChange(index, day)}
 								/>

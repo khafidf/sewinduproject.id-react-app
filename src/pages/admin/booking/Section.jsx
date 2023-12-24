@@ -5,33 +5,40 @@ import { useSelector } from "react-redux";
 import { sidebarSelector } from "../../../redux/slice/sidebarSlice";
 import { useGetOrderAdminQuery } from "../../../redux/api/booking/bookingSlice";
 import { FaSquare, FaSquareCheck } from "react-icons/fa6";
+import { format } from "date-fns";
+import { AddDayOff } from "../../../components/AddDayOff";
 
 export const Section = () => {
 	const openSidebar = useSelector(sidebarSelector);
 
 	const { data: orderData, isLoading } = useGetOrderAdminQuery();
 
-	const combinedData = orderData?.data?.order.map((order) => {
+	const combinedData = orderData?.data?.booking.map((booking) => {
 		const relatedUser = orderData?.data?.user.find(
-			(user) => user._id === order.userId
+			(user) => user._id === booking.userId
 		);
 
-		const relatedPackages = orderData?.data?.package.find((packages) =>
-			packages.some((pkg) => pkg.orderId === order.orderId)
+		const relatedOrder = orderData?.data?.order.find(
+			(order) => order.order_id === booking.orderId
 		);
 
 		return {
-			...order,
+			...booking,
 			user: relatedUser,
-			packages: relatedPackages,
+			order: relatedOrder,
 		};
 	});
+
+	const capitalize = (str) => {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	};
 
 	const TABLE_HEAD = [
 		"No",
 		"User",
 		"Phone Number",
-		"PackageName",
+		"Package Name",
+		"Note",
 		"Date Booking",
 		"Status",
 	];
@@ -42,6 +49,9 @@ export const Section = () => {
 				openSidebar ? "w-[calc(100vw-24rem)]" : "w-full"
 			}`}
 		>
+			<div className="flex justify-end pb-2">
+				<AddDayOff />
+			</div>
 			<Card className="w-full h-[calc(100vh-19.3vh)] overflow-scroll">
 				<table className="w-full text-center table-auto min-w-max">
 					<thead className="sticky top-0 z-40">
@@ -64,91 +74,97 @@ export const Section = () => {
 					</thead>
 					{!isLoading ? (
 						<tbody>
-							{combinedData.map(({ user, packages, statusOrder }, index) => {
-								const { name, phoneNumber } = user;
-								const isLast = index === combinedData.length - 1;
-								const classes = isLast
-									? "p-4"
-									: "p-4 border-b border-blue-gray-50";
+							{combinedData.map(
+								(
+									{ user, order, packageName, note, categoryName, date },
+									index
+								) => {
+									const { name, phoneNumber } = user;
+									const { transaction_status } = order;
+									const { day, time } = date;
+									const isLast = index === combinedData.length - 1;
+									const classes = isLast
+										? "p-4"
+										: "p-4 border-b border-blue-gray-50";
 
-								return (
-									<tr key={index}>
-										<td className={classes}>
-											<Typography
-												variant="small"
-												color="blue-gray"
-												className="font-normal"
-											>
-												{index + 1}
-											</Typography>
-										</td>
-										<td className={classes}>
-											<Typography
-												variant="small"
-												color="blue-gray"
-												className="font-normal"
-											>
-												{name}
-											</Typography>
-										</td>
-										<td className={classes}>
-											<Typography
-												variant="small"
-												color="blue-gray"
-												className="font-normal"
-											>
-												{phoneNumber}
-											</Typography>
-										</td>
-										<td className={classes}>
-											<Typography
-												variant="small"
-												color="blue-gray"
-												className="font-normal"
-											>
-												{packages.map(({ packageName }, index) => (
-													<React.Fragment key={index}>
-														{index > 0 && <br />} {`${packageName}`}
-													</React.Fragment>
-												))}
-											</Typography>
-										</td>
-										<td className={classes}>
-											<Typography
-												variant="small"
-												color="blue-gray"
-												className="font-normal"
-											>
-												{packages.map(({ date }, index) => {
-													const { day, time } = date;
-													return (
-														<React.Fragment key={index}>
-															{index > 0 && <br />}{" "}
-															{`${day} ${time[0]}-${time[1]}`}
-														</React.Fragment>
-													);
-												})}
-											</Typography>
-										</td>
-										<td className={classes}>
-											<div className="mx-auto w-max">
-												{statusOrder === "pending" ? (
-													<FaSquare className="text-[#ff6f00]" />
-												) : (
-													statusOrder === "settlement" && (
-														<FaSquareCheck className="text-[#1b5e20]" />
-													)
-												)}
-											</div>
-										</td>
-									</tr>
-								);
-							})}
+									return (
+										<tr key={index}>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal"
+												>
+													{index + 1}
+												</Typography>
+											</td>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal"
+												>
+													{name}
+												</Typography>
+											</td>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal"
+												>
+													{phoneNumber}
+												</Typography>
+											</td>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal"
+												>
+													{`${packageName} (${capitalize(categoryName)})`}
+												</Typography>
+											</td>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal text-start"
+												>
+													{note}
+												</Typography>
+											</td>
+											<td className={classes}>
+												<Typography
+													variant="small"
+													color="blue-gray"
+													className="font-normal"
+												>
+													{`${format(new Date(day), "dd, MMMM yyyy")} ${
+														time[0]
+													} - ${time[1]}`}
+												</Typography>
+											</td>
+											<td className={classes}>
+												<div className="mx-auto w-max">
+													{transaction_status === "pending" ? (
+														<FaSquare className="text-[#ff6f00]" />
+													) : (
+														transaction_status === "settlement" && (
+															<FaSquareCheck className="text-[#1b5e20]" />
+														)
+													)}
+												</div>
+											</td>
+										</tr>
+									);
+								}
+							)}
 						</tbody>
 					) : (
 						<tbody>
 							<tr>
-								<td colSpan="5">
+								<td colSpan="7">
 									<Loading />
 								</td>
 							</tr>
