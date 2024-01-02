@@ -20,6 +20,7 @@ import {
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../redux/api/auth/authApiSlice";
+import { DownloadModal } from "./DownloadModal";
 
 export const Nav = () => {
 	const [user, setUser] = useState("");
@@ -111,9 +112,10 @@ export const Nav = () => {
 					/>
 				</a>
 				<div className="hidden lg:block">{navList}</div>
-				<div className="items-center hidden lg:block gap-x-1">
+				<div className="items-center hidden lg:flex gap-x-4">
 					{token ? (
 						<>
+							<DownloadModal />
 							<Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
 								<MenuHandler>
 									<MenuItem className="items-center hidden gap-2 lg:flex">
@@ -167,6 +169,9 @@ export const Nav = () => {
 
 					{token ? (
 						<>
+							<div className="mb-2 ml-1">
+								<DownloadModal />
+							</div>
 							<Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
 								<MenuHandler>
 									<MenuItem className="flex items-center gap-2 lg:hidden">

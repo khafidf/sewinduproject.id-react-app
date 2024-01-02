@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { setRefetchHistory } from "../../../../redux/slice/bookingSlice";
 import { PayOrder } from "../../../../components/PayOrder";
 import { FaSquareCheck, FaSquareXmark } from "react-icons/fa6";
+import Loading from "../../../../components/Loading";
 
 export const Section = () => {
 	const dispatch = useDispatch();
@@ -174,14 +175,8 @@ export const Section = () => {
 							)
 						) : (
 							<tr>
-								<td colSpan="7">
-									<Typography
-										variant="h3"
-										color="blue-gray"
-										className="py-8 font-normal"
-									>
-										Data not Found
-									</Typography>
+								<td colSpan="8">
+									<Loading />
 								</td>
 							</tr>
 						)}

@@ -1,5 +1,5 @@
-import React from "react";
-import { Typography, Card } from "@material-tailwind/react";
+import React, { useEffect, useState } from "react";
+import { Typography, Card, Select, Option } from "@material-tailwind/react";
 import Loading from "../../../components/Loading";
 import { useSelector } from "react-redux";
 import { sidebarSelector } from "../../../redux/slice/sidebarSlice";
@@ -7,8 +7,11 @@ import { useGetOrderAdminQuery } from "../../../redux/api/booking/bookingSlice";
 import { FaSquare, FaSquareCheck } from "react-icons/fa6";
 import { format } from "date-fns";
 import { AddDayOff } from "../../../components/AddDayOff";
+import toRupiah from "@develoka/angka-rupiah-js";
 
 export const Section = () => {
+	const [month, setMonth] = useState(format(new Date(), "MMMM"));
+	const [totalAmount, setTotalAmount] = useState(0);
 	const openSidebar = useSelector(sidebarSelector);
 
 	const { data: orderData, isLoading } = useGetOrderAdminQuery();
@@ -29,6 +32,32 @@ export const Section = () => {
 		};
 	});
 
+	useEffect(() => {
+		let calculatedTotal = 0;
+		if (combinedData) {
+			combinedData.forEach(({ date, order }) => {
+				const { day } = date;
+				const { gross_amount } = order;
+
+				if (format(new Date(day), "MMMM") === month) {
+					calculatedTotal += Number(gross_amount);
+				}
+			});
+		}
+
+		setTotalAmount(
+			toRupiah(Number(calculatedTotal), {
+				formal: false,
+				dot: ",",
+				floatingPoint: 0,
+			})
+		);
+	}, [combinedData, month]);
+
+	const handleSelectChange = (value) => {
+		setMonth(value);
+	};
+
 	const capitalize = (str) => {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
@@ -43,6 +72,8 @@ export const Section = () => {
 		"Status",
 	];
 
+	const TABLE_HEAD_AMOUNT = ["Month", "Total Amount"];
+
 	return (
 		<div
 			className={`absolute top-4 right-5 z-0 duration-300 shadow-lg p-4 shadow-secondary/40 bg-primary text-secondary h-[calc(100vh-9.2vh)] max-w-[calc(100vw-6.5rem)] ${
@@ -52,7 +83,7 @@ export const Section = () => {
 			<div className="flex justify-end pb-2">
 				<AddDayOff />
 			</div>
-			<Card className="w-full h-[calc(100vh-19.3vh)] overflow-scroll">
+			<Card className="w-full h-[calc(100vh-36vh)] overflow-scroll">
 				<table className="w-full text-center table-auto min-w-max">
 					<thead className="sticky top-0 z-40">
 						<tr>
@@ -170,6 +201,64 @@ export const Section = () => {
 							</tr>
 						</tbody>
 					)}
+				</table>
+			</Card>
+			<Card className="w-full h-[calc(100vh-83vh)] z-50  mt-4">
+				<table className="w-full text-center table-auto min-w-max">
+					<thead className="sticky top-0 z-40">
+						<tr>
+							{TABLE_HEAD_AMOUNT.map((head) => (
+								<th
+									key={head}
+									className="p-4 border-b border-secondary/10 bg-secondary"
+								>
+									<Typography
+										variant="small"
+										color="white"
+										className="font-normal leading-none opacity-70"
+									>
+										{head}
+									</Typography>
+								</th>
+							))}
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td className="w-1/2 p-8">
+								<Select
+									label="Select Month"
+									variant="standard"
+									color="blue-gray"
+									name="month"
+									value={month}
+									onChange={handleSelectChange}
+								>
+									<Option value="January">January</Option>
+									<Option value="February">February</Option>
+									<Option value="March">March</Option>
+									<Option value="April">April</Option>
+									<Option value="May">May</Option>
+									<Option value="June">June</Option>
+									<Option value="July">July</Option>
+									<Option value="August">August</Option>
+									<Option value="September">September</Option>
+									<Option value="October">October</Option>
+									<Option value="November">November</Option>
+									<Option value="December">December</Option>
+								</Select>
+							</td>
+							<td className="p-8">
+								<Typography
+									variant="small"
+									color="blue-gray"
+									className="font-normal"
+								>
+									{totalAmount}
+								</Typography>
+							</td>
+						</tr>
+					</tbody>
 				</table>
 			</Card>
 		</div>

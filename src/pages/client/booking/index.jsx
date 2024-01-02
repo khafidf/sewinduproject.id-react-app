@@ -81,7 +81,7 @@ export default function BookingPage() {
 
 	return (
 		<Tabs className="container mx-auto" value="calendar">
-			<TabsHeader className="w-full mx-auto mt-4 sm:w-1/2 lg:w-1/4">
+			<TabsHeader className="w-full mx-auto mt-4 sm:w-1/2">
 				{tabsContent}
 			</TabsHeader>
 			<TabsBody>
