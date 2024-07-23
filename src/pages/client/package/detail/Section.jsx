@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Typography } from "@material-tailwind/react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import toRupiah from "@develoka/angka-rupiah-js";
 import { usePackageDetailsQuery } from "../../../../redux/api/package/packageApiSlice";
 
@@ -66,7 +66,7 @@ export const Section = () => {
 								})}
 							</Typography>
 							<Button size="md" variant="filled" color="blue-gray">
-								Booking
+								<Link to={"/booking-order"}>Booking</Link>
 							</Button>
 						</div>
 					</div>
